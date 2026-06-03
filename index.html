@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Halderman Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F9F5EE;
+      --warm-white: #FDF9F3;
+      --ink: #1C1A17;
+      --ink-light: #5A5550;
+      --terracotta: #B5522A;
+      --terracotta-light: #E8C5B0;
+      --sage: #7A8C6E;
+      --sage-light: #D4DFD0;
+      --gold: #C49A3C;
+      --border: #E2D9CC;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ── LOGIN ── */
+    #login-screen {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      padding: 2rem;
+    }
+
+    .login-box {
+      text-align: center;
+      max-width: 380px;
+      width: 100%;
+    }
+
+    .login-mark {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 2rem;
+      border: 2px solid var(--terracotta);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--terracotta);
+      font-style: italic;
+    }
+
+    .login-box h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .login-box p {
+      color: var(--ink-light);
+      font-size: 0.88rem;
+      margin-bottom: 2rem;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 0.85rem 1.2rem;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      background: var(--warm-white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: var(--ink);
+      outline: none;
+      margin-bottom: 0.8rem;
+      transition: border-color 0.2s;
+      text-align: center;
+      letter-spacing: 0.15em;
+    }
+
+    .login-box input:focus { border-color: var(--terracotta); }
+
+    .login-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--terracotta);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .login-btn:hover { background: #9E4523; }
+
+    .login-error {
+      color: var(--terracotta);
+      font-size: 0.82rem;
+      margin-top: 0.6rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .login-error.show { opacity: 1; }
+
+    /* ── APP ── */
+    #app { display: none; }
+
+    header {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      height: 64px;
+    }
+
+    .header-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .header-brand span { color: var(--terracotta); font-style: italic; }
+
+    .search-wrap {
+      flex: 1;
+      max-width: 360px;
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 2.4rem;
+      border: 1.5px solid var(--border);
+      border-radius: 40px;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-wrap input:focus { border-color: var(--terracotta); }
+
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .layout {
+      display: flex;
+      min-height: calc(100vh - 64px);
+    }
+
+    aside {
+      width: 220px;
+      flex-shrink: 0;
+      padding: 2rem 1.2rem;
+      border-right: 1px solid var(--border);
+      background: var(--warm-white);
+      position: sticky;
+      top: 64px;
+      height: calc(100vh - 64px);
+      overflow-y: auto;
+    }
+
+    .filter-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 0.6rem;
+      margin-top: 1.4rem;
+    }
+
+    .filter-label:first-child { margin-top: 0; }
+
+    .filter-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.4rem 0.6rem;
+      border: none;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.15s, color 0.15s;
+      margin-bottom: 0.1rem;
+    }
+
+    .filter-btn:hover { background: var(--cream); color: var(--ink); }
+    .filter-btn.active { background: var(--terracotta-light); color: var(--terracotta); font-weight: 500; }
+
+    .tag-pill {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      border: 1px solid var(--border);
+      margin: 0.2rem 0.15rem;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      color: var(--ink-light);
+    }
+
+    .tag-pill:hover { background: var(--cream); }
+    .tag-pill.active { background: var(--sage-light); border-color: var(--sage); color: var(--sage); }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .results-info {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── RECIPE GRID ── */
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .recipe-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    }
+
+    .recipe-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(28,26,23,0.08);
+      border-color: var(--terracotta-light);
+    }
+
+    .card-category {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-desc {
+      font-size: 0.83rem;
+      color: var(--ink-light);
+      line-height: 1.5;
+      margin-bottom: 0.9rem;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--ink-light);
+    }
+
+    /* ── RECIPE DETAIL ── */
+    #detail-view { display: none; }
+    #list-view {}
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--ink-light);
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      padding: 0;
+      margin-bottom: 2rem;
+      transition: color 0.15s;
+    }
+
+    .back-btn:hover { color: var(--terracotta); }
+
+    .detail-category {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.6rem;
+    }
+
+    .detail-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 0.8rem;
+    }
+
+    .detail-desc {
+      font-size: 1rem;
+      color: var(--ink-light);
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      max-width: 560px;
+    }
+
+    .detail-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .meta-item { font-size: 0.85rem; color: var(--ink-light); }
+    .meta-item strong { color: var(--ink); }
+
+    .servings-ctrl {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .servings-ctrl button {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      color: var(--ink-light);
+      transition: border-color 0.15s, color 0.15s;
+      line-height: 1;
+    }
+
+    .servings-ctrl button:hover { border-color: var(--terracotta); color: var(--terracotta); }
+
+    .servings-ctrl span { font-size: 0.9rem; font-weight: 500; min-width: 1.5rem; text-align: center; }
+
+    .detail-body {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .ingredients-box h2, .steps-box h2 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 1.2rem;
+    }
+
+    .ingredients-list {
+      list-style: none;
+    }
+
+    .ingredients-list li {
+      display: flex;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .ingredients-list li:last-child { border-bottom: none; }
+
+    .ing-amount {
+      color: var(--terracotta);
+      font-weight: 500;
+      white-space: nowrap;
+      min-width: 70px;
+      flex-shrink: 0;
+    }
+
+    .ing-name { color: var(--ink); }
+
+    .steps-list { list-style: none; counter-reset: steps; }
+
+    .step-item {
+      display: flex;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+      cursor: pointer;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+
+    .step-item.done .step-num {
+      background: var(--sage-light);
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    .step-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--ink-light);
+      line-height: 1.6;
+    }
+
+    .step-item.done .step-content h3,
+    .step-item.done .step-content p {
+      opacity: 0.4;
+      text-decoration: line-through;
+      text-decoration-color: var(--sage);
+    }
+
+    .notes-box {
+      margin-top: 2.5rem;
+      padding: 1.4rem;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 4px;
+    }
+
+    .notes-box h3 {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    .notes-box p {
+      font-size: 0.88rem;
+      color: var(--ink-light);
+      line-height: 1.65;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--ink-light);
+    }
+
+    .empty-state h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      aside { display: none; }
+      main { padding: 1.2rem; }
+      .detail-body { grid-template-columns: 1fr; gap: 2rem; }
+      .detail-title { font-size: 2rem; }
+      header { padding: 0 1rem; }
+      .header-brand { font-size: 1.2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .recipe-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .recipe-card { animation: fadeUp 0.3s ease both; }
+
+    .recipe-card:nth-child(2) { animation-delay: 0.04s; }
+    .recipe-card:nth-child(3) { animation-delay: 0.08s; }
+    .recipe-card:nth-child(4) { animation-delay: 0.12s; }
+    .recipe-card:nth-child(5) { animation-delay: 0.16s; }
+    .recipe-card:nth-child(6) { animation-delay: 0.20s; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-mark">H</div>
+    <h1>Halderman <em>Kitchen</em></h1>
+    <p>Our personal recipe collection</p>
+    <input type="password" id="pw-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')tryLogin()"/>
+    <button class="login-btn" onclick="tryLogin()">Enter kitchen</button>
+    <p class="login-error" id="login-error">Incorrect password — try again</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <div class="header-brand">Halderman <span>Kitchen</span></div>
+    <div class="search-wrap">
+      <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" id="search-input" placeholder="Search recipes…" oninput="renderList()" />
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside id="sidebar">
+      <div class="filter-label">Category</div>
+      <div id="category-filters"></div>
+      <div class="filter-label">Tags</div>
+      <div id="tag-filters"></div>
+    </aside>
+
+    <main>
+      <!-- LIST VIEW -->
+      <div id="list-view">
+        <p class="results-info" id="results-info"></p>
+        <div class="recipe-grid" id="recipe-grid"></div>
+        <div class="empty-state" id="empty-state" style="display:none">
+          <h3>Nothing found</h3>
+          <p>Try a different search or filter</p>
+        </div>
+      </div>
+
+      <!-- DETAIL VIEW -->
+      <div id="detail-view">
+        <button class="back-btn" onclick="showList()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          All recipes
+        </button>
+        <div id="detail-content"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+  // ── CONFIG ──
+  const PASSWORD = 'halderman2025';
+  const RECIPE_FILE = 'recipes.json';
+
+  // ── STATE ──
+  let recipes = [];
+  let activeCategory = 'All';
+  let activeTags = new Set();
+  let currentServings = {};
+
+  // ── AUTH ──
+  function tryLogin() {
+    const val = document.getElementById('pw-input').value;
+    if (val === PASSWORD) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('app').style.display = 'block';
+      loadRecipes();
+    } else {
+      const err = document.getElementById('login-error');
+      err.classList.add('show');
+      document.getElementById('pw-input').value = '';
+      setTimeout(() => err.classList.remove('show'), 2500);
+    }
+  }
+
+  // ── LOAD ──
+  async function loadRecipes() {
+    try {
+      const res = await fetch(RECIPE_FILE + '?v=' + Date.now());
+      recipes = await res.json();
+      buildFilters();
+      renderList();
+    } catch (e) {
+      console.error('Could not load recipes.json', e);
+    }
+  }
+
+  // ── FILTERS ──
+  function buildFilters() {
+    const categories = ['All', ...new Set(recipes.map(r => r.category))];
+    const tags = [...new Set(recipes.flatMap(r => r.tags))];
+
+    const cf = document.getElementById('category-filters');
+    cf.innerHTML = categories.map(c => `
+      <button class="filter-btn ${c === activeCategory ? 'active' : ''}"
+        onclick="setCategory('${c}')">${c}</button>
+    `).join('');
+
+    const tf = document.getElementById('tag-filters');
+    tf.innerHTML = tags.map(t => `
+      <span class="tag-pill ${activeTags.has(t) ? 'active' : ''}"
+        onclick="toggleTag('${t}')">${t}</span>
+    `).join('');
+  }
+
+  function setCategory(cat) {
+    activeCategory = cat;
+    buildFilters();
+    renderList();
+  }
+
+  function toggleTag(tag) {
+    if (activeTags.has(tag)) activeTags.delete(tag);
+    else activeTags.add(tag);
+    buildFilters();
+    renderList();
+  }
+
+  // ── LIST ──
+  function getFiltered() {
+    const q = (document.getElementById('search-input')?.value || '').toLowerCase();
+    return recipes.filter(r => {
+      if (activeCategory !== 'All' && r.category !== activeCategory) return false;
+      if (activeTags.size > 0 && ![...activeTags].every(t => r.tags.includes(t))) return false;
+      if (q && !r.title.toLowerCase().includes(q) && !r.description.toLowerCase().includes(q)
+           && !r.category.toLowerCase().includes(q) && !r.tags.some(t => t.includes(q))) return false;
+      return true;
+    });
+  }
+
+  function renderList() {
+    document.getElementById('detail-view').style.display = 'none';
+    document.getElementById('list-view').style.display = 'block';
+
+    const filtered = getFiltered();
+    const grid = document.getElementById('recipe-grid');
+    const empty = document.getElementById('empty-state');
+    const info = document.getElementById('results-info');
+
+    info.textContent = filtered.length === recipes.length
+      ? `${recipes.length} recipes`
+      : `${filtered.length} of ${recipes.length} recipes`;
+
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      return;
+    }
+
+    empty.style.display = 'none';
+    grid.innerHTML = filtered.map(r => `
+      <div class="recipe-card" onclick="showDetail('${r.id}')">
+        <div class="card-category">${r.category}</div>
+        <div class="card-title">${r.title}</div>
+        <div class="card-desc">${r.description}</div>
+        <div class="card-tags">${r.tags.map(t => `<span class="card-tag">${t}</span>`).join('')}</div>
+      </div>
+    `).join('');
+  }
+
+  // ── DETAIL ──
+  function showDetail(id) {
+    const r = recipes.find(x => x.id === id);
+    if (!r) return;
+
+    if (!currentServings[id]) currentServings[id] = r.servings;
+
+    document.getElementById('list-view').style.display = 'none';
+    document.getElementById('detail-view').style.display = 'block';
+
+    renderDetail(r);
+    window.scrollTo(0, 0);
+  }
+
+  function renderDetail(r) {
+    const srv = currentServings[r.id];
+    const ratio = srv / r.servings;
+
+    function fmtAmt(amount) {
+      const val = amount * ratio;
+      if (val === 0) return '';
+      if (Number.isInteger(val) || val > 10) return Math.round(val).toString();
+      if (val < 1) {
+        const fracs = [[1,8],[1,4],[1,3],[1,2],[2,3],[3,4]];
+        let best = fracs[0], bestDiff = Math.abs(val - fracs[0][0]/fracs[0][1]);
+        fracs.forEach(f => { const d = Math.abs(val - f[0]/f[1]); if (d < bestDiff) { best = f; bestDiff = d; } });
+        return `${best[0]}/${best[1]}`;
+      }
+      return parseFloat(val.toFixed(1)).toString();
+    }
+
+    const ingList = r.ingredients.map(i => {
+      const unit = i.unit && !['cloves','clove','large','medium','orange','lemon','pinch','sprig','sprigs','stalk','stalks'].includes(i.unit)
+        ? i.unit : '';
+      const unitLabel = ['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks'].includes(i.unit) ? '' : unit;
+      const amtStr = i.amount > 0 ? fmtAmt(i.amount) : '';
+      const fullAmt = [amtStr, unit === 'g' || unit === 'ml' || unit === 'kg' ? unit : ''].filter(Boolean).join('');
+      return `<li>
+        <span class="ing-amount">${fullAmt || '—'}</span>
+        <span class="ing-name">${i.name}</span>
+      </li>`;
+    }).join('');
+
+    const stepList = r.steps.map((s, i) => `
+      <li class="step-item" onclick="toggleStep(this)">
+        <div class="step-num">${i + 1}</div>
+        <div class="step-content">
+          <h3>${s.title}</h3>
+          <p>${s.content}</p>
+        </div>
+      </li>
+    `).join('');
+
+    document.getElementById('detail-content').innerHTML = `
+      <div class="detail-category">${r.category}</div>
+      <h1 class="detail-title">${r.title}</h1>
+      <p class="detail-desc">${r.description}</p>
+      <div class="detail-meta">
+        <div class="meta-item">
+          <strong>Servings</strong>
+        </div>
+        <div class="servings-ctrl">
+          <button onclick="changeServings('${r.id}', -1)">−</button>
+          <span id="srv-display">${srv}</span>
+          <button onclick="changeServings('${r.id}', 1)">+</button>
+        </div>
+        <div class="meta-item"><strong>${r.ingredients.length}</strong> ingredients</div>
+        <div class="meta-item"><strong>${r.steps.length}</strong> steps</div>
+      </div>
+      <div class="detail-body">
+        <div class="ingredients-box">
+          <h2>Ingredients</h2>
+          <ul class="ingredients-list">${ingList}</ul>
+        </div>
+        <div class="steps-box">
+          <h2>Method</h2>
+          <ul class="steps-list">${stepList}</ul>
+          ${r.notes ? `<div class="notes-box"><h3>Notes</h3><p>${r.notes}</p></div>` : ''}
+        </div>
+      </div>
+    `;
+  }
+
+  function changeServings(id, delta) {
+    const r = recipes.find(x => x.id === id);
+    if (!r) return;
+    currentServings[id] = Math.max(1, (currentServings[id] || r.servings) + delta);
+    renderDetail(r);
+  }
+
+  function toggleStep(el) {
+    el.classList.toggle('done');
+  }
+
+  function showList() {
+    document.getElementById('detail-view').style.display = 'none';
+    document.getElementById('list-view').style.display = 'block';
+  }
+</script>
+</body>
+</html>

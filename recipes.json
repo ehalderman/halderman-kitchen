@@ -1,0 +1,334 @@
+[
+  {
+    "id": "hummus",
+    "title": "Simple Hummus",
+    "description": "Smooth, classic hummus — made with two jars of chickpeas, ready in minutes.",
+    "category": "Dips & Spreads",
+    "tags": ["vegan", "quick"],
+    "servings": 4,
+    "ingredients": [
+      { "amount": 430, "unit": "g", "name": "canned chickpeas, drained (reserve liquid)" },
+      { "amount": 60, "unit": "g", "name": "aquafaba (reserved chickpea liquid)" },
+      { "amount": 80, "unit": "g", "name": "tahini" },
+      { "amount": 40, "unit": "g", "name": "lemon juice, freshly squeezed" },
+      { "amount": 2, "unit": "cloves", "name": "garlic" },
+      { "amount": 30, "unit": "g", "name": "olive oil" },
+      { "amount": 5, "unit": "g", "name": "salt" },
+      { "amount": 2, "unit": "g", "name": "ground cumin" }
+    ],
+    "steps": [
+      { "title": "Blend tahini base", "content": "Add tahini, lemon juice, and garlic to the food processor. Blend for about 60 seconds until the mixture looks pale and creamy. This step makes the hummus extra smooth." },
+      { "title": "Add chickpeas", "content": "Add the chickpeas, salt, and cumin. Blend for 2–3 minutes, scraping down the sides halfway through." },
+      { "title": "Loosen with aquafaba", "content": "With the processor running, drizzle in the aquafaba gradually. Keep blending until completely smooth and fluffy — about another 60–90 seconds. Add more aquafaba if you want a lighter texture." },
+      { "title": "Finish and taste", "content": "Drizzle in olive oil and pulse a few times to incorporate. Taste and adjust salt, lemon, or cumin as needed." },
+      { "title": "Serve", "content": "Spoon into a bowl, make a well in the centre, and finish with a drizzle of olive oil. Optionally top with smoked paprika, whole chickpeas, or fresh parsley." }
+    ],
+    "notes": "The secret is blending the tahini and lemon first, and using aquafaba instead of water — it makes the texture noticeably creamier. For a milder garlic flavour, use 1 clove or let raw garlic sit in lemon juice for 5 minutes before blending. Keeps in the fridge for up to 5 days — drizzle with olive oil before storing."
+  },
+  {
+    "id": "tzatziki",
+    "title": "Tzatziki",
+    "description": "Classic Greek yogurt dip with cucumber, garlic, and fresh dill. Best made a few hours ahead so the flavours meld.",
+    "category": "Dips & Spreads",
+    "tags": ["vegetarian", "quick"],
+    "servings": 4,
+    "ingredients": [
+      { "amount": 500, "unit": "g", "name": "full-fat Greek yogurt" },
+      { "amount": 200, "unit": "g", "name": "cucumber" },
+      { "amount": 2, "unit": "cloves", "name": "garlic, minced" },
+      { "amount": 30, "unit": "g", "name": "extra virgin olive oil" },
+      { "amount": 15, "unit": "g", "name": "fresh dill, finely chopped" },
+      { "amount": 15, "unit": "g", "name": "lemon juice" },
+      { "amount": 4, "unit": "g", "name": "salt" },
+      { "amount": 1, "unit": "pinch", "name": "white pepper" }
+    ],
+    "steps": [
+      { "title": "Grate and drain cucumber", "content": "Coarsely grate the cucumber and place in a clean tea towel or cheesecloth. Squeeze firmly to remove as much liquid as possible — this is the most important step to avoid a watery dip." },
+      { "title": "Combine", "content": "In a bowl, mix the yogurt, drained cucumber, garlic, olive oil, dill, and lemon juice. Season with salt and white pepper. Stir well." },
+      { "title": "Rest in fridge", "content": "Cover and refrigerate for at least 30 minutes before serving to let the flavours develop. Drizzle with a little extra olive oil to serve." }
+    ],
+    "notes": "Use strained Greek yogurt (like Fage) for the thickest result. Fresh mint works well in place of, or alongside, dill. For a more mellow garlic flavour, let the minced garlic sit in lemon juice for 5 minutes before mixing in."
+  },
+  {
+    "id": "gazpacho",
+    "title": "Classic Gazpacho",
+    "description": "A chilled Spanish tomato soup — bright, refreshing, and ready in minutes.",
+    "category": "Soups",
+    "tags": ["vegan", "quick", "summer"],
+    "servings": 4,
+    "ingredients": [
+      { "amount": 800, "unit": "g", "name": "ripe tomatoes, roughly chopped" },
+      { "amount": 200, "unit": "g", "name": "cucumber, peeled and roughly chopped" },
+      { "amount": 150, "unit": "g", "name": "red bell pepper, deseeded and roughly chopped" },
+      { "amount": 1, "unit": "clove", "name": "garlic" },
+      { "amount": 60, "unit": "g", "name": "red onion, roughly chopped" },
+      { "amount": 60, "unit": "g", "name": "extra virgin olive oil" },
+      { "amount": 20, "unit": "g", "name": "red wine vinegar" },
+      { "amount": 4, "unit": "g", "name": "salt" },
+      { "amount": 50, "unit": "g", "name": "day-old bread, crusts removed (optional)" },
+      { "amount": 100, "unit": "g", "name": "cold water" }
+    ],
+    "steps": [
+      { "title": "Soak the bread", "content": "If using, tear the bread into chunks and soak in cold water for 5 minutes. This gives the soup body and a creamier texture." },
+      { "title": "Blend everything", "content": "Add tomatoes, cucumber, pepper, garlic, onion, soaked bread (if using), olive oil, vinegar, and salt to a blender. Blend on high for about 1 minute until very smooth." },
+      { "title": "Strain (optional)", "content": "For a silky-smooth result, pass the soup through a fine mesh sieve, pressing with a spoon. Skip this step if you prefer a more rustic texture." },
+      { "title": "Chill and serve", "content": "Taste and adjust salt and vinegar. Transfer to a bowl or jar and refrigerate for at least 1 hour before serving — it tastes much better cold." }
+    ],
+    "notes": "Use the ripest, most flavourful tomatoes you can find — in season is ideal. Toppings: a drizzle of olive oil, diced cucumber, croutons, or cherry tomato halves all work beautifully. Keeps in the fridge for up to 3 days — stir before serving."
+  },
+  {
+    "id": "white-bean-soup",
+    "title": "Creamy White Bean Soup with Kale, Rosemary & Lemon",
+    "description": "A vegan soup with a rich, silky texture from partial blending — deeply satisfying without being heavy.",
+    "category": "Soups",
+    "tags": ["vegan"],
+    "servings": 5,
+    "ingredients": [
+      { "amount": 30, "unit": "g", "name": "olive oil" },
+      { "amount": 1, "unit": "medium", "name": "onion, diced" },
+      { "amount": 4, "unit": "cloves", "name": "garlic, minced" },
+      { "amount": 2, "unit": "sprigs", "name": "fresh rosemary" },
+      { "amount": 800, "unit": "g", "name": "cooked white beans (cannellini or butter beans), drained" },
+      { "amount": 1, "unit": "litre", "name": "vegetable stock" },
+      { "amount": 150, "unit": "g", "name": "kale, stems removed, roughly chopped" },
+      { "amount": 30, "unit": "g", "name": "lemon juice" },
+      { "amount": 5, "unit": "g", "name": "salt" },
+      { "amount": 1, "unit": "pinch", "name": "Aleppo pepper or chilli flakes" }
+    ],
+    "steps": [
+      { "title": "Sauté aromatics", "content": "Heat olive oil in a large pot over medium heat. Add onion and cook for 5–6 minutes until soft. Add garlic and rosemary and cook for another 2 minutes." },
+      { "title": "Add beans and stock", "content": "Add the white beans and vegetable stock. Bring to a simmer and cook for 15 minutes." },
+      { "title": "Partial blend", "content": "Remove the rosemary sprigs. Use an immersion blender to blend about half the soup directly in the pot — this creates creaminess while keeping texture. Alternatively, ladle half into a blender, blend, and return to pot." },
+      { "title": "Add kale", "content": "Add the kale to the soup and simmer for 3–4 minutes until just wilted and bright green." },
+      { "title": "Finish", "content": "Add lemon juice, adjust salt, and serve with a drizzle of olive oil and a pinch of Aleppo pepper or chilli flakes." }
+    ],
+    "notes": "Aleppo pepper gives a mild, fruity heat — regular chilli flakes work fine but use less. The partial-blending technique is the key to the creamy texture without any dairy."
+  },
+  {
+    "id": "tikka-masala",
+    "title": "Red Lentil & Zucchini Tikka Masala",
+    "description": "A rich, creamy curry using Patak's Tikka Masala paste — ready in under an hour.",
+    "category": "Mains",
+    "tags": ["vegan"],
+    "servings": 3,
+    "ingredients": [
+      { "amount": 1, "unit": "large", "name": "onion, diced" },
+      { "amount": 3, "unit": "cloves", "name": "garlic, minced" },
+      { "amount": 20, "unit": "g", "name": "fresh ginger, grated" },
+      { "amount": 80, "unit": "g", "name": "Tikka Masala paste (Patak's)" },
+      { "amount": 180, "unit": "g", "name": "red lentils, rinsed" },
+      { "amount": 240, "unit": "g", "name": "canned mung beans, drained" },
+      { "amount": 1, "unit": "medium", "name": "zucchini, diced" },
+      { "amount": 400, "unit": "g", "name": "canned chopped tomatoes" },
+      { "amount": 200, "unit": "g", "name": "coconut cream" },
+      { "amount": 100, "unit": "g", "name": "oat cream" },
+      { "amount": 600, "unit": "g", "name": "vegetable stock" },
+      { "amount": 15, "unit": "g", "name": "nutritional yeast flakes" },
+      { "amount": 5, "unit": "g", "name": "salt" },
+      { "amount": 30, "unit": "g", "name": "olive oil" }
+    ],
+    "steps": [
+      { "title": "Sauté base", "content": "Heat olive oil in a large pot over medium heat. Add onion and cook for 5 minutes until softened. Add garlic and ginger, cook for 2 minutes." },
+      { "title": "Add paste", "content": "Add the Tikka Masala paste and stir to coat the onions. Cook for 2 minutes until fragrant." },
+      { "title": "Add lentils, beans and tomatoes", "content": "Add red lentils, mung beans, zucchini, chopped tomatoes, and vegetable stock. Stir well and bring to a boil." },
+      { "title": "Simmer", "content": "Reduce heat and simmer for 20–25 minutes, stirring occasionally, until lentils are soft and the curry has thickened." },
+      { "title": "Finish with cream", "content": "Stir in coconut cream, oat cream, and nutritional yeast. Simmer for another 5 minutes. Taste and adjust salt." },
+      { "title": "Serve", "content": "Serve with wholegrain jasmine rice and naan. Top with fresh coriander if available." }
+    ],
+    "notes": "Nutritional yeast adds umami depth — don't skip it. The coconut cream gives richness while the oat cream keeps it lighter. Lentils continue to thicken as they sit — add a splash of water when reheating."
+  },
+  {
+    "id": "byrek",
+    "title": "Spinach & Feta Byrek",
+    "description": "Albanian-style savoury filo pastry — crisp, golden, and generously filled.",
+    "category": "Mains",
+    "tags": ["vegetarian"],
+    "servings": 6,
+    "ingredients": [
+      { "amount": 500, "unit": "g", "name": "fresh spinach" },
+      { "amount": 200, "unit": "g", "name": "feta, crumbled" },
+      { "amount": 150, "unit": "g", "name": "ricotta" },
+      { "amount": 2, "unit": "large", "name": "eggs" },
+      { "amount": 4, "unit": "stalks", "name": "spring onions, thinly sliced" },
+      { "amount": 15, "unit": "g", "name": "fresh dill, chopped" },
+      { "amount": 60, "unit": "g", "name": "olive oil" },
+      { "amount": 270, "unit": "g", "name": "filo pastry (1 standard pack)" },
+      { "amount": 3, "unit": "g", "name": "salt" },
+      { "amount": 1, "unit": "pinch", "name": "black pepper" }
+    ],
+    "steps": [
+      { "title": "Wilt and drain spinach", "content": "Wilt the spinach in a hot dry pan or with a splash of water. Once cooled, squeeze out every bit of moisture using a clean tea towel — this is the most critical step to avoid a soggy base." },
+      { "title": "Make the filling", "content": "Roughly chop the drained spinach. In a bowl, combine spinach, feta, ricotta, eggs, spring onions, dill, salt, and pepper. Mix well." },
+      { "title": "Layer the filo", "content": "Preheat oven to 190°C. Brush a 30×20 cm baking dish with olive oil. Lay 2–3 sheets of filo, brushing each with oil and letting the edges hang over the sides. Don't worry about tears — multiple layers cover everything." },
+      { "title": "Fill and top", "content": "Spread the filling evenly over the filo base. Layer remaining filo sheets on top, brushing each with olive oil. Fold in the overhanging edges and brush the top generously. Score the top layer with a sharp knife into portions before baking — this prevents the filo from shattering when cut." },
+      { "title": "Bake", "content": "Bake at 190°C for 35–40 minutes until deep golden and crisp. Rest for 10 minutes before cutting and serving." }
+    ],
+    "notes": "Keep unused filo sheets covered with a damp towel to prevent drying out. Frozen spinach works well — thaw and squeeze thoroughly. The byrek reheats nicely in an oven at 180°C for 10 minutes."
+  },
+  {
+    "id": "banana-bread",
+    "title": "Moist Banana Bread",
+    "description": "Buttery, tender, and deeply flavoured — Greek yogurt is the secret to keeping it perfectly moist.",
+    "category": "Baking",
+    "tags": ["vegetarian"],
+    "servings": 10,
+    "ingredients": [
+      { "amount": 300, "unit": "g", "name": "very ripe bananas, peeled" },
+      { "amount": 90, "unit": "g", "name": "unsalted butter, melted" },
+      { "amount": 150, "unit": "g", "name": "brown sugar" },
+      { "amount": 2, "unit": "large", "name": "eggs" },
+      { "amount": 120, "unit": "g", "name": "full-fat Greek yogurt" },
+      { "amount": 5, "unit": "g", "name": "vanilla extract" },
+      { "amount": 190, "unit": "g", "name": "all-purpose flour" },
+      { "amount": 6, "unit": "g", "name": "baking soda" },
+      { "amount": 3, "unit": "g", "name": "fine salt" },
+      { "amount": 4, "unit": "g", "name": "ground cinnamon" },
+      { "amount": 80, "unit": "g", "name": "walnuts or dark chocolate chips (optional)" }
+    ],
+    "steps": [
+      { "title": "Preheat oven", "content": "Preheat oven to 175°C. Grease a standard loaf pan (roughly 23×13 cm) and line the bottom with baking paper." },
+      { "title": "Mash bananas", "content": "Mash the bananas thoroughly in a large bowl — the riper, the better. A few small lumps are fine." },
+      { "title": "Mix wet ingredients", "content": "Add melted butter, brown sugar, eggs, Greek yogurt, and vanilla to the mashed bananas. Whisk until smooth and well combined." },
+      { "title": "Add dry ingredients", "content": "Add flour, baking soda, salt, and cinnamon directly to the bowl. Fold gently with a spatula until just combined — do not overmix. Fold in walnuts or chocolate chips if using." },
+      { "title": "Bake", "content": "Pour into the prepared loaf pan and bake for 55–65 minutes, until a skewer inserted in the centre comes out clean. If the top browns too quickly, tent loosely with foil after 40 minutes." },
+      { "title": "Cool", "content": "Cool in the pan for 10 minutes, then turn out onto a rack. Slice once fully cooled for cleanest results." }
+    ],
+    "notes": "The riper the bananas, the sweeter and more flavourful the bread. If you only have underripe bananas, roast them unpeeled at 180°C for 15 minutes until the skins blacken. Sour cream works as a substitute for Greek yogurt. Keeps at room temperature for 3 days, or freeze sliced."
+  },
+  {
+    "id": "muffins-blueberry-lemon",
+    "title": "Green Yoghurt Blueberry Lemon Muffins",
+    "description": "Fluffy, tangy muffins packed with blueberries and bright lemon — with a spinach boost that keeps them moist and gives a subtle green hue without any grassy flavour.",
+    "category": "Baking",
+    "tags": ["vegetarian"],
+    "servings": 12,
+    "ingredients": [
+      { "amount": 60, "unit": "g", "name": "fresh baby spinach" },
+      { "amount": 200, "unit": "g", "name": "plain full-fat yoghurt" },
+      { "amount": 2, "unit": "large", "name": "lemons, zested and juiced" },
+      { "amount": 80, "unit": "g", "name": "neutral oil (sunflower or light olive)" },
+      { "amount": 150, "unit": "g", "name": "caster sugar" },
+      { "amount": 2, "unit": "large", "name": "eggs" },
+      { "amount": 5, "unit": "g", "name": "vanilla extract" },
+      { "amount": 250, "unit": "g", "name": "plain flour" },
+      { "amount": 8, "unit": "g", "name": "baking powder" },
+      { "amount": 3, "unit": "g", "name": "baking soda" },
+      { "amount": 3, "unit": "g", "name": "fine salt" },
+      { "amount": 200, "unit": "g", "name": "fresh or frozen blueberries" },
+      { "amount": 10, "unit": "g", "name": "flour (for tossing blueberries)" }
+    ],
+    "steps": [
+      { "title": "Preheat oven", "content": "Heat oven to 200°C (180°C fan). Line a 12-hole muffin tin with paper cases or grease well." },
+      { "title": "Blend the green base", "content": "Blend spinach with yoghurt and the lemon juice until completely smooth and vivid green. Blending well is key — ensures no spinach texture and a beautiful colour." },
+      { "title": "Mix wet ingredients", "content": "Whisk oil, sugar, eggs, vanilla, and lemon zest into the green yoghurt mixture until smooth." },
+      { "title": "Combine dry ingredients", "content": "In a large bowl, whisk together flour, baking powder, baking soda, and salt." },
+      { "title": "Coat the blueberries", "content": "Toss blueberries with the 10g of flour in a small bowl. This helps prevent them from sinking." },
+      { "title": "Fold together", "content": "Pour the wet mixture into the dry ingredients and fold with a spatula until just combined — a few streaks of flour are fine. Do not overmix. Gently fold in the floured blueberries." },
+      { "title": "Bake", "content": "Divide batter evenly between the 12 cases. Bake for 18–22 minutes until risen, golden, and a skewer comes out clean. Cool in the tin for 5 minutes, then transfer to a rack." }
+    ],
+    "notes": "The spinach flavour is completely undetectable — it only adds moisture and colour. Frozen blueberries work just as well as fresh; no need to thaw. Best eaten the day of baking, but keep well for 2 days in an airtight container."
+  },
+  {
+    "id": "pepas",
+    "title": "Argentine Pepas (Quince Thumbprint Cookies)",
+    "description": "The classic Argentine pepa — tender, buttery, melt-in-your-mouth dough with sweet-tart quince filling.",
+    "category": "Baking",
+    "tags": ["vegetarian"],
+    "servings": 23,
+    "ingredients": [
+      { "amount": 130, "unit": "g", "name": "all-purpose flour" },
+      { "amount": 2, "unit": "g", "name": "baking powder" },
+      { "amount": 2, "unit": "g", "name": "fine salt" },
+      { "amount": 75, "unit": "g", "name": "unsalted butter, softened" },
+      { "amount": 60, "unit": "g", "name": "powdered sugar, sifted" },
+      { "amount": 1, "unit": "large", "name": "egg, room temperature" },
+      { "amount": 3, "unit": "g", "name": "vanilla bean paste" },
+      { "amount": 0.5, "unit": "lemon", "name": "zest of half a lemon" },
+      { "amount": 0.5, "unit": "orange", "name": "zest of half an orange" },
+      { "amount": 110, "unit": "g", "name": "quince paste (membrillo)" },
+      { "amount": 25, "unit": "g", "name": "water (to loosen the quince paste)" }
+    ],
+    "steps": [
+      { "title": "Mix dry ingredients", "content": "Whisk together flour, baking powder, and salt in a bowl. Set aside." },
+      { "title": "Cream butter and sugar", "content": "Beat butter and powdered sugar with a hand mixer for 2–3 minutes until pale and fluffy. Scrape the sides of the bowl as you go." },
+      { "title": "Add wet ingredients", "content": "Add the egg, vanilla bean paste, lemon zest, and orange zest to the butter mixture. Mix until well combined." },
+      { "title": "Combine and chill", "content": "Add the dry ingredients and fold with a spatula until just combined — don't overmix. The dough will be sticky. Wrap in cling film, flatten into a disc, and chill in the fridge for at least 1 hour (overnight is even better)." },
+      { "title": "Prepare the quince filling", "content": "Add quince paste and water to a small saucepan. Cook over medium heat, breaking up the paste and stirring until a thick, spreadable jam forms. Transfer to a piping bag or small bowl and let cool completely." },
+      { "title": "Shape and fill", "content": "Preheat oven to 180°C. Line a baking tray with baking paper. Roll the dough into balls roughly 2cm wide. Flour your thumb or use a measuring spoon to press a deep well in the centre of each. Fill each well with a small amount of quince filling — don't overfill." },
+      { "title": "Bake", "content": "Bake on the middle rack for 10 minutes, until the bottoms are golden. The cookies will look slightly underdone on top — they firm up as they cool. Transfer to a rack to cool completely." }
+    ],
+    "notes": "Always use powdered sugar — it gives pepas their characteristic sandy, melt-in-your-mouth texture. Don't skip the salt; it adds real buttery depth. Finding quince paste in Amsterdam: check Albert Heijn (Spanish imports section), Marqt, or any Turkish/Moroccan supermarkt. Keeps in an airtight container for up to 5 days — don't refrigerate."
+  },
+  {
+    "id": "quinoa-pancakes",
+    "title": "Sweet Quinoa Pancakes",
+    "description": "Fluffy breakfast pancakes with a protein boost from cooked quinoa. Slightly crisp edges, tender inside.",
+    "category": "Breakfast",
+    "tags": ["vegetarian", "quick"],
+    "servings": 2,
+    "ingredients": [
+      { "amount": 150, "unit": "g", "name": "cooked quinoa" },
+      { "amount": 80, "unit": "g", "name": "plain flour" },
+      { "amount": 5, "unit": "g", "name": "baking powder" },
+      { "amount": 1, "unit": "pinch", "name": "salt" },
+      { "amount": 2, "unit": "large", "name": "eggs" },
+      { "amount": 120, "unit": "g", "name": "milk (dairy or plant-based)" },
+      { "amount": 20, "unit": "g", "name": "maple syrup or honey" },
+      { "amount": 3, "unit": "g", "name": "vanilla extract" },
+      { "amount": 15, "unit": "g", "name": "butter or neutral oil for frying" }
+    ],
+    "steps": [
+      { "title": "Make the batter", "content": "Whisk together eggs, milk, maple syrup, and vanilla in a bowl. Add the cooked quinoa and stir to combine. Fold in flour, baking powder, and salt until just incorporated — don't overmix, a few lumps are fine." },
+      { "title": "Rest the batter", "content": "Let the batter sit for 5 minutes while you heat the pan." },
+      { "title": "Cook", "content": "Heat a non-stick pan over medium heat and melt the butter. Ladle about 60g of batter per pancake. Cook until bubbles form on the surface and edges look set, about 2–3 minutes. Flip and cook for another 1–2 minutes until golden." },
+      { "title": "Serve", "content": "Serve immediately with maple syrup, fresh fruit, or yoghurt." }
+    ],
+    "notes": "Works best with day-old cooked quinoa — freshly cooked and still hot can make the batter a bit wet. Any leftover cooked quinoa works. Scale up easily for more servings."
+  },
+  {
+    "id": "cranberry-compote",
+    "title": "Quick Cranberry Compote",
+    "description": "A tart, jammy topping ready in 10 minutes. Great on Bircher, yoghurt, pancakes, or toast.",
+    "category": "Breakfast",
+    "tags": ["vegan", "quick"],
+    "servings": 4,
+    "ingredients": [
+      { "amount": 150, "unit": "g", "name": "frozen cranberries" },
+      { "amount": 30, "unit": "g", "name": "maple syrup" },
+      { "amount": 30, "unit": "g", "name": "water" },
+      { "amount": 1, "unit": "orange", "name": "orange, zest and juice" },
+      { "amount": 1, "unit": "pinch", "name": "cinnamon" }
+    ],
+    "steps": [
+      { "title": "Combine", "content": "Add cranberries, maple syrup, water, orange zest and juice, and cinnamon to a small saucepan over medium heat." },
+      { "title": "Simmer", "content": "Bring to a gentle simmer, stirring occasionally. The cranberries will start to burst after a few minutes — help them along with the back of a spoon if you like a smoother texture. Cook for about 8 minutes." },
+      { "title": "Thicken and taste", "content": "Cook until thickened to your liking, another 2–3 minutes. Taste and adjust sweetness with more maple syrup if needed. It will thicken further as it cools." }
+    ],
+    "notes": "Cranberries are quite tart — don't be shy about adjusting maple syrup to taste at the end. If you don't have an orange, a splash of vanilla extract works instead. For a thicker, more jam-like result, cook a few minutes longer. Keeps in the fridge for up to a week."
+  },
+  {
+    "id": "silken-tofu-pudding",
+    "title": "Silken Tofu & Date Pudding",
+    "description": "A silky, glossy pudding sweetened naturally with Medjool dates. Rich and indulgent without being heavy.",
+    "category": "Desserts",
+    "tags": ["vegetarian"],
+    "servings": 2,
+    "ingredients": [
+      { "amount": 140, "unit": "g", "name": "silken tofu" },
+      { "amount": 3, "unit": "large", "name": "Medjool dates, pitted" },
+      { "amount": 150, "unit": "g", "name": "whole milk" },
+      { "amount": 50, "unit": "g", "name": "heavy cream" },
+      { "amount": 15, "unit": "g", "name": "cornstarch" },
+      { "amount": 3, "unit": "g", "name": "vanilla extract" },
+      { "amount": 1, "unit": "pinch", "name": "salt" }
+    ],
+    "steps": [
+      { "title": "Blend base", "content": "Add silken tofu, dates, milk, cream, vanilla, and salt to a blender. Blend until completely smooth." },
+      { "title": "Add cornstarch", "content": "Add the cornstarch to the blender and blend again briefly to combine cold. This prevents lumps." },
+      { "title": "Cook", "content": "Pour the mixture into a small saucepan over medium-low heat. Stir constantly with a spatula — thickening happens suddenly, so stay attentive. Cook until the mixture turns glossy and thick, about 5–8 minutes." },
+      { "title": "Chill", "content": "Pour into serving glasses or ramekins. Press cling film directly onto the surface to prevent a skin forming. Refrigerate for at least 2 hours until set." },
+      { "title": "Serve", "content": "Serve chilled, topped with sea salt flakes, a drizzle of tahini, or toasted nuts." }
+    ],
+    "notes": "Medjool dates are naturally soft and need no soaking. The thickening happens fast once it starts — keep stirring and don't walk away. The pudding sets firmer in the fridge; it will look loose in the pan but that's correct."
+  }
+]
