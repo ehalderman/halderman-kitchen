@@ -1,30 +1,31 @@
 [
   {
-    "id": "hummus",
-    "title": "Simple Hummus",
-    "description": "Smooth, classic hummus — made with two jars of chickpeas, ready in minutes.",
-    "category": "Dips & Spreads",
-    "tags": ["vegan", "quick"],
-    "servings": 4,
-    "ingredients": [
-      { "id": "i1", "amount": 430, "unit": "g", "name": "canned chickpeas, drained (reserve liquid)" },
-      { "id": "i2", "amount": 60, "unit": "g", "name": "aquafaba (reserved chickpea liquid)" },
-      { "id": "i3", "amount": 80, "unit": "g", "name": "tahini" },
-      { "id": "i4", "amount": 40, "unit": "g", "name": "lemon juice, freshly squeezed" },
-      { "id": "i5", "amount": 2, "unit": "cloves", "name": "garlic" },
-      { "id": "i6", "amount": 30, "unit": "g", "name": "olive oil" },
-      { "id": "i7", "amount": 5, "unit": "g", "name": "salt" },
-      { "id": "i8", "amount": 2, "unit": "g", "name": "ground cumin" }
-    ],
-    "steps": [
-      { "title": "Blend tahini base", "content": "Add {i3}, {i4}, and {i5} to the food processor. Blend for about 60 seconds until the mixture looks pale and creamy. This step makes the hummus extra smooth." },
-      { "title": "Add chickpeas", "content": "Add {i1}, {i7}, and {i8}. Blend for 2–3 minutes, scraping down the sides halfway through." },
-      { "title": "Loosen with aquafaba", "content": "With the processor running, drizzle in {i2} gradually. Keep blending until completely smooth and fluffy — about another 60–90 seconds. Add more aquafaba if you want a lighter texture." },
-      { "title": "Finish and taste", "content": "Drizzle in {i6} and pulse a few times to incorporate. Taste and adjust salt, lemon, or cumin as needed." },
-      { "title": "Serve", "content": "Spoon into a bowl, make a well in the centre, and finish with a drizzle of olive oil. Optionally top with smoked paprika, whole chickpeas, or fresh parsley." }
-    ],
-    "notes": "The secret is blending the tahini and lemon first, and using aquafaba instead of water — it makes the texture noticeably creamier. For a milder garlic flavour, use 1 clove or let raw garlic sit in lemon juice for 5 minutes before blending. Keeps in the fridge for up to 5 days — drizzle with olive oil before storing."
-  },
+  "id": "hummus",
+  "title": "Classic Hummus",
+  "description": "Smooth, creamy hummus — ready in minutes. Ice-cold water is the secret to a light, fluffy texture.",
+  "category": "Dips & Spreads",
+  "tags": ["vegan", "quick"],
+  "servings": 4,
+  "ingredients": [
+    { "id": "i1", "amount": 400, "unit": "g", "name": "canned chickpeas, drained" },
+    { "id": "i2", "amount": 60, "unit": "g", "name": "tahini" },
+    { "id": "i3", "amount": 45, "unit": "g", "name": "lemon juice, freshly squeezed" },
+    { "id": "i4", "amount": 1, "unit": "clove", "name": "garlic" },
+    { "id": "i5", "amount": 30, "unit": "g", "name": "olive oil" },
+    { "id": "i6", "amount": 4, "unit": "g", "name": "salt" },
+    { "id": "i7", "amount": 2, "unit": "g", "name": "ground cumin" },
+    { "id": "i8", "amount": 45, "unit": "g", "name": "ice-cold water" }
+  ],
+  "steps": [
+    { "title": "Prep chickpeas", "content": "Drain and rinse {i1}. For extra-smooth hummus, rub them between a clean towel to slip off the skins — optional but worth it." },
+    { "title": "Blend tahini base", "content": "Add {i2} and {i3} to the food processor. Blend for 1 minute until pale and creamy. This is the key step." },
+    { "title": "Add aromatics", "content": "Add {i4}, {i6}, and {i7}. Blend for another 30 seconds." },
+    { "title": "Add chickpeas", "content": "Add {i1} and blend for 1–2 minutes, scraping down the sides as needed." },
+    { "title": "Loosen and finish", "content": "With the processor running, drizzle in {i8} gradually to reach your preferred consistency. Blend another minute until very smooth." },
+    { "title": "Serve", "content": "Transfer to a bowl, drizzle with {i5}, and add a pinch of paprika or cumin on top. Serve with flatbread or veg." }
+  ],
+  "notes": "Blending the tahini and lemon first (before adding chickpeas) is the single most important step for a creamy result. Adjust to taste: more lemon for brightness, more tahini for richness, more cold water for a lighter texture. Keeps in the fridge for up to 5 days."
+},
   {
     "id": "tzatziki",
     "title": "Tzatziki",
@@ -388,5 +389,52 @@
       { "title": "Serve", "content": "Serve chilled, topped with sea salt flakes, a drizzle of tahini, or toasted nuts." }
     ],
     "notes": "Medjool dates are naturally soft and need no soaking. Thickening happens fast once it starts — keep stirring and don't walk away. The pudding sets firmer in the fridge; it will look loose in the pan but that's correct."
-  }
+  },
+  {
+  "id": "bircher-muesli",
+  "title": "Bircher Muesli",
+  "description": "Overnight oats soaked in water kefir — creamy, filling, and ready to grab from the fridge in the morning.",
+  "category": "Breakfast",
+  "tags": ["vegetarian", "quick"],
+  "servings": 1,
+  "ingredients": [
+    { "id": "i1", "amount": 100, "unit": "g", "name": "rolled oats" },
+    { "id": "i2", "amount": 150, "unit": "g", "name": "full-fat Greek yoghurt" },
+    { "id": "i3", "amount": 200, "unit": "g", "name": "water kefir" },
+    { "id": "i4", "amount": 1, "unit": "medium", "name": "apple, grated (unpeeled)" },
+    { "id": "i5", "amount": 30, "unit": "g", "name": "pumpkin seeds" },
+    { "id": "i6", "amount": 15, "unit": "g", "name": "chia seeds" },
+    { "id": "i7", "amount": 15, "unit": "g", "name": "ground flaxseed" }
+  ],
+  "steps": [
+    { "title": "Combine", "content": "Add {i1}, {i2}, and {i3} to a bowl or jar and stir well to combine." },
+    { "title": "Add seeds", "content": "Stir in {i5}, {i6}, and {i7}. The chia seeds will absorb liquid and help thicken everything overnight." },
+    { "title": "Cover and refrigerate", "content": "Cover and refrigerate overnight, or for at least 4 hours. The oats will soften and the mixture will thicken." },
+    { "title": "Finish in the morning", "content": "Grate {i4} directly over the bowl just before eating — grating fresh keeps it from browning. Stir through or layer on top. Add toppings of choice: cranberry compote, honey, or fresh fruit." }
+  ],
+  "notes": "Add the flaxseed in the morning rather than the night before to minimise HCN release from the ground flax — a small practical tip. If the muesli is too thick in the morning, loosen with a splash more kefir or yoghurt. Scales easily for batch prep — multiply by 2 or 3 and keep in the fridge for up to 3 days."
+},
+  {
+  "id": "water-kefir",
+  "title": "Hibiscus Water Kefir",
+  "description": "A fizzy, probiotic fermented drink — lightly tart and naturally carbonated. First ferment base, with hibiscus second ferment.",
+  "category": "Drinks",
+  "tags": ["vegan"],
+  "servings": 6,
+  "ingredients": [
+    { "id": "i1", "amount": 1500, "unit": "g", "name": "non-chlorinated water (let tap water sit 30 min to off-gas chlorine)" },
+    { "id": "i2", "amount": 120, "unit": "g", "name": "water kefir grains" },
+    { "id": "i3", "amount": 90, "unit": "g", "name": "white cane sugar" },
+    { "id": "i4", "amount": 10, "unit": "g", "name": "dried hibiscus flowers (for second ferment)" },
+    { "id": "i5", "amount": 15, "unit": "g", "name": "sugar (for second ferment carbonation)" }
+  ],
+  "steps": [
+    { "title": "Make sugar water", "content": "Dissolve {i3} in a small amount of warm water, then top up to {i1} total with room temperature water. Make sure it is below 30°C before adding grains." },
+    { "title": "Add grains", "content": "Add {i2} to the sugar water. Cover the jar with a breathable cloth or coffee filter secured with a rubber band — do not use an airtight lid for the first ferment." },
+    { "title": "First ferment (F1)", "content": "Leave at room temperature for 24–48 hours. At 25°C, check at 24 hours — it should taste lightly tart and less sweet. Strain out the grains and set them aside for your next batch." },
+    { "title": "Second ferment (F2) — hibiscus", "content": "Add {i4} and {i5} to the strained kefir liquid. Bottle in airtight flip-top bottles, filling to about 80% full. Leave at room temperature for 24–48 hours. At 25°C, 36 hours is usually the sweet spot." },
+    { "title": "Burp and refrigerate", "content": "Burp the bottles daily during F2 to check carbonation and release pressure. Once nicely fizzy, strain out the hibiscus flowers and refrigerate. Drink within 3–5 days." }
+  ],
+  "notes": "Grains: 120g for 1500g water is the recommended ratio (1:10 grains to water). Sugar: 90g gives a 6% solution, which is the sweet spot for grain health. Adjust up to 110g if you want a fuller ferment or your grains are slow. Always use white cane sugar — dark sugars can over-mineralise grains over time. Grains are reusable indefinitely; store in sugar water in the fridge if not brewing immediately."
+}
 ]
