@@ -436,5 +436,106 @@
     { "title": "Burp and refrigerate", "content": "Burp the bottles daily during F2 to check carbonation and release pressure. Once nicely fizzy, strain out the hibiscus flowers and refrigerate. Drink within 3–5 days." }
   ],
   "notes": "Grains: 120g for 1500g water is the recommended ratio (1:10 grains to water). Sugar: 90g gives a 6% solution, which is the sweet spot for grain health. Adjust up to 110g if you want a fuller ferment or your grains are slow. Always use white cane sugar — dark sugars can over-mineralise grains over time. Grains are reusable indefinitely; store in sugar water in the fridge if not brewing immediately."
+},
+  {
+  "id": "quesadilla-zwarte-bonen-pompoen",
+  "title": "Quesadilla's met zwarte bonen, pompoen en paprikasalsa",
+  "description": "Hearty vegetarian quesadillas filled with smoky black beans and chunky squash purée, served with a fresh red pepper and lime salsa.",
+  "category": "Mains",
+  "tags": [
+    "vegetarian"
+  ],
+  "servings": 4,
+  "ingredients": [
+    {
+      "id": "i1",
+      "amount": 750,
+      "unit": "g",
+      "name": "pumpkin or butternut squash"
+    },
+    {
+      "id": "i2",
+      "amount": 400,
+      "unit": "g",
+      "name": "canned black beans, drained and rinsed"
+    },
+    {
+      "id": "i3",
+      "amount": 45,
+      "unit": "g",
+      "name": "mild olive oil"
+    },
+    {
+      "id": "i4",
+      "amount": 6,
+      "unit": "g",
+      "name": "ground cumin"
+    },
+    {
+      "id": "i5",
+      "amount": 1,
+      "unit": "medium",
+      "name": "fresh green jalapeño, finely chopped"
+    },
+    {
+      "id": "i6",
+      "amount": 200,
+      "unit": "g",
+      "name": "grated mild cheese (30+ or similar)"
+    },
+    {
+      "id": "i7",
+      "amount": 6,
+      "unit": "large",
+      "name": "wholegrain tortilla wraps"
+    },
+    {
+      "id": "i8",
+      "amount": 1,
+      "unit": "medium",
+      "name": "shallot, finely diced"
+    },
+    {
+      "id": "i9",
+      "amount": 2,
+      "unit": "medium",
+      "name": "red pointed peppers (puntpaprika), finely diced"
+    },
+    {
+      "id": "i10",
+      "amount": 1,
+      "unit": "medium",
+      "name": "lime"
+    },
+    {
+      "id": "i11",
+      "amount": 15,
+      "unit": "g",
+      "name": "fresh flat-leaf parsley, finely chopped"
+    }
+  ],
+  "steps": [
+    {
+      "title": "Cook and mash the squash",
+      "content": "Cut {i1} into roughly 2 cm chunks (skin on). Boil for 8 minutes until tender, drain, then roughly mash with a potato masher — keep it chunky, not completely smooth."
+    },
+    {
+      "title": "Fry the beans",
+      "content": "Heat a third of {i3} in a non-stick frying pan over medium-high heat. Add {i2} and {i4} and fry for 4 minutes, stirring occasionally."
+    },
+    {
+      "title": "Make the filling",
+      "content": "Remove the seeds and membrane from {i5} and finely chop the flesh. Combine the squash mash, fried beans, and jalapeño. Season with black pepper to taste."
+    },
+    {
+      "title": "Assemble and cook the quesadillas",
+      "content": "Spread the filling over half of {i7} and top with {i6}. Fold the remaining tortillas over to close. Heat a dry non-stick pan over medium heat (no oil) and cook each quesadilla for 6 minutes, flipping halfway, until golden and the cheese is melted. Keep warm under foil while you cook the rest."
+    },
+    {
+      "title": "Make the salsa and serve",
+      "content": "Combine {i8}, {i9}, the zest and juice of half of {i10} in a bowl. Add {i11} and the remaining {i3}. Season with black pepper. Cut the quesadillas into quarters and serve with the salsa and a wedge of {i10} on the side."
+    }
+  ],
+  "notes": "Cook the quesadillas in a dry pan — no oil needed, the tortilla crisps up better that way. For more heat, leave some jalapeño seeds in. The salsa is best made fresh just before serving so the peppers stay crisp."
 }
 ]
