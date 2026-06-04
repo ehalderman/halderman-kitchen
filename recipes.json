@@ -138,46 +138,48 @@
     }
   },
   {
-    "id": "tikka-masala",
-    "category": { "en": "Mains", "nl": "Hoofdgerechten", "es": "Platos Principales" },
-    "tags": ["vegan"],
-    "servings": 3,
-    "title": { "en": "Red Lentil & Zucchini Tikka Masala", "nl": "Rode Linzen & Courgette Tikka Masala", "es": "Tikka Masala de Lentejas Rojas y Calabacín" },
-    "description": {
-      "en": "A rich, creamy curry using Patak's Tikka Masala paste — ready in under an hour.",
-      "nl": "Een rijke, romige curry met Patak's Tikka Masala pasta — in minder dan een uur klaar.",
-      "es": "Un curry rico y cremoso con pasta Tikka Masala de Patak's — listo en menos de una hora."
-    },
-    "ingredients": [
-      { "id": "i1", "amount": 30, "unit": "g", "name": { "en": "olive oil", "nl": "olijfolie", "es": "aceite de oliva" } },
-      { "id": "i2", "amount": 1, "unit": "large", "name": { "en": "onion, diced", "nl": "ui, in blokjes", "es": "cebolla grande, en dados" } },
-      { "id": "i3", "amount": 3, "unit": "cloves", "name": { "en": "garlic, minced", "nl": "knoflooktenen, geperst", "es": "dientes de ajo, picados" } },
-      { "id": "i4", "amount": 20, "unit": "g", "name": { "en": "fresh ginger, grated", "nl": "verse gember, geraspt", "es": "jengibre fresco, rallado" } },
-      { "id": "i5", "amount": 80, "unit": "g", "name": { "en": "Tikka Masala paste (Patak's)", "nl": "Tikka Masala pasta (Patak's)", "es": "pasta Tikka Masala (Patak's)" } },
-      { "id": "i6", "amount": 180, "unit": "g", "name": { "en": "red lentils, rinsed", "nl": "rode linzen, gespoeld", "es": "lentejas rojas, lavadas" } },
-      { "id": "i7", "amount": 240, "unit": "g", "name": { "en": "canned mung beans, drained", "nl": "mungbonen uit blik, uitgelekt", "es": "judías mung en lata, escurridas" } },
-      { "id": "i8", "amount": 1, "unit": "medium", "name": { "en": "zucchini, diced", "nl": "courgette, in blokjes", "es": "calabacín mediano, en dados" } },
-      { "id": "i9", "amount": 400, "unit": "g", "name": { "en": "canned chopped tomatoes", "nl": "gehakte tomaten uit blik", "es": "tomates troceados en lata" } },
-      { "id": "i10", "amount": 200, "unit": "g", "name": { "en": "coconut cream", "nl": "kokosroom", "es": "crema de coco" } },
-      { "id": "i11", "amount": 100, "unit": "g", "name": { "en": "oat cream", "nl": "haverroom", "es": "crema de avena" } },
-      { "id": "i12", "amount": 600, "unit": "g", "name": { "en": "vegetable stock", "nl": "groentebouillon", "es": "caldo de verduras" } },
-      { "id": "i13", "amount": 15, "unit": "g", "name": { "en": "nutritional yeast flakes", "nl": "voedingsgist vlokken", "es": "levadura nutricional en copos" } },
-      { "id": "i14", "amount": 5, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } }
-    ],
-    "steps": [
-      { "title": { "en": "Sauté base", "nl": "Basis aanfruiten", "es": "Sofreír la base" }, "content": { "en": "Heat {i1} in a large pot over medium heat. Add {i2} and cook for 5 minutes until softened. Add {i3} and {i4}, cook for 2 minutes.", "nl": "Verhit {i1} in een grote pan op middelhoog vuur. Voeg {i2} toe en bak 5 minuten tot zacht. Voeg {i3} en {i4} toe en bak 2 minuten.", "es": "Calentar {i1} en una olla grande a fuego medio. Añadir {i2} y cocinar 5 minutos hasta que esté blando. Añadir {i3} y {i4}, cocinar 2 minutos." } },
-      { "title": { "en": "Add paste", "nl": "Pasta toevoegen", "es": "Añadir la pasta" }, "content": { "en": "Add {i5} and stir to coat the onions. Cook for 2 minutes until fragrant.", "nl": "Voeg {i5} toe en roer om de ui te bedekken. Bak 2 minuten tot geurig.", "es": "Añadir {i5} y remover para cubrir la cebolla. Cocinar 2 minutos hasta que esté aromático." } },
-      { "title": { "en": "Add lentils, beans and tomatoes", "nl": "Linzen, bonen en tomaten toevoegen", "es": "Añadir lentejas, judías y tomates" }, "content": { "en": "Add {i6}, {i7}, {i8}, {i9}, and {i12}. Stir well and bring to a boil.", "nl": "Voeg {i6}, {i7}, {i8}, {i9} en {i12} toe. Goed roeren en aan de kook brengen.", "es": "Añadir {i6}, {i7}, {i8}, {i9} y {i12}. Remover bien y llevar a ebullición." } },
-      { "title": { "en": "Simmer", "nl": "Sudderen", "es": "Cocinar a fuego lento" }, "content": { "en": "Reduce heat and simmer for 20–25 minutes, stirring occasionally, until lentils are soft and the curry has thickened.", "nl": "Vuur laag zetten en 20–25 minuten sudderen, af en toe roeren, tot de linzen zacht zijn en de curry ingedikt is.", "es": "Reducir el fuego y cocinar a fuego lento 20–25 minutos, removiendo ocasionalmente, hasta que las lentejas estén blandas y el curry haya espesado." } },
-      { "title": { "en": "Finish with cream", "nl": "Afmaken met room", "es": "Terminar con crema" }, "content": { "en": "Stir in {i10}, {i11}, and {i13}. Simmer for another 5 minutes. Taste and adjust with {i14}.", "nl": "Roer {i10}, {i11} en {i13} erdoor. Nog 5 minuten sudderen. Proef en pas aan met {i14}.", "es": "Incorporar {i10}, {i11} y {i13}. Cocinar a fuego lento 5 minutos más. Probar y ajustar con {i14}." } },
-      { "title": { "en": "Serve", "nl": "Serveren", "es": "Servir" }, "content": { "en": "Serve with wholegrain jasmine rice and naan. Top with fresh coriander if available.", "nl": "Serveer met volkorenrijst en naan. Garneer met verse koriander indien beschikbaar.", "es": "Servir con arroz jazmín integral y naan. Decorar con cilantro fresco si se tiene." } }
-    ],
-    "notes": {
-      "en": "Nutritional yeast adds umami depth — don't skip it. Lentils continue to thicken as they sit — add a splash of water when reheating.",
-      "nl": "Voedingsgist voegt umami diepte toe — niet overslaan. Linzen blijven indikken tijdens het staan — voeg een scheutje water toe bij het opwarmen.",
-      "es": "La levadura nutricional añade profundidad umami — no omitirla. Las lentejas siguen espesando al reposar — añadir un chorrito de agua al recalentar."
-    }
+  "id": "tikka-masala",
+  "category": { "en": "Mains", "nl": "Hoofdgerechten", "es": "Platos Principales" },
+  "tags": ["vegan"],
+  "servings": 3,
+  "title": { "en": "Red Lentil & Zucchini Tikka Masala", "nl": "Rode Linzen & Courgette Tikka Masala", "es": "Tikka Masala de Lentejas Rojas y Calabacín" },
+  "description": {
+    "en": "A rich, creamy curry using Patak's Tikka Masala paste — ready in under an hour.",
+    "nl": "Een rijke, romige curry met Patak's Tikka Masala pasta — in minder dan een uur klaar.",
+    "es": "Un curry rico y cremoso con pasta Tikka Masala de Patak's — listo en menos de una hora."
   },
+  "ingredients": [
+    { "id": "i1", "amount": 30, "unit": "g", "name": { "en": "olive oil", "nl": "olijfolie", "es": "aceite de oliva" } },
+    { "id": "i2", "amount": 1, "unit": "large", "name": { "en": "onion, diced", "nl": "ui, in blokjes", "es": "cebolla grande, en dados" } },
+    { "id": "i3", "amount": 3, "unit": "cloves", "name": { "en": "garlic, minced", "nl": "knoflooktenen, geperst", "es": "dientes de ajo, picados" } },
+    { "id": "i4", "amount": 20, "unit": "g", "name": { "en": "fresh ginger, grated", "nl": "verse gember, geraspt", "es": "jengibre fresco, rallado" } },
+    { "id": "i5", "amount": 80, "unit": "g", "name": { "en": "Tikka Masala paste (Patak's)", "nl": "Tikka Masala pasta (Patak's)", "es": "pasta Tikka Masala (Patak's)" } },
+    { "id": "i6", "amount": 180, "unit": "g", "name": { "en": "red lentils, rinsed", "nl": "rode linzen, gespoeld", "es": "lentejas rojas, lavadas" } },
+    { "id": "i7", "amount": 240, "unit": "g", "name": { "en": "canned mung beans, drained", "nl": "mungbonen uit blik, uitgelekt", "es": "judías mung en lata, escurridas" } },
+    { "id": "i8", "amount": 1, "unit": "medium", "name": { "en": "zucchini, diced", "nl": "courgette, in blokjes", "es": "calabacín mediano, en dados" } },
+    { "id": "i9", "amount": 400, "unit": "g", "name": { "en": "canned chopped tomatoes", "nl": "gehakte tomaten uit blik", "es": "tomates troceados en lata" } },
+    { "id": "i10", "amount": 200, "unit": "g", "name": { "en": "coconut cream", "nl": "kokosroom", "es": "crema de coco" } },
+    { "id": "i11", "amount": 100, "unit": "g", "name": { "en": "oat cream", "nl": "haverroom", "es": "crema de avena" } },
+    { "id": "i12", "amount": 600, "unit": "g", "name": { "en": "vegetable stock", "nl": "groentebouillon", "es": "caldo de verduras" } },
+    { "id": "i13", "amount": 15, "unit": "g", "name": { "en": "nutritional yeast flakes", "nl": "voedingsgist vlokken", "es": "levadura nutricional en copos" } },
+    { "id": "i14", "amount": 5, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } },
+    { "id": "i15", "amount": 240, "unit": "g", "name": { "en": "wholegrain jasmine rice", "nl": "volkoren jasmijnrijst", "es": "arroz jazmín integral" } }
+  ],
+  "steps": [
+    { "title": { "en": "Cook the rice", "nl": "Rijst koken", "es": "Cocer el arroz" }, "content": { "en": "Rinse {i15} and add to a saucepan with 480g water and a pinch of salt. Bring to a boil, then reduce to the lowest heat and simmer with the lid on until all the water is absorbed, about 20–25 minutes. Remove from heat and keep covered for 5 more minutes — this makes the rice extra fluffy.", "nl": "Spoel {i15} af en doe in een steelpan met 480g water en een snufje zout. Breng aan de kook, zet dan op het laagste vuur en laat met het deksel op sudderen tot al het water is opgenomen, ca. 20–25 minuten. Haal van het vuur en houd nog 5 minuten afgedekt — dit maakt de rijst extra luchtig.", "es": "Enjuagar {i15} y añadir a un cazo con 480g de agua y una pizca de sal. Llevar a ebullición, luego reducir al fuego mínimo y cocer con la tapa puesta hasta que se absorba toda el agua, unos 20–25 minutos. Retirar del fuego y mantener tapado 5 minutos más — esto hace el arroz extra esponjoso." } },
+    { "title": { "en": "Sauté base", "nl": "Basis aanfruiten", "es": "Sofreír la base" }, "content": { "en": "Heat {i1} in a large pot over medium heat. Add {i2} and cook for 5 minutes until softened. Add {i3} and {i4}, cook for 2 minutes.", "nl": "Verhit {i1} in een grote pan op middelhoog vuur. Voeg {i2} toe en bak 5 minuten tot zacht. Voeg {i3} en {i4} toe en bak 2 minuten.", "es": "Calentar {i1} en una olla grande a fuego medio. Añadir {i2} y cocinar 5 minutos hasta que esté blando. Añadir {i3} y {i4}, cocinar 2 minutos." } },
+    { "title": { "en": "Add paste", "nl": "Pasta toevoegen", "es": "Añadir la pasta" }, "content": { "en": "Add {i5} and stir to coat the onions. Cook for 2 minutes until fragrant.", "nl": "Voeg {i5} toe en roer om de ui te bedekken. Bak 2 minuten tot geurig.", "es": "Añadir {i5} y remover para cubrir la cebolla. Cocinar 2 minutos hasta que esté aromático." } },
+    { "title": { "en": "Add lentils, beans and tomatoes", "nl": "Linzen, bonen en tomaten toevoegen", "es": "Añadir lentejas, judías y tomates" }, "content": { "en": "Add {i6}, {i7}, {i8}, {i9}, and {i12}. Stir well and bring to a boil.", "nl": "Voeg {i6}, {i7}, {i8}, {i9} en {i12} toe. Goed roeren en aan de kook brengen.", "es": "Añadir {i6}, {i7}, {i8}, {i9} y {i12}. Remover bien y llevar a ebullición." } },
+    { "title": { "en": "Simmer", "nl": "Sudderen", "es": "Cocinar a fuego lento" }, "content": { "en": "Reduce heat and simmer for 20–25 minutes, stirring occasionally, until lentils are soft and the curry has thickened.", "nl": "Vuur laag zetten en 20–25 minuten sudderen, af en toe roeren, tot de linzen zacht zijn en de curry ingedikt is.", "es": "Reducir el fuego y cocinar a fuego lento 20–25 minutos, removiendo ocasionalmente, hasta que las lentejas estén blandas y el curry haya espesado." } },
+    { "title": { "en": "Finish with cream", "nl": "Afmaken met room", "es": "Terminar con crema" }, "content": { "en": "Stir in {i10}, {i11}, and {i13}. Simmer for another 5 minutes. Taste and adjust with {i14}.", "nl": "Roer {i10}, {i11} en {i13} erdoor. Nog 5 minuten sudderen. Proef en pas aan met {i14}.", "es": "Incorporar {i10}, {i11} y {i13}. Cocinar a fuego lento 5 minutos más. Probar y ajustar con {i14}." } },
+    { "title": { "en": "Serve", "nl": "Serveren", "es": "Servir" }, "content": { "en": "Serve the curry over the rice with naan. Top with fresh coriander if available.", "nl": "Serveer de curry over de rijst met naan. Garneer met verse koriander indien beschikbaar.", "es": "Servir el curry sobre el arroz con naan. Decorar con cilantro fresco si se tiene." } }
+  ],
+  "notes": {
+    "en": "Nutritional yeast adds umami depth — don't skip it. Lentils continue to thicken as they sit — add a splash of water when reheating. The rice and curry take about the same time, so you can start them simultaneously.",
+    "nl": "Voedingsgist voegt umami diepte toe — niet overslaan. Linzen blijven indikken tijdens het staan — voeg een scheutje water toe bij het opwarmen. De rijst en curry duren ongeveer even lang, dus je kunt ze tegelijk starten.",
+    "es": "La levadura nutricional añade profundidad umami — no omitirla. Las lentejas siguen espesando al reposar — añadir un chorrito de agua al recalentar. El arroz y el curry tardan aproximadamente lo mismo, así que puedes empezarlos a la vez."
+  }
+},
   {
     "id": "byrek",
     "category": { "en": "Mains", "nl": "Hoofdgerechten", "es": "Platos Principales" },
@@ -601,5 +603,37 @@
       "nl": "Korrels: 120g voor 1500g water (verhouding 1:12,5). Suiker: 90g geeft een 6% oplossing — het ideale punt voor de gezondheid van korrels. Gebruik altijd witte rietsuiker — donkere suikers kunnen korrels over-mineraliseren. Korrels zijn onbeperkt herbruikbaar; bewaar in suikerwater in de koelkast als je niet direct brouwt.",
       "es": "Gránulos: 120g para 1500g de agua (ratio 1:12,5). Azúcar: 90g da una solución al 6% — el punto óptimo para la salud de los gránulos. Usar siempre azúcar de caña blanco — los azúcares oscuros pueden sobre-mineralizar los gránulos. Los gránulos son reutilizables indefinidamente; conservar en agua azucarada en la nevera si no se fermenta inmediatamente."
     }
+  },
+  {
+  "id": "naan",
+  "category": { "en": "Breads", "nl": "Brood", "es": "Panes" },
+  "tags": ["vegetarian", "quick"],
+  "servings": 4,
+  "title": { "en": "Quick Naan Bread", "nl": "Snelle Naan", "es": "Pan Naan Rápido" },
+  "description": {
+    "en": "Soft, fluffy naan in 15 minutes — no yeast, no rising time. Just flour, Greek yogurt, and a hot pan.",
+    "nl": "Zachte, luchtige naan in 15 minuten — zonder gist, zonder rijstijd. Alleen bloem, Griekse yoghurt en een hete pan.",
+    "es": "Naan suave y esponjoso en 15 minutos — sin levadura, sin tiempo de reposo. Solo harina, yogur griego y una sartén caliente."
+  },
+  "ingredients": [
+    { "id": "i1", "amount": 250, "unit": "g", "name": { "en": "self-raising flour, plus extra for dusting", "nl": "zelfrijzend bakmeel, plus extra om te bestuiven", "es": "harina con levadura, más extra para espolvorear" } },
+    { "id": "i2", "amount": 200, "unit": "g", "name": { "en": "full-fat Greek yogurt", "nl": "volle Griekse yoghurt", "es": "yogur griego entero" } },
+    { "id": "i3", "amount": 3, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } },
+    { "id": "i4", "amount": 2, "unit": "cloves", "name": { "en": "garlic, minced or grated <em>(optional)</em>", "nl": "knoflooktenen, geperst of geraspt <em>(optioneel)</em>", "es": "dientes de ajo, picados o rallados <em>(opcional)</em>" } },
+    { "id": "i5", "amount": 30, "unit": "g", "name": { "en": "butter, melted <em>(optional)</em>", "nl": "boter, gesmolten <em>(optioneel)</em>", "es": "mantequilla, derretida <em>(opcional)</em>" } },
+    { "id": "i6", "amount": 10, "unit": "g", "name": { "en": "fresh coriander or parsley, finely chopped", "nl": "verse koriander of peterselie, fijngehakt", "es": "cilantro o perejil fresco, finamente picado" } }
+  ],
+  "steps": [
+    { "title": { "en": "Make the dough", "nl": "Deeg maken", "es": "Hacer la masa" }, "content": { "en": "Combine {i1}, {i2}, and {i3} in a bowl. Mix with a fork until it starts to come together, then use your hands to bring it into a soft, slightly sticky dough. Knead briefly — just 30 seconds to bring it together. If it's too sticky to handle, add a little extra flour.", "nl": "Meng {i1}, {i2} en {i3} in een kom. Roer met een vork tot het samenkomt, gebruik dan je handen om er een zacht, licht plakkerig deeg van te maken. Kort kneden — slechts 30 seconden. Als het te plakkerig is, voeg dan een beetje extra bloem toe.", "es": "Combinar {i1}, {i2} y {i3} en un cuenco. Mezclar con un tenedor hasta que empiece a unirse, luego usar las manos para formar una masa suave y ligeramente pegajosa. Amasar brevemente — solo 30 segundos. Si está demasiado pegajosa, añadir un poco más de harina." } },
+    { "title": { "en": "Divide and roll", "nl": "Verdelen en uitrollen", "es": "Dividir y estirar" }, "content": { "en": "Divide the dough into 4 equal pieces. On a well-floured surface, roll each piece out thin — about 3–4mm. They'll still puff up nicely when cooked, so don't be afraid to roll them really flat.", "nl": "Verdeel het deeg in 4 gelijke stukken. Rol elk stuk op een goed bebloemd oppervlak dun uit — ongeveer 3–4mm. Ze puffen nog mooi op tijdens het bakken, dus wees niet bang om ze echt plat te rollen.", "es": "Dividir la masa en 4 partes iguales. Sobre una superficie bien enharinada, estirar cada pieza fina — unos 3–4mm. Se inflarán bien al cocinarse, así que no tengas miedo de estirarlas muy finas." } },
+    { "title": { "en": "Make the garlic butter", "nl": "Knoflookboter maken", "es": "Hacer la mantequilla de ajo" }, "content": { "en": "If using, stir {i4} into the melted {i5}. Add {i6} and set aside — this goes on straight after cooking.", "nl": "Indien gewenst, roer {i4} door de gesmolten {i5}. Voeg {i6} toe en zet apart — dit gaat er meteen na het bakken op.", "es": "Si se usa, mezclar {i4} con la {i5} derretida. Añadir {i6} y reservar — esto se aplica justo después de cocinar." } },
+    { "title": { "en": "Cook", "nl": "Bakken", "es": "Cocinar" }, "content": { "en": "Heat a dry frying pan over high heat until very hot — this is the key step. Cook each naan for 2–3 minutes per side until dark golden spots appear and it puffs up. Roll out the next naan while one is cooking.", "nl": "Verhit een droge koekenpan op hoog vuur tot zeer heet — dit is de sleutelstap. Bak elke naan 2–3 minuten per kant tot er donkere vlekjes verschijnen en hij opbolt. Rol de volgende naan uit terwijl er één bakt.", "es": "Calentar una sartén seca a fuego alto hasta que esté muy caliente — este es el paso clave. Cocinar cada naan 2–3 minutos por lado hasta que aparezcan manchas doradas oscuras y se infle. Estirar el siguiente naan mientras uno se cocina." } },
+    { "title": { "en": "Brush and serve", "nl": "Bestrijken en serveren", "es": "Pincelar y servir" }, "content": { "en": "Brush each naan immediately with the garlic butter as it comes out of the pan. Cover the stack with a clean tea towel to keep them soft while you finish the batch.", "nl": "Bestrijk elke naan direct met de knoflookboter zodra hij uit de pan komt. Dek de stapel af met een schone theedoek om ze zacht te houden terwijl je de rest afbakt.", "es": "Pincelar cada naan inmediatamente con la mantequilla de ajo en cuanto salga de la sartén. Cubrir la pila con un paño limpio para mantenerlos suaves mientras terminas el resto." } }
+  ],
+  "notes": {
+    "en": "The hotter the pan, the better — a cold or warm pan gives you pale, doughy naan instead of the charred spots that make it taste great. Yogurt brands vary in thickness, so treat the ratio as a guide: if the dough is too sticky, add flour a tablespoon at a time; if it's crumbly, add a little more yogurt. Flavour ideas: mix ½ tsp cumin, garam masala, or nigella seeds into the dough; brush with chilli oil instead of garlic butter; or add a pinch of sumac to the butter. The dough keeps in the fridge for up to 3 days — great to make ahead and cook fresh each night.",
+    "nl": "Hoe heter de pan, hoe beter — een koude of lauwe pan geeft bleke, deegachtige naan in plaats van de gebruikte vlekjes die het zo lekker maken. Yoghurtmerken verschillen in dikte, dus behandel de verhouding als een richtlijn: als het deeg te plakkerig is, voeg dan een eetlepel bloem tegelijk toe; als het kruimelig is, voeg dan wat meer yoghurt toe. Smaakideeën: meng ½ tl komijn, garam masala of nigellazaad door het deeg; bestrijk met chiliolie in plaats van knoflookboter; of voeg een snufje sumak toe aan de boter. Het deeg blijft tot 3 dagen in de koelkast — ideaal om van tevoren te maken en elke avond vers te bakken.",
+    "es": "Cuanto más caliente esté la sartén, mejor — una sartén fría o tibia da un naan pálido y pastoso en lugar de las manchas tostadas que lo hacen tan sabroso. Las marcas de yogur varían en grosor, así que trata la proporción como una guía: si la masa está demasiado pegajosa, añadir harina de a una cucharada; si está desmenuzable, añadir un poco más de yogur. Ideas de sabor: mezclar ½ cdta de comino, garam masala o semillas de nigella en la masa; pincelar con aceite de chile en lugar de mantequilla de ajo; o añadir una pizca de sumac a la mantequilla. La masa se conserva en la nevera hasta 3 días — ideal para preparar con antelación y cocinar fresco cada noche."
   }
+}
 ]
