@@ -291,8 +291,8 @@
     .step-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; cursor: pointer; }
     .step-item.optional .step-num { border-style: dashed; opacity: 0.6; }
     .step-item.optional .step-content h3 { color: var(--ink-light); font-weight: 500; }
-    .step-item.optional .step-content h3::after { content: ' — optional'; font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--ink-light); opacity: 0.7; }
     .step-item.optional .step-content p { opacity: 0.7; }
+    .step-optional-label { font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--ink-light); opacity: 0.7; padding-right: 2px; }
     .step-num {
       width: 28px; height: 28px;
       border-radius: 50%;
@@ -654,11 +654,12 @@ const ingList = [
   ...(optionalIngs.length ? [`<li class="ing-optional-header">${optionalLabel[lang] || 'Optional'}</li>`, ...optionalIngs.map(ing => renderIng(ing, true))] : [])
 ].join('');
 
+    const optionalStepLabel = { en: 'optional', nl: 'optioneel', es: 'opcional' };
     const stepList = r.steps.map((s, i) => `
       <li class="step-item${s.optional ? ' optional' : ''}" onclick="toggleStep(this)">
         <div class="step-num">${i + 1}</div>
         <div class="step-content">
-          <h3>${loc(s.title)}</h3>
+          <h3>${loc(s.title)}${s.optional ? ` <em class="step-optional-label">— ${optionalStepLabel[lang] || 'optional'}</em>` : ''}</h3>
           <p>${resolveStepContent(loc(s.content), ingMap)}</p>
         </div>
       </li>`).join('');
