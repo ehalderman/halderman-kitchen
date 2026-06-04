@@ -284,8 +284,15 @@
     .ingredients-list li:last-child { border-bottom: none; }
     .ing-amount { color: var(--terracotta); font-weight: 500; white-space: nowrap; min-width: 70px; flex-shrink: 0; }
     .ing-name { color: var(--ink); }
+    .ing-optional .ing-amount { color: var(--ink-light); font-weight: 400; }
+    .ing-optional .ing-name { color: var(--ink-light); font-style: italic; }
+    .ing-optional-header { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); opacity: 0.6; padding: 0.8rem 0 0.2rem; }
     .steps-list { list-style: none; }
     .step-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; cursor: pointer; }
+    .step-item.optional .step-num { border-style: dashed; opacity: 0.6; }
+    .step-item.optional .step-content h3 { color: var(--ink-light); font-weight: 500; }
+    .step-item.optional .step-content h3::after { content: ' — optional'; font-size: 0.75rem; font-style: italic; font-weight: 400; color: var(--ink-light); opacity: 0.7; }
+    .step-item.optional .step-content p { opacity: 0.7; }
     .step-num {
       width: 28px; height: 28px;
       border-radius: 50%;
@@ -633,15 +640,22 @@
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
     const ingMap = buildIngMap(r.ingredients, ratio);
 
-    const ingList = r.ingredients.map(ing => {
+    const requiredIngs = r.ingredients.filter(ing => !ing.optional);
+    const optionalIngs = r.ingredients.filter(ing => ing.optional);
+    const renderIng = (ing, isOptional) => {
       const scaledAmt = fmtAmt(ing.amount, ratio);
       const showUnit = ing.unit && !countableUnits.has(ing.unit);
       const amtStr = showUnit ? `${scaledAmt} ${ing.unit}` : scaledAmt;
-      return `<li><span class="ing-amount">${amtStr}</span><span class="ing-name">${loc(ing.name)}</span></li>`;
-    }).join('');
+      return `<li class="${isOptional ? 'ing-optional' : ''}"><span class="ing-amount">${amtStr}</span><span class="ing-name">${loc(ing.name)}</span></li>`;
+};
+const optionalLabel = { en: 'Optional', nl: 'Optioneel', es: 'Opcional' };
+const ingList = [
+  ...requiredIngs.map(ing => renderIng(ing, false)),
+  ...(optionalIngs.length ? [`<li class="ing-optional-header">${optionalLabel[lang] || 'Optional'}</li>`, ...optionalIngs.map(ing => renderIng(ing, true))] : [])
+].join('');
 
     const stepList = r.steps.map((s, i) => `
-      <li class="step-item" onclick="toggleStep(this)">
+      <li class="step-item${s.optional ? ' optional' : ''}" onclick="toggleStep(this)">
         <div class="step-num">${i + 1}</div>
         <div class="step-content">
           <h3>${loc(s.title)}</h3>
