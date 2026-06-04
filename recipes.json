@@ -619,9 +619,9 @@
     { "id": "i1", "amount": 250, "unit": "g", "name": { "en": "self-raising flour, plus extra for dusting", "nl": "zelfrijzend bakmeel, plus extra om te bestuiven", "es": "harina con levadura, más extra para espolvorear" } },
     { "id": "i2", "amount": 200, "unit": "g", "name": { "en": "full-fat Greek yogurt", "nl": "volle Griekse yoghurt", "es": "yogur griego entero" } },
     { "id": "i3", "amount": 3, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } },
-    { "id": "i4", "amount": 2, "unit": "cloves", "name": { "en": "garlic, minced or grated <em>(optional)</em>", "nl": "knoflooktenen, geperst of geraspt <em>(optioneel)</em>", "es": "dientes de ajo, picados o rallados <em>(opcional)</em>" } },
-    { "id": "i5", "amount": 30, "unit": "g", "name": { "en": "butter, melted <em>(optional)</em>", "nl": "boter, gesmolten <em>(optioneel)</em>", "es": "mantequilla, derretida <em>(opcional)</em>" } },
-    { "id": "i6", "amount": 10, "unit": "g", "name": { "en": "fresh coriander or parsley, finely chopped <em>(optional)</em>", "nl": "verse koriander of peterselie, fijngehakt <em>(optioneel)</em>", "es": "cilantro o perejil fresco, finamente picado <em>(opcional)</em>" } }
+    { "id": "i4", "optional": true, "amount": 2, "unit": "cloves", "name": { "en": "garlic, minced or grated", "nl": "knoflooktenen, geperst of geraspt", "es": "dientes de ajo, picados o rallados" } },
+    { "id": "i5", "optional": true, "amount": 30, "unit": "g", "name": { "en": "butter, melted", "nl": "boter, gesmolten", "es": "mantequilla, derretida" } },
+    { "id": "i6", "optional": true, "amount": 10, "unit": "g", "name": { "en": "fresh coriander or parsley, finely chopped", "nl": "verse koriander of peterselie, fijngehakt", "es": "cilantro o perejil fresco, finamente picado" } }
   ],
   "steps": [
     {
@@ -638,12 +638,8 @@
       "content": { "en": "Stir {i4} into the melted {i5}. Add {i6} if using, and set aside — this goes on straight after cooking.", "nl": "Roer {i4} door de gesmolten {i5}. Voeg {i6} toe indien gewenst en zet apart — dit gaat er meteen na het bakken op.", "es": "Mezclar {i4} con la {i5} derretida. Añadir {i6} si se usa y reservar — esto se aplica justo después de cocinar." }
     },
     {
-      "title": { "en": "Cook", "nl": "Bakken", "es": "Cocinar" },
-      "content": { "en": "Heat a dry frying pan over high heat until very hot — this is the key step. Cook each naan for 2–3 minutes per side until dark golden spots appear and it puffs up. Roll out the next naan while one is cooking.", "nl": "Verhit een droge koekenpan op hoog vuur tot zeer heet — dit is de sleutelstap. Bak elke naan 2–3 minuten per kant tot er donkere vlekjes verschijnen en hij opbolt. Rol de volgende naan uit terwijl er één bakt.", "es": "Calentar una sartén seca a fuego alto hasta que esté muy caliente — este es el paso clave. Cocinar cada naan 2–3 minutos por lado hasta que aparezcan manchas doradas oscuras y se infle. Estirar el siguiente naan mientras uno se cocina." }
-    },
-    {
-      "title": { "en": "Serve", "nl": "Serveren", "es": "Servir" },
-      "content": { "en": "Cover the stack with a clean tea towel to keep them soft while you finish the batch. <em>Optional: brush each naan with the garlic butter as it comes straight out of the pan — it soaks in beautifully while the bread is still hot.</em>", "nl": "Dek de stapel af met een schone theedoek om ze zacht te houden terwijl je de rest afbakt. <em>Optioneel: bestrijk elke naan met de knoflookboter zodra hij uit de pan komt — het trekt prachtig in zolang het brood nog heet is.</em>", "es": "Cubrir la pila con un paño limpio para mantenerlos suaves mientras terminas el resto. <em>Opcional: pincelar cada naan con la mantequilla de ajo nada más salir de la sartén — se absorbe perfectamente mientras el pan aún está caliente.</em>" }
+      "title": { "en": "Cook and serve", "nl": "Bakken en serveren", "es": "Cocinar y servir" },
+      "content": { "en": "Heat a dry frying pan over high heat until very hot — this is the key step. Cook each naan for 2–3 minutes per side until dark golden spots appear and it puffs up. Roll out the next naan while one is cooking. Cover the stack with a clean tea towel to keep them soft while you finish the batch. <em>Optional: brush each naan with the garlic butter as it comes straight out of the pan — it soaks in beautifully while the bread is still hot.</em>", "nl": "Verhit een droge koekenpan op hoog vuur tot zeer heet — dit is de sleutelstap. Bak elke naan 2–3 minuten per kant tot er donkere vlekjes verschijnen en hij opbolt. Rol de volgende naan uit terwijl er één bakt. Dek de stapel af met een schone theedoek om ze zacht te houden terwijl je de rest afbakt. <em>Optioneel: bestrijk elke naan met de knoflookboter zodra hij uit de pan komt — het trekt prachtig in zolang het brood nog heet is.</em>", "es": "Calentar una sartén seca a fuego alto hasta que esté muy caliente — este es el paso clave. Cocinar cada naan 2–3 minutos por lado hasta que aparezcan manchas doradas oscuras y se infle. Estirar el siguiente naan mientras uno se cocina. Cubrir la pila con un paño limpio para mantenerlos suaves mientras terminas el resto. <em>Opcional: pincelar cada naan con la mantequilla de ajo nada más salir de la sartén — se absorbe perfectamente mientras el pan aún está caliente.</em>" }
     }
   ],
   "notes": {
