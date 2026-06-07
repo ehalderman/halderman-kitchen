@@ -647,5 +647,195 @@
     "nl": "• Hoe heter de pan, hoe beter — een koude of lauwe pan geeft bleke, deegachtige naan in plaats van de gebruikte vlekjes die het zo lekker maken.<br>• Yoghurtmerken verschillen in dikte — als het deeg te plakkerig is, voeg dan een eetlepel bloem tegelijk toe; als het kruimelig is, voeg dan wat meer yoghurt toe.<br>• Smaakideeën: meng ½ tl komijn, garam masala of nigellazaad door het deeg; bestrijk met chiliolie in plaats van knoflookboter; of voeg een snufje sumak toe aan de boter.<br>• Het deeg blijft tot 3 dagen in de koelkast — ideaal om van tevoren te maken en elke avond vers te bakken.",
     "es": "• Cuanto más caliente esté la sartén, mejor — una sartén fría o tibia da un naan pálido y pastoso en lugar de las manchas tostadas que lo hacen tan sabroso.<br>• Las marcas de yogur varían en grosor — si la masa está demasiado pegajosa, añadir harina de a una cucharada; si está desmenuzable, añadir un poco más de yogur.<br>• Ideas de sabor: mezclar ½ cdta de comino, garam masala o semillas de nigella en la masa; pincelar con aceite de chile en lugar de mantequilla de ajo; o añadir una pizca de sumac a la mantequilla.<br>• La masa se conserva en la nevera hasta 3 días — ideal para preparar con antelación y cocinar fresco cada noche."
 }
-}
+},
+  [
+  {
+    "id": "blueberry-protein-biscuits",
+    "category": { "en": "Baking", "nl": "Bakken", "es": "Repostería" },
+    "tags": ["vegetarian"],
+    "servings": 9,
+    "title": {
+      "en": "Blueberry Protein Biscuits",
+      "nl": "Bosbes Proteïne Biscuits",
+      "es": "Galletas de Proteína y Arándanos"
+    },
+    "description": {
+      "en": "Soft, fluffy biscuits packed with juicy blueberries and a protein boost — great for meal prep breakfasts or snacks all week.",
+      "nl": "Zachte, luchtige biscuits vol sappige bosbessen en extra proteïne — ideaal voor ontbijt of als tussendoortje de hele week.",
+      "es": "Galletas suaves y esponjosas repletas de arándanos jugosos y un extra de proteína — perfectas para preparar el desayuno o snack de toda la semana."
+    },
+    "ingredients": [
+      { "id": "i1", "amount": 200, "unit": "g", "name": { "en": "all-purpose flour", "nl": "bloem", "es": "harina de trigo" } },
+      { "id": "i2", "amount": 60, "unit": "g", "name": { "en": "vanilla protein powder", "nl": "vanille proteïnepoeder", "es": "proteína en polvo de vainilla" } },
+      { "id": "i3", "amount": 15, "unit": "g", "name": { "en": "ground flax seed", "nl": "gemalen lijnzaad", "es": "semillas de lino molidas" } },
+      { "id": "i4", "amount": 10, "unit": "g", "name": { "en": "baking powder", "nl": "bakpoeder", "es": "levadura química" } },
+      { "id": "i5", "amount": 3, "unit": "g", "name": { "en": "fine salt", "nl": "fijn zout", "es": "sal fina" } },
+      { "id": "i6", "amount": 200, "unit": "g", "name": { "en": "plain Greek yogurt", "nl": "volle Griekse yoghurt", "es": "yogur griego natural" } },
+      { "id": "i7", "amount": 2, "unit": "large", "name": { "en": "eggs", "nl": "eieren", "es": "huevos" } },
+      { "id": "i8", "amount": 60, "unit": "g", "name": { "en": "milk (dairy or plant-based)", "nl": "melk (zuivel of plantaardig)", "es": "leche (de vaca o vegetal)" } },
+      { "id": "i9", "amount": 40, "unit": "g", "name": { "en": "honey", "nl": "honing", "es": "miel" } },
+      { "id": "i10", "amount": 5, "unit": "g", "name": { "en": "vanilla extract", "nl": "vanille-extract", "es": "extracto de vainilla" } },
+      { "id": "i11", "amount": 1, "unit": "lemon", "name": { "en": "lemon, zested", "nl": "citroen, geraspt", "es": "limón, rallado" } },
+      { "id": "i12", "amount": 150, "unit": "g", "name": { "en": "fresh blueberries", "nl": "verse bosbessen", "es": "arándanos frescos" } },
+      { "id": "i13", "amount": 60, "unit": "g", "name": { "en": "powdered sugar (for glaze)", "nl": "poedersuiker (voor glazuur)", "es": "azúcar glass (para el glaseado)" } },
+      { "id": "i14", "amount": 15, "unit": "g", "name": { "en": "lemon juice (for glaze)", "nl": "citroensap (voor glazuur)", "es": "zumo de limón (para el glaseado)" } }
+    ],
+    "steps": [
+      {
+        "title": { "en": "Preheat oven", "nl": "Oven voorverwarmen", "es": "Precalentar el horno" },
+        "content": {
+          "en": "Preheat your oven to 190°C. Line a baking tray with parchment paper.",
+          "nl": "Verwarm de oven voor op 190°C. Bekleed een bakplaat met bakpapier.",
+          "es": "Precalentar el horno a 190°C. Forrar una bandeja de horno con papel de hornear."
+        }
+      },
+      {
+        "title": { "en": "Mix dry ingredients", "nl": "Droge ingrediënten mengen", "es": "Mezclar ingredientes secos" },
+        "content": {
+          "en": "In a large bowl, whisk together {i1}, {i2}, {i3}, {i4}, and {i5} until evenly combined.",
+          "nl": "Klop in een grote kom {i1}, {i2}, {i3}, {i4} en {i5} door elkaar tot gelijkmatig gemengd.",
+          "es": "En un cuenco grande, batir juntos {i1}, {i2}, {i3}, {i4} y {i5} hasta que estén bien combinados."
+        }
+      },
+      {
+        "title": { "en": "Mix wet ingredients", "nl": "Natte ingrediënten mengen", "es": "Mezclar ingredientes húmedos" },
+        "content": {
+          "en": "In a separate bowl, whisk together {i6}, {i7}, {i8}, {i9}, {i10}, and the zest from {i11} until smooth.",
+          "nl": "Klop in een aparte kom {i6}, {i7}, {i8}, {i9}, {i10} en de rasp van {i11} glad.",
+          "es": "En otro cuenco, batir juntos {i6}, {i7}, {i8}, {i9}, {i10} y la ralladura de {i11} hasta obtener una mezcla suave."
+        }
+      },
+      {
+        "title": { "en": "Combine", "nl": "Mengen", "es": "Combinar" },
+        "content": {
+          "en": "Pour the wet mixture into the dry ingredients and fold with a spatula until just combined — do not overmix or the biscuits will be dense. The dough will be thick and slightly sticky.",
+          "nl": "Giet het natte mengsel bij de droge ingrediënten en vouw met een spatel tot net gemengd — niet te lang mengen, anders worden de biscuits dicht. Het deeg zal dik en licht kleverig zijn.",
+          "es": "Verter la mezcla húmeda en los ingredientes secos y mezclar con una espátula con movimientos envolventes hasta que estén integrados — no mezclar en exceso o las galletas quedarán densas. La masa será espesa y ligeramente pegajosa."
+        }
+      },
+      {
+        "title": { "en": "Fold in blueberries", "nl": "Bosbessen doorvouwen", "es": "Incorporar los arándanos" },
+        "content": {
+          "en": "Gently fold in {i12}, being careful not to burst them.",
+          "nl": "Vouw {i12} er voorzichtig door, zorg dat ze niet stuk gaan.",
+          "es": "Incorporar {i12} con cuidado, sin aplastarlos."
+        }
+      },
+      {
+        "title": { "en": "Shape and bake", "nl": "Vormen en bakken", "es": "Dar forma y hornear" },
+        "content": {
+          "en": "Using a large spoon or ice cream scoop, portion the dough into 9 rounds on the prepared tray, spacing them about 3 cm apart. Slightly flatten the tops. Bake for 16–18 minutes until golden and a toothpick inserted in the centre comes out clean. Cool on the tray for 5 minutes.",
+          "nl": "Schep met een grote lepel of ijslepel 9 ronde hoopjes deeg op de bakplaat, met ca. 3 cm tussenruimte. Druk de bovenkanten licht plat. Bak 16–18 minuten tot goudbruin en een prikker er schoon uitkomt. Laat 5 minuten afkoelen op de plaat.",
+          "es": "Con una cuchara grande o cucharón de helado, porcionar la masa en 9 montones redondos sobre la bandeja, dejando unos 3 cm de espacio entre ellos. Aplanar ligeramente las partes superiores. Hornear 16–18 minutos hasta que estén dorados y un palillo salga limpio. Enfriar en la bandeja 5 minutos."
+        }
+      },
+      {
+        "title": { "en": "Glaze and serve", "nl": "Glazuren en serveren", "es": "Glasear y servir" },
+        "content": {
+          "en": "Stir together {i13} and {i14} until a smooth, pourable glaze forms — add a tiny splash more lemon juice if too thick. Drizzle over the cooled biscuits and allow to set for 5 minutes before eating. Store in an airtight container for up to 4 days, or freeze for up to 1 month.",
+          "nl": "Roer {i13} en {i14} door elkaar tot een glad, vloeibaar glazuur — voeg een klein scheutje extra citroensap toe als het te dik is. Besprenkel de afgekoelde biscuits en laat 5 minuten opstijven voor het eten. Bewaar in een luchtdichte doos tot 4 dagen, of vries in tot 1 maand.",
+          "es": "Mezclar {i13} y {i14} hasta obtener un glaseado suave y fluido — añadir un chorrito más de zumo de limón si está demasiado espeso. Rociar sobre las galletas frías y dejar que se asiente 5 minutos antes de comer. Conservar en recipiente hermético hasta 4 días, o congelar hasta 1 mes."
+        }
+      }
+    ],
+    "notes": {
+      "en": "Protein powder varies a lot in absorbency — if the dough feels too dry, add a splash more milk; if too wet, add a tablespoon of flour. Plant-based milk works perfectly here. The glaze is optional — skip it to keep sugar lower. Around 12–15g protein per biscuit depending on your powder.",
+      "nl": "Proteïnepoeder verschilt sterk in absorptievermogen — als het deeg te droog aanvoelt, voeg een scheutje extra melk toe; als het te nat is, voeg een eetlepel bloem toe. Plantaardige melk werkt hier prima. Het glazuur is optioneel — laat het weg voor minder suiker. Ongeveer 12–15g proteïne per biscuit afhankelijk van je poeder.",
+      "es": "La proteína en polvo varía mucho en absorción — si la masa está demasiado seca, añadir un chorrito más de leche; si está demasiado húmeda, añadir una cucharada de harina. La leche vegetal funciona perfectamente aquí. El glaseado es opcional — omitirlo para menos azúcar. Aproximadamente 12–15g de proteína por galleta según el polvo utilizado."
+    }
+  },
+  {
+    "id": "halloumi-tomatoes-white-beans",
+    "category": { "en": "Mains", "nl": "Hoofdgerechten", "es": "Platos Principales" },
+    "tags": ["vegetarian", "quick"],
+    "servings": 2,
+    "title": {
+      "en": "Crispy Halloumi with Tomatoes & White Beans",
+      "nl": "Knapperige Halloumi met Tomaten & Witte Bonen",
+      "es": "Halloumi Crujiente con Tomates y Alubias Blancas"
+    },
+    "description": {
+      "en": "Crispy golden halloumi broiled over jammy tomatoes and creamy white beans — a NYT top-50 recipe of 2025, on the table in under 25 minutes.",
+      "nl": "Knapperige goudbruine halloumi gegratineerd op jammy tomaten en romige witte bonen — een NYT top-50 recept van 2025, in minder dan 25 minuten op tafel.",
+      "es": "Halloumi dorado y crujiente gratinado sobre tomates confitados y alubias blancas cremosas — uno de los 50 mejores del NYT en 2025, listo en menos de 25 minutos."
+    },
+    "ingredients": [
+      { "id": "i1", "amount": 30, "unit": "g", "name": { "en": "olive oil, plus more to finish", "nl": "olijfolie, plus extra om af te maken", "es": "aceite de oliva, más para terminar" } },
+      { "id": "i2", "amount": 450, "unit": "g", "name": { "en": "cherry tomatoes, halved", "nl": "cherrytomaatjes, gehalveerd", "es": "tomates cherry, cortados por la mitad" } },
+      { "id": "i3", "amount": 3, "unit": "cloves", "name": { "en": "garlic, pressed", "nl": "knoflooktenen, geperst", "es": "dientes de ajo, prensados" } },
+      { "id": "i4", "amount": 8, "unit": "g", "name": { "en": "fresh parsley, finely chopped, plus more to serve", "nl": "verse peterselie, fijngehakt, plus extra voor serveren", "es": "perejil fresco, finamente picado, más para servir" } },
+      { "id": "i5", "amount": 7, "unit": "g", "name": { "en": "honey, plus more to serve", "nl": "honing, plus extra voor serveren", "es": "miel, más para servir" } },
+      { "id": "i6", "amount": 2, "unit": "g", "name": { "en": "dried oregano", "nl": "gedroogde oregano", "es": "orégano seco" } },
+      { "id": "i7", "amount": 2, "unit": "g", "name": { "en": "dried thyme", "nl": "gedroogde tijm", "es": "tomillo seco" } },
+      { "id": "i8", "amount": 3, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } },
+      { "id": "i9", "amount": 1, "unit": "g", "name": { "en": "black pepper", "nl": "zwarte peper", "es": "pimienta negra" } },
+      { "id": "i10", "amount": 400, "unit": "g", "name": { "en": "canned white beans, drained and rinsed", "nl": "witte bonen uit blik, uitgelekt en gespoeld", "es": "alubias blancas en lata, escurridas y enjuagadas" } },
+      { "id": "i11", "amount": 225, "unit": "g", "name": { "en": "halloumi, cut into 6mm-thick slices", "nl": "halloumi, in plakjes van 6mm dik gesneden", "es": "halloumi, cortado en lonchas de 6mm de grosor" } },
+      { "id": "i12", "amount": 0.5, "unit": "lemon", "name": { "en": "lemon, for squeezing", "nl": "citroen, om over te knijpen", "es": "limón, para exprimir" } }
+    ],
+    "steps": [
+      {
+        "title": { "en": "Preheat broiler", "nl": "Grill voorverwarmen", "es": "Precalentar el grill" },
+        "content": {
+          "en": "Set your oven to grill/broil mode on high. Place a rack near the top.",
+          "nl": "Zet de oven op grillstand op de hoogste stand. Schuif een rooster naar de bovenste positie.",
+          "es": "Configurar el horno en modo grill a temperatura alta. Colocar la rejilla cerca de la parte superior."
+        }
+      },
+      {
+        "title": { "en": "Sauté aromatics", "nl": "Smaakmakers aanfruiten", "es": "Sofreír los aromáticos" },
+        "content": {
+          "en": "Heat {i1} in a large ovenproof frying pan over medium heat. Add {i3}, {i6}, {i7}, {i8}, and {i9}, and stir for 1 minute until fragrant.",
+          "nl": "Verhit {i1} in een grote ovenvaste koekenpan op middelhoog vuur. Voeg {i3}, {i6}, {i7}, {i8} en {i9} toe en roer 1 minuut tot geurig.",
+          "es": "Calentar {i1} en una sartén grande apta para horno a fuego medio. Añadir {i3}, {i6}, {i7}, {i8} y {i9}, y remover 1 minuto hasta que estén aromáticos."
+        }
+      },
+      {
+        "title": { "en": "Cook tomatoes", "nl": "Tomaten bakken", "es": "Cocinar los tomates" },
+        "content": {
+          "en": "Add {i2} and {i4}. Cook, stirring occasionally, until the tomatoes soften and release their juices, about 10 minutes. Stir in {i5}.",
+          "nl": "Voeg {i2} en {i4} toe. Kook, af en toe roerend, tot de tomaten zacht zijn en hun sappen loslaten, ca. 10 minuten. Roer {i5} erdoor.",
+          "es": "Añadir {i2} y {i4}. Cocinar, removiendo de vez en cuando, hasta que los tomates se ablanden y suelten sus jugos, unos 10 minutos. Incorporar {i5}."
+        }
+      },
+      {
+        "title": { "en": "Add beans", "nl": "Bonen toevoegen", "es": "Añadir las alubias" },
+        "content": {
+          "en": "Stir in {i10} and heat for 3 minutes until warmed through. Taste and adjust seasoning.",
+          "nl": "Roer {i10} erdoor en verwarm 3 minuten tot goed warm. Proef en pas de smaak aan.",
+          "es": "Incorporar {i10} y calentar 3 minutos hasta que estén bien calientes. Probar y ajustar el sazonamiento."
+        }
+      },
+      {
+        "title": { "en": "Arrange halloumi", "nl": "Halloumi verdelen", "es": "Colocar el halloumi" },
+        "content": {
+          "en": "Turn off the stovetop heat. Arrange {i11} slices in a single layer over the tomato and bean mixture.",
+          "nl": "Zet het vuur uit. Verdeel de plakjes {i11} in een enkele laag over het tomaat- en bonenmengsel.",
+          "es": "Apagar el fuego. Colocar las lonchas de {i11} en una sola capa sobre la mezcla de tomates y alubias."
+        }
+      },
+      {
+        "title": { "en": "Broil", "nl": "Gratineren", "es": "Gratinar" },
+        "content": {
+          "en": "Transfer the pan to the oven and broil for 4–6 minutes until the halloumi is golden and crispy on top. Watch closely — it can go from golden to burnt quickly.",
+          "nl": "Zet de pan in de oven en gratineer 4–6 minuten tot de halloumi goudbruin en knapperig is. Houd goed in de gaten — het gaat snel van goudbruin naar verbrand.",
+          "es": "Transferir la sartén al horno y gratinar 4–6 minutos hasta que el halloumi esté dorado y crujiente por encima. Vigilar de cerca — puede pasar de dorado a quemado rápidamente."
+        }
+      },
+      {
+        "title": { "en": "Finish and serve", "nl": "Afmaken en serveren", "es": "Terminar y servir" },
+        "content": {
+          "en": "Remove from oven. Drizzle with a little extra olive oil and honey, squeeze {i12} over the top, and scatter extra parsley. Serve immediately straight from the pan with crusty bread.",
+          "nl": "Haal uit de oven. Besprenkel met een beetje extra olijfolie en honing, knijp {i12} erover en strooi extra peterselie. Direct uit de pan serveren met knapperig brood.",
+          "es": "Retirar del horno. Rociar con un poco más de aceite de oliva y miel, exprimir {i12} por encima y esparcir más perejil. Servir inmediatamente directamente de la sartén con pan crujiente."
+        }
+      }
+    ],
+    "notes": {
+      "en": "Use 2 cans of beans (800g drained) for a more substantial meal. The tomato-bean base reheats well — add fresh halloumi when reheating as it loses its texture once cooled. For extra heat, add a pinch of chilli flakes with the garlic. Crusty sourdough or pita alongside soaks up the tomato juices perfectly.",
+      "nl": "Gebruik 2 blikken bonen (800g uitgelekt) voor een steviger maaltijd. De tomaat-bonenbasis warmt goed op — voeg verse halloumi toe bij het opwarmen, want eenmaal afgekoeld verliest hij zijn textuur. Voeg voor extra pit een snufje chilivlokken toe bij de knoflook. Knapperig zuurdesembrood of pita erbij werkt perfect om de tomatensappen op te soppen.",
+      "es": "Usar 2 latas de alubias (800g escurridas) para una comida más contundente. La base de tomates y alubias se recalienta bien — añadir halloumi fresco al recalentar, ya que pierde su textura una vez frío. Para más picante, añadir una pizca de copos de chile con el ajo. Pan de masa madre crujiente o pita al lado absorbe los jugos de tomate perfectamente."
+    }
+  }
+]
 ]
