@@ -703,12 +703,11 @@
   </div>
 </div>
 
-<!-- FIREBASE -->
-<script type="module">
-  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-  import { getDatabase, ref, onValue, push, remove, update } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
-
-  const firebaseConfig = {
+<!-- FIREBASE (compat SDK — no module/global bridging needed) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+  firebase.initializeApp({
     apiKey: "AIzaSyDzbv9kTFxxuvD5y5JZ-uLff13jTMW4KNY",
     authDomain: "vinwinkitchen.firebaseapp.com",
     databaseURL: "https://vinwinkitchen-default-rtdb.europe-west1.firebasedatabase.app",
@@ -716,21 +715,21 @@
     storageBucket: "vinwinkitchen.firebasestorage.app",
     messagingSenderId: "489470168636",
     appId: "1:489470168636:web:17a7c8a6ca3471e2c3fd39"
-  };
+  });
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
-  const listRef = ref(db, 'groceryList');
-
-  // Expose DB functions to global scope for use by non-module script
-  window._fb = { db, listRef, push, remove, update, ref };
+  const _db = firebase.database();
+  const _listRef = _db.ref('groceryList');
 
   // Listen for real-time changes
-  onValue(listRef, (snapshot) => {
-    const data = snapshot.val() || {};
-    window._groceryItems = data;
-    window.renderGroceryDrawer();
+  _listRef.on('value', (snapshot) => {
+    window._groceryItems = snapshot.val() || {};
+    if (window.renderGroceryDrawer) window.renderGroceryDrawer();
   });
+
+  // Grocery DB helpers — called directly, no bridging
+  window._pushItem = (item) => _listRef.push(item);
+  window._updateItem = (key, data) => _db.ref('groceryList/' + key).update(data);
+  window._removeItem = (key) => _db.ref('groceryList/' + key).remove();
 </script>
 
 <script>
@@ -926,22 +925,19 @@
   function addManualItem() {
     const input = document.getElementById('manual-item-input');
     const text = input.value.trim();
-    if (!text) return;
-    if (!window._fb) return;
-    window._fb.push(window._fb.listRef, { text, checked: false, ts: Date.now() });
+    if (!text || !window._pushItem) return;
+    window._pushItem({ text, checked: false, ts: Date.now() });
     input.value = '';
   }
 
   window.toggleGroceryItem = function(key, checked) {
-    if (!window._fb) return;
-    const itemRef = window._fb.ref(window._fb.db, 'groceryList/' + key);
-    window._fb.update(itemRef, { checked });
+    if (!window._updateItem) return;
+    window._updateItem(key, { checked });
   };
 
   window.deleteGroceryItem = function(key) {
-    if (!window._fb) return;
-    const itemRef = window._fb.ref(window._fb.db, 'groceryList/' + key);
-    window._fb.remove(itemRef);
+    if (!window._removeItem) return;
+    window._removeItem(key);
   };
 
   function clearChecked() {
@@ -958,7 +954,7 @@
 
   function addRecipeToList(recipeId) {
     const r = recipes.find(x => x.id === recipeId);
-    if (!r || !window._fb) return;
+    if (!r || !window._pushItem) return;
     const srv = currentServings[recipeId] || r.servings;
     const ratio = srv / r.servings;
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
@@ -969,7 +965,7 @@
       const amtStr = showUnit ? `${scaledAmt} ${ing.unit}` : scaledAmt;
       const name = loc(ing.name);
       const text = showUnit ? `${amtStr} ${name}` : `${scaledAmt} ${name}`;
-      window._fb.push(window._fb.listRef, { text: text.trim(), checked: false, ts: Date.now() });
+      window._pushItem({ text: text.trim(), checked: false, ts: Date.now() });
     });
 
     showToast(t('addedToast')(r.ingredients.length));
@@ -1155,19 +1151,19 @@
         </div>
         <div class="meta-item"><strong>${r.ingredients.length}</strong> ${t('ingredients')}</div>
         <div class="meta-item"><strong>${r.steps.length}</strong> ${t('steps')}</div>
+        <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          ${t('addToList')}
+        </button>
       </div>
       <div class="detail-body">
         <div class="ingredients-box">
           <h2>${t('ingredientsLabel')}</h2>
           <ul class="ingredients-list">${ingList}</ul>
-          <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')" style="margin-top:1.2rem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 0 1-8 0"/>
-            </svg>
-            ${t('addToList')}
-          </button>
         </div>
         <div class="steps-box">
           <h2>${t('methodLabel')}</h2>
