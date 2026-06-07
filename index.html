@@ -263,10 +263,9 @@
     .drawer-add-row {
       display: flex;
       gap: 0.5rem;
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
       flex-shrink: 0;
-      padding: 0 1.4rem 1rem;
-      border-bottom: 1px solid var(--border);
+      padding: 0;
     }
     .drawer-add-row input {
       flex: 1;
@@ -313,14 +312,16 @@
       padding: 0.55rem 0;
       border-bottom: 1px solid var(--border);
       font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
     }
     .grocery-item:last-child { border-bottom: none; }
     .grocery-item input[type="checkbox"] {
       width: 17px;
       height: 17px;
       accent-color: var(--sage);
-      cursor: pointer;
       flex-shrink: 0;
+      pointer-events: none;
     }
     .grocery-item-text {
       flex: 1;
@@ -377,6 +378,12 @@
       color: #c0392b;
     }
     .btn-clear-all:hover { background: #fdf0f0; }
+    .btn-undo {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      color: var(--ink-light);
+    }
+    .btn-undo:hover { background: var(--border); color: var(--ink); }
 
     /* ADD TO LIST button on recipe detail */
     .add-to-list-btn {
@@ -652,11 +659,11 @@
         </svg>
       </button>
     </div>
-    <div class="drawer-add-row">
-      <input type="text" id="manual-item-input" placeholder="Add an item…" onkeydown="if(event.key==='Enter')addManualItem()" />
-      <button onclick="addManualItem()" id="drawer-add-btn">Add</button>
-    </div>
     <div class="drawer-body" id="drawer-body">
+      <div class="drawer-add-row">
+        <input type="text" id="manual-item-input" placeholder="Add an item…" onkeydown="if(event.key==='Enter')addManualItem()" />
+        <button onclick="addManualItem()" id="drawer-add-btn">Add</button>
+      </div>
       <div class="drawer-empty" id="drawer-empty">
         <div class="drawer-empty-icon">🛒</div>
         <p id="drawer-empty-text">Your list is empty.<br>Add ingredients from a recipe or type above.</p>
@@ -664,6 +671,7 @@
       <div id="grocery-items"></div>
     </div>
     <div class="drawer-footer" id="drawer-footer" style="display:none">
+      <button class="btn-undo" onclick="undoLast()" id="btn-undo" style="display:none">Undo</button>
       <button class="btn-clear-checked" onclick="clearChecked()" id="btn-clear-checked">Clear checked</button>
       <button class="btn-clear-all" onclick="clearAll()" id="btn-clear-all">Clear all</button>
     </div>
@@ -770,6 +778,7 @@
       clearChecked: 'Clear checked',
       clearAll: 'Clear all',
       addToList: 'Add to grocery list',
+      undo: 'Undo',
       addedToast: (n) => `${n} ingredient${n === 1 ? '' : 's'} added to list`,
     },
     nl: {
@@ -796,6 +805,7 @@
       clearChecked: 'Verwijder afgevinkte',
       clearAll: 'Alles verwijderen',
       addToList: 'Toevoegen aan boodschappenlijst',
+      undo: 'Ongedaan',
       addedToast: (n) => `${n} ingrediënt${n === 1 ? '' : 'en'} toegevoegd`,
     },
     es: {
@@ -822,6 +832,7 @@
       clearChecked: 'Borrar marcados',
       clearAll: 'Borrar todo',
       addToList: 'Añadir a la lista',
+      undo: 'Deshacer',
       addedToast: (n) => `${n} ingrediente${n === 1 ? '' : 's'} añadido${n === 1 ? '' : 's'}`,
     }
   };
@@ -858,6 +869,7 @@
     document.getElementById('manual-item-input').placeholder = t('drawerPlaceholder');
     document.getElementById('btn-clear-checked').textContent = t('clearChecked');
     document.getElementById('btn-clear-all').textContent = t('clearAll');
+    document.getElementById('btn-undo').textContent = t('undo');
   }
 
   function loc(field) {
@@ -877,6 +889,9 @@
     document.getElementById('drawer-backdrop').classList.remove('open');
   }
 
+  // Undo stack — stores {key, text, checked} of last action
+  window._undoStack = [];
+
   window.renderGroceryDrawer = function() {
     const items = window._groceryItems || {};
     const keys = Object.keys(items);
@@ -890,11 +905,15 @@
     const container = document.getElementById('grocery-items');
     const empty = document.getElementById('drawer-empty');
     const footer = document.getElementById('drawer-footer');
+    const undoBtn = document.getElementById('btn-undo');
+
+    // Show undo button only when there's something to undo
+    if (undoBtn) undoBtn.style.display = window._undoStack.length > 0 ? 'block' : 'none';
 
     if (keys.length === 0) {
       container.innerHTML = '';
       empty.style.display = 'block';
-      footer.style.display = 'none';
+      footer.style.display = window._undoStack.length > 0 ? 'flex' : 'none';
       return;
     }
 
@@ -910,10 +929,10 @@
     container.innerHTML = sorted.map(key => {
       const item = items[key];
       return `
-        <div class="grocery-item ${item.checked ? 'checked' : ''}" id="gi-${key}">
-          <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleGroceryItem('${key}', this.checked)" />
+        <div class="grocery-item ${item.checked ? 'checked' : ''}" id="gi-${key}" onclick="toggleGroceryItem('${key}', ${!item.checked})">
+          <input type="checkbox" ${item.checked ? 'checked' : ''} readonly />
           <span class="grocery-item-text">${escHtml(item.text)}</span>
-          <button class="grocery-item-delete" onclick="deleteGroceryItem('${key}')" title="Remove">✕</button>
+          <button class="grocery-item-delete" onclick="event.stopPropagation();deleteGroceryItem('${key}')" title="Remove">✕</button>
         </div>`;
     }).join('');
   };
@@ -932,24 +951,58 @@
 
   window.toggleGroceryItem = function(key, checked) {
     if (!window._updateItem) return;
+    const item = (window._groceryItems || {})[key];
+    if (item) window._undoStack.push({ type: 'toggle', key, checked: !checked, text: item.text });
     window._updateItem(key, { checked });
+    const undoBtn = document.getElementById('btn-undo');
+    if (undoBtn) undoBtn.style.display = 'block';
+    const footer = document.getElementById('drawer-footer');
+    if (footer) footer.style.display = 'flex';
   };
 
   window.deleteGroceryItem = function(key) {
     if (!window._removeItem) return;
+    const item = (window._groceryItems || {})[key];
+    if (item) window._undoStack.push({ type: 'delete', key, text: item.text, checked: item.checked });
     window._removeItem(key);
+    const undoBtn = document.getElementById('btn-undo');
+    if (undoBtn) undoBtn.style.display = 'block';
+    const footer = document.getElementById('drawer-footer');
+    if (footer) footer.style.display = 'flex';
   };
+
+  function undoLast() {
+    const action = window._undoStack.pop();
+    if (!action) return;
+    if (action.type === 'toggle') {
+      window._updateItem(action.key, { checked: action.checked });
+    } else if (action.type === 'delete') {
+      window._pushItem({ text: action.text, checked: action.checked, ts: Date.now() });
+    } else if (action.type === 'clearChecked') {
+      action.items.forEach(i => window._pushItem({ text: i.text, checked: false, ts: Date.now() }));
+    } else if (action.type === 'clearAll') {
+      action.items.forEach(i => window._pushItem({ text: i.text, checked: i.checked, ts: Date.now() }));
+    }
+    if (window._undoStack.length === 0) {
+      const undoBtn = document.getElementById('btn-undo');
+      if (undoBtn) undoBtn.style.display = 'none';
+    }
+  }
 
   function clearChecked() {
     const items = window._groceryItems || {};
-    Object.keys(items).forEach(key => {
-      if (items[key].checked) deleteGroceryItem(key);
-    });
+    const toDelete = Object.keys(items).filter(k => items[k].checked).map(k => ({ key: k, ...items[k] }));
+    if (toDelete.length === 0) return;
+    window._undoStack.push({ type: 'clearChecked', items: toDelete });
+    toDelete.forEach(i => window._removeItem(i.key));
   }
 
   function clearAll() {
     const items = window._groceryItems || {};
-    Object.keys(items).forEach(key => deleteGroceryItem(key));
+    const all = Object.keys(items).map(k => ({ key: k, ...items[k] }));
+    if (all.length === 0) return;
+    window._undoStack.push({ type: 'clearAll', items: all });
+    all.forEach(i => window._removeItem(i.key));
   }
 
   function addRecipeToList(recipeId) {
@@ -1151,19 +1204,19 @@
         </div>
         <div class="meta-item"><strong>${r.ingredients.length}</strong> ${t('ingredients')}</div>
         <div class="meta-item"><strong>${r.steps.length}</strong> ${t('steps')}</div>
+        <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 0 1-8 0"/>
+          </svg>
+          ${t('addToList')}
+        </button>
       </div>
       <div class="detail-body">
         <div class="ingredients-box">
           <h2>${t('ingredientsLabel')}</h2>
           <ul class="ingredients-list">${ingList}</ul>
-          <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')" style="margin-top:1.2rem">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <path d="M16 10a4 4 0 0 1-8 0"/>
-            </svg>
-            ${t('addToList')}
-          </button>
         </div>
         <div class="steps-box">
           <h2>${t('methodLabel')}</h2>
