@@ -835,5 +835,90 @@
       "nl": "Gebruik 2 blikken bonen (800g uitgelekt) voor een steviger maaltijd. De tomaat-bonenbasis warmt goed op — voeg verse halloumi toe bij het opwarmen, want eenmaal afgekoeld verliest hij zijn textuur. Voeg voor extra pit een snufje chilivlokken toe bij de knoflook. Knapperig zuurdesembrood of pita erbij werkt perfect om de tomatensappen op te soppen.",
       "es": "Usar 2 latas de alubias (800g escurridas) para una comida más contundente. La base de tomates y alubias se recalienta bien — añadir halloumi fresco al recalentar, ya que pierde su textura una vez frío. Para más picante, añadir una pizca de copos de chile con el ajo. Pan de masa madre crujiente o pita al lado absorbe los jugos de tomate perfectamente."
     }
+  },
+  {
+    "id": "flash-cold-brew",
+    "category": { "en": "Drinks", "nl": "Dranken", "es": "Bebidas" },
+    "tags": ["vegan", "quick"],
+    "servings": 1,
+    "title": { "en": "Flash Cold Brew (Clever Dripper)", "nl": "Flash Cold Brew (Clever Dripper)", "es": "Flash Cold Brew (Clever Dripper)" },
+    "description": {
+      "en": "Hot-brewed coffee poured straight over ice — full-flavoured, crystal clear, and ready in under 5 minutes.",
+      "nl": "Heet gebrouwen koffie direct over ijs gegoten — vol van smaak, helder en in minder dan 5 minuten klaar.",
+      "es": "Café preparado en caliente y vertido directamente sobre hielo — lleno de sabor, muy claro y listo en menos de 5 minutos."
+    },
+    "ingredients": [
+      { "id": "i1", "amount": 25, "unit": "g", "name": { "en": "ground coffee, medium-coarse", "nl": "gemalen koffie, medium-grof", "es": "café molido, medio-grueso" } },
+      { "id": "i2", "amount": 240, "unit": "g", "name": { "en": "water at 95°C", "nl": "water op 95°C", "es": "agua a 95°C" } },
+      { "id": "i3", "amount": 160, "unit": "g", "name": { "en": "ice cubes (in the server below)", "nl": "ijsblokjes (in de server eronder)", "es": "cubitos de hielo (en el servidor de abajo)" } }
+    ],
+    "steps": [
+      { "title": { "en": "Set up", "nl": "Instellen", "es": "Preparar" }, "content": { "en": "Place {i3} directly in your server or carafe. Set the Clever Dripper on top — the ice will chill the coffee the moment it drops through.", "nl": "Doe {i3} rechtstreeks in je server of karaf. Zet de Clever Dripper erop — het ijs koelt de koffie zodra deze erdoor valt.", "es": "Colocar {i3} directamente en el servidor o jarra. Poner el Clever Dripper encima — el hielo enfriará el café en cuanto caiga." } },
+      { "title": { "en": "Add coffee", "nl": "Koffie toevoegen", "es": "Añadir el café" }, "content": { "en": "Insert a paper filter and add {i1}. No rinsing needed.", "nl": "Doe een papieren filter in en voeg {i1} toe. Niet spoelen nodig.", "es": "Colocar un filtro de papel y añadir {i1}. No es necesario enjuagar." } },
+      { "title": { "en": "Pour and seal", "nl": "Gieten en afdekken", "es": "Verter y sellar" }, "content": { "en": "Pour {i2} over the grounds, aiming to wet all the coffee evenly. Start your timer and place the lid on to retain heat.", "nl": "Giet {i2} over de koffie, probeer alle gronden gelijkmatig nat te maken. Start de timer en leg het deksel op om de warmte vast te houden.", "es": "Verter {i2} sobre el café, procurando mojar todo el café uniformemente. Iniciar el temporizador y poner la tapa para retener el calor." } },
+      { "title": { "en": "Steep", "nl": "Trekken", "es": "Reposar" }, "content": { "en": "Steep for 3 minutes 30 seconds to 4 minutes. Don't stir.", "nl": "Laat 3 minuten 30 seconden tot 4 minuten trekken. Niet roeren.", "es": "Reposar durante 3 minutos 30 segundos a 4 minutos. No remover." } },
+      { "title": { "en": "Release and serve", "nl": "Laten lopen en serveren", "es": "Liberar y servir" }, "content": { "en": "Place the Clever Dripper over the server to open the valve. All the coffee will drain through onto the ice. Swirl and serve immediately over extra ice if you like.", "nl": "Zet de Clever Dripper op de server om het ventiel te openen. De koffie loopt door het ijs. Zwenk en serveer direct, eventueel over extra ijs.", "es": "Colocar el Clever Dripper sobre el servidor para abrir la válvula. El café caerá sobre el hielo. Remover y servir inmediatamente sobre más hielo si se desea." } }
+    ],
+    "notes": {
+      "en": "The ratio is 25g coffee : 240g water : 160g ice — the ice replaces roughly 40% of the brew water, so the final drink is full strength despite the dilution. Adjust steep time to taste: 3:30 for a brighter cup, 4:00 for more body. Works with any single-origin filter coffee.",
+      "nl": "De verhouding is 25g koffie : 240g water : 160g ijs — het ijs vervangt ca. 40% van het brouwwater, zodat het drankje op volle sterkte blijft ondanks de verdunning. Pas de trekkingstijd aan: 3:30 voor een frissere kop, 4:00 voor meer body. Werkt met elke single-origin filterkoffie.",
+      "es": "La proporción es 25g café : 240g agua : 160g hielo — el hielo reemplaza aproximadamente el 40% del agua de preparación, por lo que la bebida final queda a plena intensidad a pesar de la dilución. Ajustar el tiempo de reposo al gusto: 3:30 para una taza más viva, 4:00 para más cuerpo. Funciona con cualquier café de filtro de origen único."
+    }
+  },
+  {
+    "id": "aeropress-hoffmann",
+    "category": { "en": "Drinks", "nl": "Dranken", "es": "Bebidas" },
+    "tags": ["vegan", "quick"],
+    "servings": 1,
+    "title": { "en": "Aeropress (James Hoffmann Method)", "nl": "Aeropress (James Hoffmann methode)", "es": "Aeropress (Método James Hoffmann)" },
+    "description": {
+      "en": "A clean, fuss-free Aeropress technique that skips the myths — no inversion, no rinsing, no bloom. Just great coffee in under 3 minutes.",
+      "nl": "Een heldere, eenvoudige Aeropress-techniek zonder fratsen — geen inversie, niet spoelen, geen bloom. Gewoon geweldige koffie in minder dan 3 minuten.",
+      "es": "Una técnica de Aeropress limpia y sin complicaciones — sin inversión, sin enjuague, sin pre-infusión. Solo un gran café en menos de 3 minutos."
+    },
+    "ingredients": [
+      { "id": "i1", "amount": 11, "unit": "g", "name": { "en": "ground coffee, finer end of medium (finer than pour-over, coarser than espresso)", "nl": "gemalen koffie, fijner kant van medium (fijner dan pour-over, grover dan espresso)", "es": "café molido, lado fino del medio (más fino que pour-over, más grueso que espresso)" } },
+      { "id": "i2", "amount": 200, "unit": "g", "name": { "en": "boiling water (100°C for light roast; 85–90°C for dark roast)", "nl": "kokend water (100°C voor lichte roosting; 85–90°C voor donkere roosting)", "es": "agua hirviendo (100°C para tueste claro; 85–90°C para tueste oscuro)" } }
+    ],
+    "steps": [
+      { "title": { "en": "Set up", "nl": "Instellen", "es": "Preparar" }, "content": { "en": "Place a paper filter in the cap. Don't rinse it — Hoffmann found it makes no meaningful difference. Set the Aeropress in standard upright position on your cup or server.", "nl": "Doe een papieren filter in de dop. Niet spoelen — Hoffmann ontdekte dat het geen verschil maakt. Zet de Aeropress rechtop op je kopje of server.", "es": "Colocar un filtro de papel en la tapa. No enjuagarlo — Hoffmann concluyó que no hace diferencia. Poner el Aeropress en posición estándar hacia arriba sobre la taza o servidor." } },
+      { "title": { "en": "Add coffee and water", "nl": "Koffie en water toevoegen", "es": "Añadir café y agua" }, "content": { "en": "Add {i1} to the Aeropress. Pour {i2} all at once, aiming to wet all the grounds as you pour. Start your timer immediately.", "nl": "Doe {i1} in de Aeropress. Giet {i2} in één keer, probeer alle gronden nat te maken. Start de timer direct.", "es": "Añadir {i1} al Aeropress. Verter {i2} de una vez, procurando mojar todo el café. Iniciar el temporizador inmediatamente." } },
+      { "title": { "en": "Seal and steep", "nl": "Afdekken en trekken", "es": "Sellar y reposar" }, "content": { "en": "Insert the plunger about 1 cm into the top to create a gentle vacuum — this stops coffee dripping through. Do not push down. Steep for 2 minutes.", "nl": "Duw de zuiger ca. 1 cm in de bovenkant om een licht vacuüm te creëren — dit voorkomt dat koffie doordruppelt. Niet naar beneden drukken. Laat 2 minuten trekken.", "es": "Insertar el émbolo unos 2 cm en la parte superior para crear un vacío suave — esto evita que el café gotee. No presionar hacia abajo. Reposar 2 minutos." } },
+      { "title": { "en": "Swirl and settle", "nl": "Zwenken en bezinken", "es": "Girar y reposar" }, "content": { "en": "Holding the Aeropress and cup together firmly, give it a gentle swirl. This knocks any grounds off the sides and cap. Wait 30 seconds for the grounds to settle to the bottom.", "nl": "Houd de Aeropress en het kopje stevig samen en zwenk zachtjes. Dit laat de gronden van de zijkanten en dop vallen. Wacht 30 seconden zodat de gronden zakken.", "es": "Sujetando el Aeropress y la taza juntos con firmeza, dar un suave giro. Esto desprende los posos de los lados y la tapa. Esperar 30 segundos para que los posos se asienten." } },
+      { "title": { "en": "Press", "nl": "Drukken", "es": "Presionar" }, "content": { "en": "Press the plunger down gently and evenly all the way. It should take around 30 seconds. Stop pressing the moment you hear a hiss — that's air, not coffee.", "nl": "Druk de zuiger gelijkmatig en zachtjes helemaal naar beneden. Dit duurt ca. 30 seconden. Stop zodra je een sis hoort — dat is lucht, geen koffie.", "es": "Presionar el émbolo hacia abajo de forma suave y uniforme. Debería tardar unos 30 segundos. Parar al oír un siseo — eso es aire, no café." } }
+    ],
+    "notes": {
+      "en": "No bloom needed — in immersion brewing, CO₂ doesn't block extraction the way it does in pour-over. No inversion needed either — inserting the plunger 1 cm creates the same seal without the risk of spillage. The swirl-and-settle step is the key to a cleaner cup. Ratio: 1:18 (11g coffee : 200g water). For a stronger cup, try 13g.",
+      "nl": "Geen bloom nodig — bij immersiebrouwen blokkeert CO₂ de extractie niet zoals bij pour-over. Geen inversie nodig — de zuiger 1 cm indrukken geeft dezelfde afdichting zonder kans op morsen. De zwenk-en-bezinkstap is het geheim voor een helderdere kop. Verhouding: 1:18 (11g koffie : 200g water). Voor een sterkere kop, probeer 13g.",
+      "es": "No se necesita pre-infusión — en la infusión por inmersión, el CO₂ no bloquea la extracción como en el pour-over. Tampoco se necesita inversión — insertar el émbolo 1 cm crea el mismo sello sin riesgo de derrame. El paso de girar y reposar es la clave para una taza más limpia. Ratio: 1:18 (11g café : 200g agua). Para una taza más fuerte, probar con 13g."
+    }
+  },
+  {
+    "id": "french-press-hoffmann",
+    "category": { "en": "Drinks", "nl": "Dranken", "es": "Bebidas" },
+    "tags": ["vegan"],
+    "servings": 2,
+    "title": { "en": "French Press (James Hoffmann Method)", "nl": "French Press (James Hoffmann methode)", "es": "French Press (Método James Hoffmann)" },
+    "description": {
+      "en": "The classic French press, done properly — rich and full-bodied, but without the sludge. Takes 10 minutes but almost all of it is hands-off.",
+      "nl": "De klassieke French press, op de juiste manier — rijke body, maar zonder het bezinksel. Duurt 10 minuten maar je doet er bijna niets voor.",
+      "es": "La prensa francesa clásica, bien hecha — rica y con mucho cuerpo, pero sin los posos. Tarda 10 minutos pero casi todo es sin intervención."
+    },
+    "ingredients": [
+      { "id": "i1", "amount": 30, "unit": "g", "name": { "en": "ground coffee, medium-coarse", "nl": "gemalen koffie, medium-grof", "es": "café molido, medio-grueso" } },
+      { "id": "i2", "amount": 500, "unit": "g", "name": { "en": "water at 95°C", "nl": "water op 95°C", "es": "agua a 95°C" } }
+    ],
+    "steps": [
+      { "title": { "en": "Add coffee and water", "nl": "Koffie en water toevoegen", "es": "Añadir café y agua" }, "content": { "en": "Add {i1} to the French press. Pour {i2} all at once and start your timer. Don't stir — just make sure all the grounds are wet.", "nl": "Doe {i1} in de French press. Giet {i2} in één keer en start de timer. Niet roeren — zorg alleen dat alle gronden nat zijn.", "es": "Añadir {i1} a la prensa francesa. Verter {i2} de una vez e iniciar el temporizador. No remover — solo asegurarse de que todo el café esté mojado." } },
+      { "title": { "en": "Wait 4 minutes", "nl": "4 minuten wachten", "es": "Esperar 4 minutos" }, "content": { "en": "Leave undisturbed for 4 minutes. A crust of grounds will form on the surface — that's normal.", "nl": "Laat 4 minuten met rust. Er vormt zich een korst van koffieprut aan de oppervlakte — dat is normaal.", "es": "Dejar en reposo durante 4 minutos. Se formará una costra de posos en la superficie — eso es normal." } },
+      { "title": { "en": "Break the crust and skim", "nl": "Korst breken en afschuimen", "es": "Romper la costra y espumar" }, "content": { "en": "Use a spoon to stir through the crust, then scoop off the foam and floating grounds from the surface. This is the step that eliminates most of the sludge.", "nl": "Gebruik een lepel om door de korst te roeren, schep daarna het schuim en drijvende koffieprut van de oppervlakte. Dit is de stap die het meeste bezinksel elimineert.", "es": "Usar una cuchara para remover la costra, luego retirar la espuma y los posos flotantes de la superficie. Este es el paso que elimina la mayor parte de los posos." } },
+      { "title": { "en": "Wait another 5 minutes", "nl": "Nog 5 minuten wachten", "es": "Esperar otros 5 minutos" }, "content": { "en": "Leave the coffee undisturbed for another 5 minutes. The remaining grounds will sink to the bottom.", "nl": "Laat de koffie nog 5 minuten met rust. De overgebleven koffieprut zakt naar de bodem.", "es": "Dejar el café en reposo otros 5 minutos. Los posos restantes se hundirán al fondo." } },
+      { "title": { "en": "Plunge and pour", "nl": "Drukken en schenken", "es": "Presionar y servir" }, "content": { "en": "Gently lower the plunger until it just touches the surface of the liquid — do not push it all the way through. This keeps the grounds on the bottom. Pour immediately and serve.", "nl": "Druk de zuiger langzaam naar beneden tot hij net het oppervlak van de vloeistof raakt — druk hem niet helemaal door. Dit houdt de koffieprut op de bodem. Direct schenken en serveren.", "es": "Bajar el émbolo suavemente hasta que toque la superficie del líquido — no empujarlo hasta el fondo. Esto mantiene los posos en el fondo. Servir inmediatamente." } }
+    ],
+    "notes": {
+      "en": "The key insight: don't plunge all the way through. Stopping at the surface keeps the grounds at the bottom and gives you a much cleaner cup. Skim well after breaking the crust — that's where the grittiness comes from. Ratio: 1:16.7 (30g coffee : 500g water). Scale up proportionally for a bigger batch.",
+      "nl": "Het belangrijkste inzicht: druk de zuiger niet helemaal door. Stoppen aan het oppervlak houdt de koffieprut op de bodem en geeft een veel helderdere kop. Goed afschuimen na het breken van de korst — daar komt het korrelige gevoel vandaan. Verhouding: 1:16,7 (30g koffie : 500g water). Schaal evenredig op voor een grotere batch.",
+      "es": "El insight clave: no presionar el émbolo hasta el fondo. Detenerse en la superficie mantiene los posos abajo y da una taza mucho más limpia. Espumar bien después de romper la costra — ahí es donde viene la sensación arenosa. Ratio: 1:16,7 (30g café : 500g agua). Escalar proporcionalmente para un lote más grande."
+    }
   }
 ]
