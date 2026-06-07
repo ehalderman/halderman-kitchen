@@ -1155,19 +1155,19 @@
         </div>
         <div class="meta-item"><strong>${r.ingredients.length}</strong> ${t('ingredients')}</div>
         <div class="meta-item"><strong>${r.steps.length}</strong> ${t('steps')}</div>
-        <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 0 1-8 0"/>
-          </svg>
-          ${t('addToList')}
-        </button>
       </div>
       <div class="detail-body">
         <div class="ingredients-box">
           <h2>${t('ingredientsLabel')}</h2>
           <ul class="ingredients-list">${ingList}</ul>
+          <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')" style="margin-top:1.2rem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <path d="M16 10a4 4 0 0 1-8 0"/>
+            </svg>
+            ${t('addToList')}
+          </button>
         </div>
         <div class="steps-box">
           <h2>${t('methodLabel')}</h2>
