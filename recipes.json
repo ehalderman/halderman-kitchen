@@ -838,7 +838,7 @@
   },
   {
     "id": "flash-cold-brew",
-    "category": { "en": "Drinks", "nl": "Dranken", "es": "Bebidas" },
+    "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
     "tags": ["vegan", "quick"],
     "servings": 1,
     "title": { "en": "Flash Cold Brew (Clever Dripper)", "nl": "Flash Cold Brew (Clever Dripper)", "es": "Flash Cold Brew (Clever Dripper)" },
@@ -867,7 +867,7 @@
   },
   {
     "id": "aeropress-hoffmann",
-    "category": { "en": "Drinks", "nl": "Dranken", "es": "Bebidas" },
+    "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
     "tags": ["vegan", "quick"],
     "servings": 1,
     "title": { "en": "Aeropress (James Hoffmann Method)", "nl": "Aeropress (James Hoffmann methode)", "es": "Aeropress (Método James Hoffmann)" },
@@ -895,7 +895,7 @@
   },
   {
     "id": "french-press-hoffmann",
-    "category": { "en": "Drinks", "nl": "Dranken", "es": "Bebidas" },
+    "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
     "tags": ["vegan"],
     "servings": 2,
     "title": { "en": "French Press (James Hoffmann Method)", "nl": "French Press (James Hoffmann methode)", "es": "French Press (Método James Hoffmann)" },
