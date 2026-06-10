@@ -996,7 +996,10 @@
     buildFilters();
     const currentDetail = document.getElementById('detail-view');
     if (currentDetail.style.display !== 'none') {
-      if (window._currentRecipeId) showDetail(window._currentRecipeId, { pushState: false });
+      if (window._currentRecipeId) {
+        const r = recipes.find(x => x.id === window._currentRecipeId);
+        if (r) renderDetail(r);
+      }
     } else {
       renderList();
     }
@@ -1312,17 +1315,6 @@
       </div>`).join('');
   }
 
-  function showDetail(id) {
-    const r = recipes.find(x => x.id === id);
-    if (!r) return;
-    window._currentRecipeId = id;
-    if (!currentServings[id]) currentServings[id] = r.servings;
-    document.getElementById('list-view').style.display = 'none';
-    document.getElementById('detail-view').style.display = 'block';
-    renderDetail(r);
-    window.scrollTo(0, 0);
-  }
-
   function fmtAmt(amount, ratio) {
     const val = amount * ratio;
     if (val === 0) return '';
@@ -1452,7 +1444,7 @@
     if (!r) return;
     const baseGrams = id === 'aeropress-bypass' ? 20 : 11;
     if (coffeeGrams[id] === undefined) coffeeGrams[id] = baseGrams;
-    coffeeGrams[id] = Math.max(1, coffeeGrams[id] + delta);
+    coffeeGrams[id] = Math.max(id === 'aeropress-bypass' ? 10 : 5, coffeeGrams[id] + delta);
     renderDetail(r);
   }
 
@@ -1472,13 +1464,52 @@
     renderDetail(r);
   }
 
+  // ── NAVIGATION WITH HISTORY ────────────────────────────────────
+  // Use pushState so browser back (swipe, button, keyboard) always works
+  function showDetail(id) {
+    const r = recipes.find(x => x.id === id);
+    if (!r) return;
+    window._currentRecipeId = id;
+    if (!currentServings[id]) currentServings[id] = r.servings;
+    document.getElementById('list-view').style.display = 'none';
+    document.getElementById('detail-view').style.display = 'block';
+    renderDetail(r);
+    window.scrollTo(0, 0);
+    // Push a state so browser back returns to list
+    history.pushState({ recipeId: id }, '', '');
+  }
+
   function showList() {
     document.getElementById('detail-view').style.display = 'none';
     document.getElementById('list-view').style.display = 'block';
     window._currentRecipeId = null;
   }
 
-  function openSearch() {
+  // Handle browser back (includes swipe-back on Mac Safari, iOS home screen, keyboard)
+  window.addEventListener('popstate', (e) => {
+    const detailVisible = document.getElementById('detail-view').style.display !== 'none';
+    if (detailVisible) {
+      showList();
+    }
+  });
+
+  // Touch swipe as fallback for edge cases (e.g. first page load with no history)
+  (function() {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+      const detailVisible = document.getElementById('detail-view').style.display !== 'none';
+      if (detailVisible && touchStartX < 60 && dx > 80 && dy < 80) {
+        history.back();
+      }
+    }, { passive: true });
+  })();
     if (window.innerWidth <= 768) {
       document.getElementById('search-overlay').classList.add('active');
       setTimeout(() => document.getElementById('search-overlay-input').focus(), 50);
@@ -1494,7 +1525,15 @@
     if (e.target === document.getElementById('search-overlay')) closeSearch();
   }
   function overlaySearch() {
-    document.getElementById('search-input').value = document.getElementById('search-overlay-input').value;
+    const val = document.getElementById('search-overlay-input').value;
+    document.getElementById('search-input').value = val;
+    // If on detail view, navigate back to list first
+    const detailVisible = document.getElementById('detail-view').style.display !== 'none';
+    if (detailVisible) {
+      document.getElementById('detail-view').style.display = 'none';
+      document.getElementById('list-view').style.display = 'block';
+      window._currentRecipeId = null;
+    }
     renderList();
   }
 
