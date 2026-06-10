@@ -229,21 +229,26 @@
     },
     "ingredients": [
       { "id": "i1", "amount": 150, "unit": "g", "name": { "en": "quick-cook polenta", "nl": "snelkook polenta", "es": "polenta de cocción rápida" } },
-      { "id": "i2", "amount": 600, "unit": "g", "name": { "en": "vegetable stock (for polenta)", "nl": "groentebouillon (voor polenta)", "es": "caldo de verduras (para la polenta)" } },
-      { "id": "i3", "amount": 20, "unit": "g", "name": { "en": "olive oil (for polenta)", "nl": "olijfolie (voor polenta)", "es": "aceite de oliva (para la polenta)" } },
-      { "id": "i4", "amount": 5, "unit": "g", "name": { "en": "salt (for polenta)", "nl": "zout (voor polenta)", "es": "sal (para la polenta)" } },
+      { "id": "i2", "amount": 600, "unit": "g", "name": { "en": "vegetable stock", "nl": "groentebouillon", "es": "caldo de verduras" } },
+      { "id": "i3", "amount": 20, "unit": "g", "name": { "en": "olive oil", "nl": "olijfolie", "es": "aceite de oliva" } },
+      { "id": "i4", "amount": 5, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } },
       { "id": "i5", "amount": 150, "unit": "g", "name": { "en": "green peas (fresh or frozen, thawed)", "nl": "groene erwten (vers of diepvries, ontdooid)", "es": "guisantes verdes (frescos o congelados, descongelados)" } },
       { "id": "i6", "amount": 80, "unit": "g", "name": { "en": "chickpea flour", "nl": "kikkererwtenmeel", "es": "harina de garbanzo" } },
       { "id": "i7", "amount": 30, "unit": "g", "name": { "en": "fresh herbs (parsley, mint, or dill), chopped", "nl": "verse kruiden (peterselie, munt of dille), gehakt", "es": "hierbas frescas (perejil, menta o eneldo), picadas" } },
       { "id": "i8", "amount": 1, "unit": "clove", "name": { "en": "garlic, minced", "nl": "knoflookteen, geperst", "es": "diente de ajo, picado" } },
-      { "id": "i9", "amount": 3, "unit": "g", "name": { "en": "salt (for fritters)", "nl": "zout (voor fritters)", "es": "sal (para las tortitas)" } },
+      { "id": "i9", "amount": 3, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } },
       { "id": "i10", "amount": 3, "unit": "g", "name": { "en": "ground cumin", "nl": "gemalen komijn", "es": "comino molido" } },
-      { "id": "i11", "amount": 80, "unit": "g", "name": { "en": "water (for fritter batter)", "nl": "water (voor fritterbeslag)", "es": "agua (para la masa de tortitas)" } },
-      { "id": "i12", "amount": 30, "unit": "g", "name": { "en": "olive oil (for frying fritters)", "nl": "olijfolie (voor het bakken van fritters)", "es": "aceite de oliva (para freír las tortitas)" } },
-      { "id": "i13", "amount": 200, "unit": "g", "name": { "en": "full-fat Greek yogurt (for dip)", "nl": "volle Griekse yoghurt (voor dip)", "es": "yogur griego entero (para la salsa)" } },
-      { "id": "i14", "amount": 1, "unit": "clove", "name": { "en": "garlic, minced (for dip)", "nl": "knoflookteen, geperst (voor dip)", "es": "diente de ajo, picado (para la salsa)" } },
-      { "id": "i15", "amount": 15, "unit": "g", "name": { "en": "lemon juice (for dip)", "nl": "citroensap (voor dip)", "es": "zumo de limón (para la salsa)" } },
-      { "id": "i16", "amount": 2, "unit": "g", "name": { "en": "salt (for dip)", "nl": "zout (voor dip)", "es": "sal (para la salsa)" } }
+      { "id": "i11", "amount": 80, "unit": "g", "name": { "en": "water", "nl": "water", "es": "agua" } },
+      { "id": "i12", "amount": 30, "unit": "g", "name": { "en": "olive oil", "nl": "olijfolie", "es": "aceite de oliva" } },
+      { "id": "i13", "amount": 200, "unit": "g", "name": { "en": "full-fat Greek yogurt", "nl": "volle Griekse yoghurt", "es": "yogur griego entero" } },
+      { "id": "i14", "amount": 1, "unit": "clove", "name": { "en": "garlic, minced", "nl": "knoflookteen, geperst", "es": "diente de ajo, picado" } },
+      { "id": "i15", "amount": 15, "unit": "g", "name": { "en": "lemon juice", "nl": "citroensap", "es": "zumo de limón" } },
+      { "id": "i16", "amount": 2, "unit": "g", "name": { "en": "salt", "nl": "zout", "es": "sal" } }
+    ],
+    "groups": [
+      { "label": { "en": "Polenta fries", "nl": "Polentafrietjes", "es": "Patatas de polenta" }, "ids": ["i1", "i2", "i3", "i4"] },
+      { "label": { "en": "Fritters", "nl": "Fritters", "es": "Tortitas" }, "ids": ["i5", "i6", "i7", "i8", "i9", "i10", "i11", "i12"] },
+      { "label": { "en": "Garlic yogurt dip", "nl": "Knoflookyoghurtdip", "es": "Salsa de yogur con ajo" }, "ids": ["i13", "i14", "i15", "i16"] }
     ],
     "steps": [
       { "title": { "en": "Make polenta slab", "nl": "Polentaplaat maken", "es": "Hacer la plancha de polenta" }, "content": { "en": "Bring {i2} to a boil. Whisk in {i1} and stir constantly for 3–4 minutes until thick. Stir in {i3} and {i4}. Pour into a lightly oiled baking dish to about 2cm thickness. Smooth the top and refrigerate for at least 30 minutes until firm.", "nl": "Breng {i2} aan de kook. Roer {i1} erdoor en blijf 3–4 minuten constant roeren tot dik. Roer {i3} en {i4} erdoor. Giet in een licht ingevette ovenschaal tot ca. 2 cm dikte. Strijk glad en zet minstens 30 minuten in de koelkast.", "es": "Llevar {i2} a ebullición. Incorporar {i1} batiendo y remover constantemente 3–4 minutos hasta que espese. Añadir {i3} y {i4}. Verter en un molde ligeramente engrasado hasta unos 2 cm de grosor. Alisar la superficie y refrigerar al menos 30 minutos." } },

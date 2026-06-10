@@ -601,6 +601,8 @@
     .ing-optional .ing-amount { color: var(--ink-light); font-weight: 400; }
     .ing-optional .ing-name { color: var(--ink-light); font-style: italic; }
     .ing-optional-header { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); opacity: 0.6; padding: 0.8rem 0 0.2rem; }
+    .ing-group-header { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); padding: 1rem 0 0.3rem; border-bottom: none; margin-top: 0.2rem; }
+    .ing-group-header:first-child { padding-top: 0; }
     .steps-list { list-style: none; }
     .step-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; }
     .step-item.optional .step-num { border-style: dashed; opacity: 0.6; }
@@ -1220,6 +1222,26 @@
     all.forEach(i => window._removeItem(i.key));
   }
 
+  // Ingredients to always skip when adding to grocery list
+  const GROCERY_SKIP = new Set(['water', 'salt', 'pepper', 'water', 'zout', 'peper', 'agua', 'sal', 'pimienta']);
+
+  function ingredientSkipped(name) {
+    const n = name.toLowerCase().trim();
+    // Skip if the name starts with or exactly matches a skip word
+    return [...GROCERY_SKIP].some(w => n === w || n.startsWith(w + ',') || n.startsWith(w + ' '));
+  }
+
+  // Normalise an ingredient name to a simple key for matching
+  // Strips descriptors like "fresh", "minced", "drained" etc. and lowercases
+  function normKey(name) {
+    return name.toLowerCase()
+      .replace(/,.*$/, '')           // strip everything after first comma
+      .replace(/\(.*?\)/g, '')       // strip parentheticals
+      .replace(/\b(fresh|dried|frozen|thawed|drained|rinsed|minced|chopped|sliced|grated|ground|toasted|large|medium|small|finely|roughly|coarsely|lightly)\b/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
   function addRecipeToList(recipeId) {
     const r = recipes.find(x => x.id === recipeId);
     if (!r || !window._pushItem) return;
@@ -1230,16 +1252,61 @@
       : (currentServings[recipeId] || r.servings) / r.servings;
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
 
+    // Build list of {name, amount, unit} to add, combining duplicates within the recipe
+    const toAdd = [];
     r.ingredients.forEach(ing => {
-      const scaledAmt = fmtAmt(ing.amount, ratio);
-      const showUnit = ing.unit && !countableUnits.has(ing.unit);
-      const amtStr = showUnit ? `${scaledAmt} ${ing.unit}` : scaledAmt;
       const name = loc(ing.name);
-      const text = showUnit ? `${amtStr} ${name}` : `${scaledAmt} ${name}`;
-      window._pushItem({ text: text.trim(), checked: false, ts: Date.now() });
+      if (ingredientSkipped(name)) return;
+      const scaledAmt = ing.amount * ratio;
+      const unit = ing.unit || '';
+      const key = normKey(name) + '|' + unit;
+      const existing = toAdd.find(x => x.key === key);
+      if (existing) {
+        existing.amount += scaledAmt;
+      } else {
+        toAdd.push({ key, name, amount: scaledAmt, unit });
+      }
     });
 
-    showToast(t('addedToast')(r.ingredients.length));
+    // Now match against existing grocery items and combine or add
+    const existingItems = window._groceryItems || {};
+    let added = 0;
+    let combined = 0;
+
+    toAdd.forEach(({ name, amount, unit }) => {
+      const showUnit = unit && !countableUnits.has(unit);
+      // Try to find a matching existing item
+      const matchKey = normKey(name) + '|' + unit;
+      const existingKey = Object.keys(existingItems).find(k => {
+        const itemText = existingItems[k].text;
+        // Extract name from item text (strip leading amount)
+        const itemName = itemText.replace(/^[\d./\s]+(g|ml|kg|l|tsp|tbsp|cup|clove[s]?)?\s*/i, '');
+        return normKey(itemName) + '|' + unit === matchKey;
+      });
+
+      if (existingKey) {
+        // Parse the existing amount and add to it
+        const existingText = existingItems[existingKey].text;
+        const numMatch = existingText.match(/^([\d.]+)/);
+        const existingAmt = numMatch ? parseFloat(numMatch[1]) : 0;
+        const newAmt = existingAmt + amount;
+        const fmtNew = newAmt >= 10 || Number.isInteger(newAmt) ? Math.round(newAmt) : parseFloat(newAmt.toFixed(1));
+        const newText = showUnit ? `${fmtNew} ${unit} ${name}` : `${fmtNew} ${name}`;
+        window._updateItem(existingKey, { text: newText.trim() });
+        combined++;
+      } else {
+        const fmtAmt = amount >= 10 || Number.isInteger(amount) ? Math.round(amount) : parseFloat(amount.toFixed(1));
+        const text = showUnit ? `${fmtAmt} ${unit} ${name}` : `${fmtAmt} ${name}`;
+        window._pushItem({ text: text.trim(), checked: false, ts: Date.now() });
+        added++;
+      }
+    });
+
+    const total = added + combined;
+    const msg = combined > 0
+      ? t('addedToast')(added) + (combined > 0 ? ` (${combined} combined)` : '')
+      : t('addedToast')(total);
+    showToast(msg);
     openDrawer();
   }
 
@@ -1423,8 +1490,6 @@
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
     const ingMap = buildIngMap(r.ingredients, ratio);
 
-    const requiredIngs = r.ingredients.filter(ing => !ing.optional);
-    const optionalIngs = r.ingredients.filter(ing => ing.optional);
     const renderIng = (ing, isOptional) => {
       const scaledAmt = fmtAmt(ing.amount, ratio);
       const showUnit = ing.unit && !countableUnits.has(ing.unit);
@@ -1432,10 +1497,34 @@
       return `<li class="${isOptional ? 'ing-optional' : ''}"><span class="ing-amount">${amtStr}</span><span class="ing-name">${loc(ing.name)}</span></li>`;
     };
     const optionalLabel = { en: 'Optional', nl: 'Optioneel', es: 'Opcional' };
-    const ingList = [
-      ...requiredIngs.map(ing => renderIng(ing, false)),
-      ...(optionalIngs.length ? [`<li class="ing-optional-header">${optionalLabel[lang] || 'Optional'}</li>`, ...optionalIngs.map(ing => renderIng(ing, true))] : [])
-    ].join('');
+
+    let ingList;
+    if (r.groups && r.groups.length) {
+      // Grouped layout: render each group with a subheader
+      const ingById = Object.fromEntries(r.ingredients.map(i => [i.id, i]));
+      const groupedIds = new Set(r.groups.flatMap(g => g.ids));
+      const ungrouped = r.ingredients.filter(i => !groupedIds.has(i.id));
+      const rows = [];
+      r.groups.forEach(g => {
+        rows.push(`<li class="ing-group-header">${loc(g.label)}</li>`);
+        g.ids.forEach(id => {
+          const ing = ingById[id];
+          if (ing) rows.push(renderIng(ing, !!ing.optional));
+        });
+      });
+      if (ungrouped.length) {
+        ungrouped.forEach(ing => rows.push(renderIng(ing, !!ing.optional)));
+      }
+      ingList = rows.join('');
+    } else {
+      // Flat layout (existing behaviour)
+      const requiredIngs = r.ingredients.filter(ing => !ing.optional);
+      const optionalIngs = r.ingredients.filter(ing => ing.optional);
+      ingList = [
+        ...requiredIngs.map(ing => renderIng(ing, false)),
+        ...(optionalIngs.length ? [`<li class="ing-optional-header">${optionalLabel[lang] || 'Optional'}</li>`, ...optionalIngs.map(ing => renderIng(ing, true))] : [])
+      ].join('');
+    }
 
     const optionalStepLabel = { en: 'optional', nl: 'optioneel', es: 'opcional' };
     const stepList = r.steps.map((s, i) => `
