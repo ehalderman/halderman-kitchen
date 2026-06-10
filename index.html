@@ -566,11 +566,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
       color: var(--ink-light);
       transition: border-color 0.15s, color 0.15s;
       line-height: 1;
       padding: 0;
+      padding-bottom: 1px;
     }
     .servings-ctrl button:hover { border-color: var(--terracotta); color: var(--terracotta); }
     .servings-ctrl span { font-size: 0.9rem; font-weight: 500; min-width: 1.5rem; text-align: center; }
@@ -1273,15 +1275,16 @@
           <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
           <span id="grams-display">${coffeeGrams[r.id]}g</span>
           <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
-          </div>
-        ${r.id === 'aeropress-bypass' ? `
+        </div>
+        ` + (r.id === 'aeropress-bypass' ? `
         <div class="meta-item"><strong>Yield</strong></div>
         <div class="servings-ctrl">
-          <button onclick="changeBypassYield(` + `'${r.id}', -50)">−</button>
+          <button onclick="changeBypassYield('aeropress-bypass', -50)">−</button>
           <span>${Math.round((coffeeGrams[r.id] / 20) * 400)} ml</span>
-          <button onclick="changeBypassYield(` + `'${r.id}', 50)">+</button>
+          <button onclick="changeBypassYield('aeropress-bypass', 50)">+</button>
         </div>
-        <button onclick="resetBypass('${r.id}')" style="font-size:0.75rem;padding:0.25rem 0.7rem;border-radius:20px;border:1.5px solid var(--sage);color:var(--sage);background:none;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='var(--sage)';this.style.color='var(--warm-white)'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">↺ Reset</button>` : ''}
+        <button onclick="resetBypass('aeropress-bypass')" style="font-size:0.75rem;padding:0.25rem 0.7rem;border-radius:20px;border:1.5px solid var(--sage);color:var(--sage);background:none;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='var(--sage)';this.style.color='var(--warm-white)'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">↺ Reset</button>
+        ` : '') + `
         ` : `
         <div class="meta-item"><strong>${t('servings')}</strong></div>
         <div class="servings-ctrl">
