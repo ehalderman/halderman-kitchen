@@ -63,20 +63,10 @@
       z-index: 100;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-end;
       gap: 1rem;
       height: 64px;
     }
-    .header-brand {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 500;
-      color: var(--ink);
-      white-space: nowrap;
-      flex-shrink: 0;
-      cursor: pointer;
-    }
-    .header-brand span { color: var(--terracotta); font-style: italic; }
 
     /* HEADER RIGHT */
     .header-right {
@@ -172,7 +162,7 @@
     .lang-option:hover { background: var(--cream); }
 
     /* SEARCH */
-    .search-wrap { flex: 1; max-width: 360px; position: relative; }
+    .search-wrap { flex: 1; max-width: 480px; position: relative; }
     .search-wrap input {
       width: 100%;
       padding: 0.5rem 1rem 0.5rem 2.4rem;
@@ -482,62 +472,140 @@
     .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
     /* LAYOUT */
-    .layout { display: flex; min-height: calc(100vh - 64px); }
-    aside {
-      width: 220px;
-      flex-shrink: 0;
-      padding: 2rem 1.2rem;
-      border-right: 1px solid var(--border);
-      background: var(--warm-white);
-      position: sticky;
-      top: 64px;
-      height: calc(100vh - 64px);
-      overflow-y: auto;
+    .layout { display: block; min-height: calc(100vh - 64px); }
+
+    /* MAIN */
+    main { padding: 2rem; max-width: 960px; margin: 0 auto; }
+
+    /* TOOLBAR */
+    .list-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
     }
-    .filter-label {
-      font-size: 0.7rem;
+    .toolbar-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ink-light);
-      margin-bottom: 0.6rem;
-      margin-top: 1.4rem;
+      color: var(--ink);
+      white-space: nowrap;
+      cursor: pointer;
+      flex-shrink: 0;
     }
-    .filter-label:first-child { margin-top: 0; }
-    .filter-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 0.4rem 0.6rem;
-      border: none;
+    .toolbar-brand span { color: var(--terracotta); font-style: italic; }
+    .results-info {
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      white-space: nowrap;
+    }
+    .toolbar-filters {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    /* FILTER DROPDOWNS */
+    .filter-dropdown {
+      position: relative;
+    }
+    .filter-dropdown-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.38rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
       background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.84rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .filter-dropdown-btn:hover { border-color: var(--ink-light); color: var(--ink); }
+    .filter-dropdown-btn.active {
+      background: var(--terracotta-light);
+      border-color: var(--terracotta-text);
+      color: var(--terracotta-text);
+      font-weight: 500;
+    }
+    .filter-dropdown-btn svg { flex-shrink: 0; transition: transform 0.2s; }
+    .filter-dropdown-btn[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .filter-dropdown-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(16,16,48,0.10);
+      z-index: 200;
+      min-width: 180px;
+      max-height: 320px;
+      overflow-y: auto;
+      padding: 0.4rem;
+    }
+    .filter-dropdown-panel.open { display: block; }
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.45rem 0.65rem;
+      border-radius: 6px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.88rem;
       color: var(--ink-light);
       cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.15s, color 0.15s;
-      margin-bottom: 0.1rem;
+      transition: background 0.12s;
+      user-select: none;
     }
-    .filter-btn:hover { background: var(--cream); color: var(--ink); }
-    .filter-btn.active { background: var(--terracotta-light); color: var(--terracotta-text); font-weight: 500; }
-    .tag-pill {
-      display: inline-block;
-      padding: 0.2rem 0.6rem;
+    .filter-option:hover { background: var(--cream); color: var(--ink); }
+    .filter-option.selected { color: var(--ink); font-weight: 500; }
+    .filter-option-check {
+      width: 15px;
+      height: 15px;
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .filter-option.selected .filter-option-check {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+    .filter-option.selected .filter-option-check::after {
+      content: '';
+      width: 8px;
+      height: 5px;
+      border-left: 1.5px solid white;
+      border-bottom: 1.5px solid white;
+      transform: rotate(-45deg) translate(1px, -1px);
+      display: block;
+    }
+    .clear-filters-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.38rem 0.75rem;
+      border: 1.5px solid var(--border);
       border-radius: 20px;
-      font-size: 0.78rem;
-      border: 1px solid var(--border);
-      margin: 0.2rem 0.15rem;
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
       color: var(--ink-light);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: border-color 0.15s, color 0.15s;
     }
-    .tag-pill:hover { background: var(--cream); }
-    .tag-pill.active { background: var(--sage-light); border-color: var(--sage); color: var(--sage); }
-
-    /* MAIN */
-    main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; }
-    .results-info { font-size: 0.82rem; color: var(--ink-light); margin-bottom: 1.5rem; }
+    .clear-filters-btn:hover { border-color: var(--ink-light); color: var(--ink); }
 
     /* GRID */
     .recipe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; }
@@ -655,103 +723,20 @@
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      aside { display: none; }
-      main { padding: 1.2rem; }
+      main { padding: 1rem; }
+      .list-toolbar { gap: 0.6rem; }
+      .toolbar-brand { font-size: 1.15rem; }
+      .toolbar-filters { margin-left: 0; }
       .detail-body { grid-template-columns: 1fr; gap: 2rem; }
       .detail-title { font-size: 2rem; }
       header { padding: 0 1rem; }
-      .header-brand { font-size: 1.2rem; }
       .grocery-drawer { width: 100vw; }
     }
 
-    /* MOBILE FILTER BUTTON */
-    .mobile-filter-btn {
-      display: none;
-    }
-    @media (max-width: 768px) {
-      .mobile-filter-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        padding: 0.4rem 0.85rem;
-        border: 1.5px solid var(--border);
-        border-radius: 20px;
-        background: none;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 0.82rem;
-        color: var(--ink-light);
-        cursor: pointer;
-        margin-bottom: 1rem;
-        transition: border-color 0.15s, color 0.15s, background 0.15s;
-      }
-      .mobile-filter-btn:hover { border-color: var(--terracotta-text); color: var(--terracotta-text); }
-      .mobile-filter-btn.active { background: var(--terracotta-light); border-color: var(--terracotta); color: var(--terracotta-text); font-weight: 500; }
-    }
 
-    /* MOBILE FILTER SHEET */
-    .filter-sheet-backdrop {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(16,16,48,0.3);
-      z-index: 400;
-      backdrop-filter: blur(2px);
-    }
-    .filter-sheet-backdrop.open { display: block; }
-    .filter-sheet {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--warm-white);
-      border-radius: 16px 16px 0 0;
-      border-top: 1px solid var(--border);
-      z-index: 401;
-      padding: 1.4rem 1.4rem 2rem;
-      transform: translateY(100%);
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      max-height: 70vh;
-      overflow-y: auto;
-    }
-    .filter-sheet.open { transform: translateY(0); }
-    .filter-sheet-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-    }
-    .filter-sheet-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--ink);
-    }
-    .filter-sheet-close {
-      background: none;
-      border: none;
-      cursor: pointer;
-      color: var(--ink-light);
-      font-size: 1.2rem;
-      padding: 4px;
-      line-height: 1;
-    }
     @media (max-width: 480px) { .recipe-grid { grid-template-columns: 1fr; } }
 
 
-    .clear-filters-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 0.4rem 0.6rem;
-      border: 1px dashed var(--terracotta-text);
-      background: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.82rem;
-      color: var(--terracotta-text);
-      cursor: pointer;
-      border-radius: 4px;
-      margin-top: 0.8rem;
-      transition: background 0.15s;
-    }
-    .clear-filters-btn:hover { background: var(--terracotta-light); }
 
 
     .skip-link {
@@ -788,43 +773,21 @@
       transition: opacity 0.15s, background 0.15s;
     }
     .cook-mode-btn:hover { opacity: 0.82; }
-    .cook-mode-btn.active {
-      background: var(--sage);
-    }
-    /* Focus mode: hide everything except steps */
+    .cook-mode-btn.active { background: var(--sage); }
     #detail-view.cook-focus .back-btn { display: none; }
     #detail-view.cook-focus .detail-category { display: none; }
     #detail-view.cook-focus .detail-title { display: none; }
     #detail-view.cook-focus .detail-desc { display: none; }
     #detail-view.cook-focus .detail-meta { display: none; }
     #detail-view.cook-focus .ingredients-box { display: none; }
-    #detail-view.cook-focus .detail-body {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
+    #detail-view.cook-focus .detail-body { grid-template-columns: 1fr; gap: 0; }
     #detail-view.cook-focus .steps-box h2 { display: none; }
-    #detail-view.cook-focus .step-content p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-    }
-    #detail-view.cook-focus .step-content h3 {
-      font-size: 1.2rem;
-    }
-    #detail-view.cook-focus .step-item {
-      margin-bottom: 2.2rem;
-      padding-bottom: 2.2rem;
-      border-bottom: 1px solid var(--border);
-    }
-    #detail-view.cook-focus .step-item:last-child {
-      border-bottom: none;
-    }
-    #detail-view.cook-focus .notes-box {
-      margin-top: 1rem;
-    }
-    /* Sticky exit bar at top when in focus mode */
-    .cook-focus-bar {
-      display: none;
-    }
+    #detail-view.cook-focus .step-content p { font-size: 1.05rem; line-height: 1.75; }
+    #detail-view.cook-focus .step-content h3 { font-size: 1.2rem; }
+    #detail-view.cook-focus .step-item { margin-bottom: 2.2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--border); }
+    #detail-view.cook-focus .step-item:last-child { border-bottom: none; }
+    #detail-view.cook-focus .notes-box { margin-top: 1rem; }
+    .cook-focus-bar { display: none; }
     #detail-view.cook-focus .cook-focus-bar {
       display: flex;
       align-items: center;
@@ -897,8 +860,6 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="app">
   <header>
-    <div class="header-brand" onclick="showList()">VinWin <span>Kitchen</span></div>
-
     <div class="search-wrap" onclick="openSearch()">
       <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
@@ -966,38 +927,44 @@
     </div>
   </div>
 
-  <!-- MOBILE FILTER SHEET -->
-  <div class="filter-sheet-backdrop" id="filter-sheet-backdrop" onclick="closeFilterSheet()"></div>
-  <div class="filter-sheet" id="filter-sheet" role="dialog" aria-modal="true" aria-labelledby="filter-sheet-title">
-    <div class="filter-sheet-header">
-      <span class="filter-sheet-title" id="filter-sheet-title">Filter</span>
-      <button class="filter-sheet-close" onclick="closeFilterSheet()">✕</button>
-    </div>
-    <div class="filter-label" id="filter-sheet-label-category">Category</div>
-    <div id="filter-sheet-category-filters"></div>
-    <div class="filter-label" id="filter-sheet-label-tags">Tags</div>
-    <div id="filter-sheet-tag-filters"></div>
-  </div>
+
+
 
 
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
   <div class="layout">
-    <aside id="sidebar">
-      <div class="filter-label" id="label-category">Category</div>
-      <div id="category-filters"></div>
-      <div class="filter-label" id="label-tags">Tags</div>
-      <div id="tag-filters"></div>
-    </aside>
-
     <main id="main-content">
       <div id="list-view">
-        <p class="results-info" id="results-info"></p>
-        <button class="mobile-filter-btn" id="mobile-filter-btn" onclick="openFilterSheet()">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-          <span id="mobile-filter-label">Filter</span>
-        </button>
+        <div class="list-toolbar" id="list-toolbar">
+          <div class="toolbar-brand" onclick="showList()">VinWin <span>Kitchen</span></div>
+          <span class="results-info" id="results-info"></span>
+          <div class="toolbar-filters" id="toolbar-filters">
+            <!-- Category dropdown -->
+            <div class="filter-dropdown" id="cat-dropdown-wrap">
+              <button class="filter-dropdown-btn" id="cat-dropdown-btn" onclick="toggleDropdown('cat')" aria-haspopup="listbox" aria-expanded="false">
+                <span id="cat-dropdown-label">Category</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="filter-dropdown-panel" id="cat-dropdown-panel" role="listbox" aria-multiselectable="true">
+                <div id="cat-options"></div>
+              </div>
+            </div>
+            <!-- Tags dropdown -->
+            <div class="filter-dropdown" id="tag-dropdown-wrap">
+              <button class="filter-dropdown-btn" id="tag-dropdown-btn" onclick="toggleDropdown('tag')" aria-haspopup="listbox" aria-expanded="false">
+                <span id="tag-dropdown-label">Tags</span>
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="filter-dropdown-panel" id="tag-dropdown-panel" role="listbox" aria-multiselectable="true">
+                <div id="tag-options"></div>
+              </div>
+            </div>
+            <button class="clear-filters-btn" id="clear-filters-btn" onclick="clearAllFilters()" style="display:none">✕ Clear</button>
+          </div>
+        </div>
+
         <div class="recipe-grid" id="recipe-grid"></div>
         <div class="empty-state" id="empty-state" style="display:none">
           <h3 id="empty-title">Nothing found</h3>
@@ -1218,6 +1185,10 @@
     if (switcher && !switcher.contains(e.target)) {
       document.getElementById('lang-dropdown').classList.remove('open');
     }
+    // Close filter dropdowns when clicking outside
+    if (!e.target.closest('.filter-dropdown')) {
+      closeAllDropdowns();
+    }
   });
 
   function setLang(newLang) {
@@ -1244,8 +1215,6 @@
     document.getElementById('search-input').placeholder = t('searchPlaceholder');
     document.getElementById('search-overlay-input').placeholder = t('searchPlaceholder');
     document.getElementById('cancel-btn').textContent = t('cancel');
-    document.getElementById('label-category').textContent = t('category');
-    document.getElementById('label-tags').textContent = t('tags');
     document.getElementById('back-label').textContent = t('backLabel');
     document.getElementById('empty-title').textContent = t('emptyTitle');
     document.getElementById('empty-sub').textContent = t('emptySub');
@@ -1255,13 +1224,7 @@
     document.getElementById('btn-clear-checked').textContent = t('clearChecked');
     document.getElementById('btn-clear-all').textContent = t('clearAll');
     document.getElementById('btn-undo').textContent = t('undo');
-    // mobile-filter-label now updated in buildFilters
-    const sheetTitle = document.getElementById('filter-sheet-title');
-    if (sheetTitle) sheetTitle.textContent = t('filter');
-    const sheetCatLabel = document.getElementById('filter-sheet-label-category');
-    if (sheetCatLabel) sheetCatLabel.textContent = t('category');
-    const sheetTagLabel = document.getElementById('filter-sheet-label-tags');
-    if (sheetTagLabel) sheetTagLabel.textContent = t('tags');
+    // Dropdown labels re-rendered by buildFilters
   }
 
   function loc(field) {
@@ -1563,48 +1526,56 @@
 
   function buildFilters() {
     const allLabel = t('all');
-    // Merge single-recipe Desserts into Baking for display
+    // Merge Desserts into Baking for display
     const rawCategories = [...new Set(recipes.map(r => loc(r.category)))];
-    const categories = [allLabel, ...rawCategories.filter(c => c !== loc({en:'Desserts',nl:'Desserts',es:'Postres'}))];
+    const categories = rawCategories.filter(c => c !== loc({en:'Desserts',nl:'Desserts',es:'Postres'}));
     const tags = [...new Set(recipes.flatMap(r => r.tags))];
     const hasActiveFilter = activeCategory !== 'All' || activeTags.size > 0;
 
-    const clearPill = hasActiveFilter ? `<button class="clear-filters-btn" onclick="clearAllFilters()">✕ Clear filters</button>` : '';
-    const categoryHTML = categories.map(c => {
-      const isAll = c === allLabel;
-      const active = isAll ? (activeCategory === 'All') : (loc(recipes.find(r => loc(r.category) === c)?.category) === activeCategory || c === activeCategory);
-      return `<button class="filter-btn ${active ? 'active' : ''}" onclick="setCategory('${c}')">${c}</button>`;
-    }).join('');
-
-    const tagHTML = tags.map(tg =>
-      `<span class="tag-pill ${activeTags.has(tg) ? 'active' : ''}" onclick="toggleTag('${tg}')">${tg}</span>`
-    ).join('');
-
-    document.getElementById('category-filters').innerHTML = categoryHTML;
-    document.getElementById('tag-filters').innerHTML = tagHTML + clearPill;
-
-    // Also populate mobile sheet
-    const sheetCatHTML = categories.map(c => {
-      const isAll = c === allLabel;
-      const active = isAll ? (activeCategory === 'All') : (loc(recipes.find(r => loc(r.category) === c)?.category) === activeCategory || c === activeCategory);
-      return `<button class="filter-btn ${active ? 'active' : ''}" onclick="setCategory('${c}');closeFilterSheet()">${c}</button>`;
-    }).join('');
-    const sheetTagHTML = tags.map(tg =>
-      `<span class="tag-pill ${activeTags.has(tg) ? 'active' : ''}" onclick="toggleTag('${tg}')">${tg}</span>`
-    ).join('');
-    const sheetCat = document.getElementById('filter-sheet-category-filters');
-    const sheetTag = document.getElementById('filter-sheet-tag-filters');
-    if (sheetCat) sheetCat.innerHTML = sheetCatHTML;
-    if (sheetTag) sheetTag.innerHTML = sheetTagHTML + clearPill;
-
-    // Update mobile filter button active state + count
-    const mobileBtn = document.getElementById('mobile-filter-btn');
-    if (mobileBtn) {
-      const activeCount = (activeCategory !== 'All' ? 1 : 0) + activeTags.size;
-      mobileBtn.classList.toggle('active', hasActiveFilter);
-      const mobileLabel = document.getElementById('mobile-filter-label');
-      if (mobileLabel) mobileLabel.textContent = hasActiveFilter ? t('filter') + ' (' + activeCount + ')' : t('filter');
+    // Category options (no "All" option — deselecting all = All)
+    const catOptionsEl = document.getElementById('cat-options');
+    if (catOptionsEl) {
+      catOptionsEl.innerHTML = categories.map(c => {
+        const sel = (loc(recipes.find(r => loc(r.category) === c)?.category) === activeCategory || c === activeCategory);
+        return `<div class="filter-option ${sel ? 'selected' : ''}" onclick="toggleCategory('${c.replace(/'/g,"\'")}')" role="option" aria-selected="${sel}">
+          <span class="filter-option-check"></span>${c}
+        </div>`;
+      }).join('');
     }
+
+    // Tag options
+    const tagOptionsEl = document.getElementById('tag-options');
+    if (tagOptionsEl) {
+      tagOptionsEl.innerHTML = tags.map(tg => {
+        const sel = activeTags.has(tg);
+        return `<div class="filter-option ${sel ? 'selected' : ''}" onclick="toggleTag('${tg}')" role="option" aria-selected="${sel}">
+          <span class="filter-option-check"></span>${tg}
+        </div>`;
+      }).join('');
+    }
+
+    // Update category button label
+    const catBtn = document.getElementById('cat-dropdown-btn');
+    const catLabel = document.getElementById('cat-dropdown-label');
+    if (catBtn && catLabel) {
+      const activeCats = activeCategory === 'All' ? [] : [activeCategory];
+      catLabel.textContent = activeCats.length ? activeCats[0] : t('category');
+      catBtn.classList.toggle('active', activeCats.length > 0);
+      catBtn.setAttribute('aria-expanded', document.getElementById('cat-dropdown-panel')?.classList.contains('open') ? 'true' : 'false');
+    }
+
+    // Update tag button label
+    const tagBtn = document.getElementById('tag-dropdown-btn');
+    const tagLabel = document.getElementById('tag-dropdown-label');
+    if (tagBtn && tagLabel) {
+      tagLabel.textContent = activeTags.size ? (activeTags.size === 1 ? [...activeTags][0] : activeTags.size + ' tags') : t('tags');
+      tagBtn.classList.toggle('active', activeTags.size > 0);
+      tagBtn.setAttribute('aria-expanded', document.getElementById('tag-dropdown-panel')?.classList.contains('open') ? 'true' : 'false');
+    }
+
+    // Show/hide clear button
+    const clearBtn = document.getElementById('clear-filters-btn');
+    if (clearBtn) clearBtn.style.display = hasActiveFilter ? 'inline-flex' : 'none';
   }
 
 
@@ -1615,10 +1586,42 @@
     renderList();
   }
 
+  function toggleCategory(cat) {
+    // Clicking the already-active category deselects it (back to All)
+    if (activeCategory === cat) {
+      activeCategory = 'All';
+    } else {
+      activeCategory = cat;
+    }
+    buildFilters();
+    renderList();
+  }
+
+  // Keep setCategory as alias for any remaining references
   function setCategory(cat) {
     activeCategory = cat === t('all') ? 'All' : cat;
     buildFilters();
     renderList();
+  }
+
+  function toggleDropdown(which) {
+    const panelId = which + '-dropdown-panel';
+    const btnId = which + '-dropdown-btn';
+    const panel = document.getElementById(panelId);
+    const btn = document.getElementById(btnId);
+    const isOpen = panel.classList.contains('open');
+    // Close all first
+    document.querySelectorAll('.filter-dropdown-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.filter-dropdown-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    if (!isOpen) {
+      panel.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeAllDropdowns() {
+    document.querySelectorAll('.filter-dropdown-panel').forEach(p => p.classList.remove('open'));
+    document.querySelectorAll('.filter-dropdown-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
   }
 
   function toggleTag(tag) {
@@ -1814,7 +1817,7 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
             Cook
           </button>
-        <button class="share-btn" data-recipe-id="${r.id}" data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
+        <button class="share-btn" data-recipe-id="${r.id}"  data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
             <polyline points="16 6 12 2 8 6"/>
@@ -2000,15 +2003,7 @@
     renderList();
   }
 
-  function openFilterSheet() {
-    document.getElementById('filter-sheet').classList.add('open');
-    document.getElementById('filter-sheet-backdrop').classList.add('open');
-  }
 
-  function closeFilterSheet() {
-    document.getElementById('filter-sheet').classList.remove('open');
-    document.getElementById('filter-sheet-backdrop').classList.remove('open');
-  }
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
@@ -2018,10 +2013,11 @@
     }
     if (e.key !== 'Escape') return;
     if (document.getElementById('search-overlay').classList.contains('active')) { closeSearch(); return; }
-    if (document.getElementById('filter-sheet').classList.contains('open')) { closeFilterSheet(); return; }
+    if (document.querySelector('.filter-dropdown-panel.open')) { closeAllDropdowns(); return; }
     if (document.getElementById('grocery-drawer').classList.contains('open')) { closeDrawer(); return; }
     if (document.getElementById('detail-view').style.display !== 'none') { history.back(); return; }
   });
+
 
 
 
@@ -2034,10 +2030,8 @@
     const btn = document.getElementById('cook-mode-btn');
     const active = detail.classList.toggle('cook-focus');
     if (btn) btn.classList.toggle('active', active);
-
     if (active) {
       window.scrollTo(0, 0);
-      // Wake lock: keep screen on while cooking
       if ('wakeLock' in navigator) {
         try { _wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
       }
@@ -2046,7 +2040,6 @@
     }
   }
 
-  // Re-acquire wake lock on tab return while in focus mode
   document.addEventListener('visibilitychange', async () => {
     if (document.visibilityState === 'visible' && _wakeLock === null) {
       const detail = document.getElementById('detail-view');
