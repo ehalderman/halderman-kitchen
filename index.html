@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="VinWin Kitchen — a personal recipe collection by Erwin & Vincent. Mostly vegan and vegetarian, always delicious." />
+  <meta property="og:title" content="VinWin Kitchen" />
+  <meta property="og:description" content="A personal recipe collection by Erwin & Vincent. Mostly vegan and vegetarian, always delicious." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.halderman.eu" />
+  <meta property="og:image" content="https://www.halderman.eu/apple-touch-icon.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="VinWin Kitchen" />
+  <meta name="twitter:description" content="A personal recipe collection by Erwin & Vincent. Mostly vegan and vegetarian, always delicious." />
+  <meta name="twitter:image" content="https://www.halderman.eu/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#FFFFF5">
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
@@ -379,6 +390,9 @@
     }
     .grocery-item:hover .grocery-item-delete { opacity: 0.5; }
     .grocery-item-delete:hover { opacity: 1 !important; color: #c0392b; }
+    @media (hover: none) {
+      .grocery-item-delete { opacity: 0.35; }
+    }
 
     /* DRAWER FOOTER */
     .drawer-footer {
@@ -510,7 +524,7 @@
     .tag-pill.active { background: var(--sage-light); border-color: var(--sage); color: var(--sage); }
 
     /* MAIN */
-    main { flex: 1; padding: 2rem; max-width: 900px; }
+    main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; }
     .results-info { font-size: 0.82rem; color: var(--ink-light); margin-bottom: 1.5rem; }
 
     /* GRID */
@@ -530,7 +544,7 @@
     }
     .card-category { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.5rem; }
     .card-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 600; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; }
-    .card-desc { font-size: 0.83rem; color: var(--ink-light); line-height: 1.5; margin-bottom: 0.9rem; }
+    .card-desc { font-size: 0.83rem; color: var(--ink-light); line-height: 1.5; margin-bottom: 0.9rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
     .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
     .card-tag { font-size: 0.7rem; padding: 0.15rem 0.45rem; border-radius: 20px; border: 1px solid var(--border); color: var(--ink-light); }
 
@@ -699,7 +713,26 @@
     }
     @media (max-width: 480px) { .recipe-grid { grid-template-columns: 1fr; } }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    /* SKELETON LOADING */
+    @keyframes shimmer {
+      0% { background-position: -600px 0; }
+      100% { background-position: 600px 0; }
+    }
+    .skeleton {
+      background: linear-gradient(90deg, var(--border) 25%, var(--warm-white) 50%, var(--border) 75%);
+      background-size: 600px 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 4px;
+    }
+    .skeleton-card {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem;
+    }
+    .skeleton-line { height: 12px; margin-bottom: 0.6rem; }
+    .skeleton-title { height: 22px; width: 75%; margin-bottom: 0.8rem; }
+    .skeleton-tag { height: 20px; width: 48px; border-radius: 20px; display: inline-block; margin-right: 0.3rem; }
     .recipe-card { animation: fadeUp 0.3s ease both; }
     .recipe-card:nth-child(2) { animation-delay: 0.04s; }
     .recipe-card:nth-child(3) { animation-delay: 0.08s; }
@@ -827,7 +860,7 @@
       </div>
 
       <div id="detail-view">
-        <button class="back-btn" onclick="showList()">
+        <button class="back-btn" onclick="history.back()">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M19 12H5M12 5l-7 7 7 7"/>
           </svg>
@@ -874,9 +907,15 @@
   let recipes = [];
   let activeCategory = 'All';
   let activeTags = new Set();
-  let currentServings = {};
-  let coffeeGrams = {};
-  let lang = 'en';
+  let currentServings = JSON.parse(sessionStorage.getItem('vw-servings') || '{}');
+  let coffeeGrams = JSON.parse(sessionStorage.getItem('vw-coffee') || '{}');
+  let lang = localStorage.getItem('vw-lang') || 'en';
+  document.documentElement.lang = lang;
+  // Apply persisted language to flag button immediately
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('lang-current-btn');
+    if (btn && lang !== 'en') btn.textContent = { nl: '🇳🇱', es: '🇪🇸' }[lang] || '🇬🇧';
+  });
 
   // Grocery state (populated by Firebase listener)
   window._groceryItems = {};
@@ -908,6 +947,7 @@
       clearAll: 'Clear all',
       addToList: 'Add to grocery list',
       undo: 'Undo',
+      filter: 'Filter',
       addedToast: (n) => `${n} ingredient${n === 1 ? '' : 's'} added to list`,
     },
     nl: {
@@ -935,6 +975,7 @@
       clearAll: 'Alles verwijderen',
       addToList: 'Toevoegen aan boodschappenlijst',
       undo: 'Ongedaan',
+      filter: 'Filter',
       addedToast: (n) => `${n} ingrediënt${n === 1 ? '' : 'en'} toegevoegd`,
     },
     es: {
@@ -962,6 +1003,7 @@
       clearAll: 'Borrar todo',
       addToList: 'Añadir a la lista',
       undo: 'Deshacer',
+      filter: 'Filtrar',
       addedToast: (n) => `${n} ingrediente${n === 1 ? '' : 's'} añadido${n === 1 ? '' : 's'}`,
     }
   };
@@ -989,6 +1031,7 @@
 
   function setLang(newLang) {
     lang = newLang;
+    localStorage.setItem('vw-lang', lang);
     document.documentElement.lang = lang;
     const btn = document.getElementById('lang-current-btn');
     if (btn) btn.textContent = LANG_FLAGS[lang] || '🇬🇧';
@@ -1022,9 +1065,9 @@
     document.getElementById('btn-clear-all').textContent = t('clearAll');
     document.getElementById('btn-undo').textContent = t('undo');
     const mobileLabel = document.getElementById('mobile-filter-label');
-    if (mobileLabel) mobileLabel.textContent = t('category');
+    if (mobileLabel) mobileLabel.textContent = t('filter');
     const sheetTitle = document.getElementById('filter-sheet-title');
-    if (sheetTitle) sheetTitle.textContent = t('category');
+    if (sheetTitle) sheetTitle.textContent = t('filter');
     const sheetCatLabel = document.getElementById('filter-sheet-label-category');
     if (sheetCatLabel) sheetCatLabel.textContent = t('category');
     const sheetTagLabel = document.getElementById('filter-sheet-label-tags');
@@ -1212,12 +1255,34 @@
   // ── RECIPES ────────────────────────────────────────────────────
 
   async function loadRecipes() {
+    // Show skeleton cards while loading
+    const grid = document.getElementById('recipe-grid');
+    grid.innerHTML = Array(6).fill(0).map(() => `
+      <div class="skeleton-card">
+        <div class="skeleton skeleton-line" style="width:40%;margin-bottom:0.8rem"></div>
+        <div class="skeleton skeleton-title"></div>
+        <div class="skeleton skeleton-line" style="width:100%"></div>
+        <div class="skeleton skeleton-line" style="width:85%"></div>
+        <div class="skeleton skeleton-line" style="width:60%;margin-bottom:0.9rem"></div>
+        <div><span class="skeleton skeleton-tag"></span><span class="skeleton skeleton-tag"></span></div>
+      </div>`).join('');
     try {
-      const res = await fetch(RECIPE_FILE + '?v=' + Date.now());
+      // Use Last-Modified header as cache key — auto-updates when recipes.json changes,
+      // but doesn't bypass cache on every load like Date.now() does
+      let url = RECIPE_FILE;
+      try {
+        const head = await fetch(RECIPE_FILE, { method: 'HEAD' });
+        const lm = head.headers.get('last-modified');
+        if (lm) url = RECIPE_FILE + '?v=' + encodeURIComponent(lm);
+      } catch(_) {}
+      const res = await fetch(url);
       recipes = await res.json();
       buildFilters();
       renderList();
-    } catch(e) { console.error('Could not load recipes.json', e); }
+    } catch(e) {
+      console.error('Could not load recipes.json', e);
+      grid.innerHTML = '<p style="color:var(--ink-light);padding:2rem">Could not load recipes.</p>';
+    }
   }
 
   function buildFilters() {
@@ -1436,6 +1501,7 @@
     const r = recipes.find(x => x.id === id);
     if (!r) return;
     currentServings[id] = Math.max(1, (currentServings[id] || r.servings) + delta);
+    sessionStorage.setItem('vw-servings', JSON.stringify(currentServings));
     renderDetail(r);
   }
 
@@ -1445,6 +1511,7 @@
     const baseGrams = id === 'aeropress-bypass' ? 20 : 11;
     if (coffeeGrams[id] === undefined) coffeeGrams[id] = baseGrams;
     coffeeGrams[id] = Math.max(id === 'aeropress-bypass' ? 10 : 5, coffeeGrams[id] + delta);
+    sessionStorage.setItem('vw-coffee', JSON.stringify(coffeeGrams));
     renderDetail(r);
   }
 
@@ -1454,6 +1521,7 @@
     const currentYield = Math.round((coffeeGrams[id] / 20) * 400);
     const newYield = Math.max(200, currentYield + delta);
     coffeeGrams[id] = Math.max(10, Math.round((newYield / 400) * 20));
+    sessionStorage.setItem('vw-coffee', JSON.stringify(coffeeGrams));
     renderDetail(r);
   }
 
@@ -1461,6 +1529,7 @@
     const r = recipes.find(x => x.id === id);
     if (!r) return;
     coffeeGrams[id] = 20;
+    sessionStorage.setItem('vw-coffee', JSON.stringify(coffeeGrams));
     renderDetail(r);
   }
 
@@ -1510,6 +1579,8 @@
       }
     }, { passive: true });
   })();
+
+  function openSearch() {
     if (window.innerWidth <= 768) {
       document.getElementById('search-overlay').classList.add('active');
       setTimeout(() => document.getElementById('search-overlay-input').focus(), 50);
@@ -1547,24 +1618,14 @@
     document.getElementById('filter-sheet-backdrop').classList.remove('open');
   }
 
-  // ── SWIPE BACK GESTURE ─────────────────────────────────────────
-  (function() {
-    let touchStartX = 0;
-    let touchStartY = 0;
-    document.addEventListener('touchstart', (e) => {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    document.addEventListener('touchend', (e) => {
-      const dx = e.changedTouches[0].clientX - touchStartX;
-      const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
-      const detailVisible = document.getElementById('detail-view').style.display !== 'none';
-      // Swipe right (back): started within 40px of left edge, moved 80px+ right, not a vertical scroll
-      if (detailVisible && touchStartX < 40 && dx > 80 && dy < 60) {
-        showList();
-      }
-    }, { passive: true });
-  })();
+  // Escape key: close overlays or navigate back
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (document.getElementById('search-overlay').classList.contains('active')) { closeSearch(); return; }
+    if (document.getElementById('filter-sheet').classList.contains('open')) { closeFilterSheet(); return; }
+    if (document.getElementById('grocery-drawer').classList.contains('open')) { closeDrawer(); return; }
+    if (document.getElementById('detail-view').style.display !== 'none') { history.back(); return; }
+  });
 
   loadRecipes();
 </script>

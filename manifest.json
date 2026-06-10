@@ -1,0 +1,21 @@
+{
+  "name": "VinWin Kitchen",
+  "short_name": "VinWin",
+  "description": "A personal recipe collection by Erwin & Vincent.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFF5",
+  "theme_color": "#FFFFF5",
+  "icons": [
+    {
+      "src": "favicon-64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
