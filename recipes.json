@@ -545,7 +545,7 @@
     "id": "bircher-muesli",
     "category": { "en": "Breakfast", "nl": "Ontbijt", "es": "Desayuno" },
     "tags": ["vegetarian", "quick"],
-    "servings": 1,
+    "servings": 3,
     "title": { "en": "Bircher Muesli", "nl": "Bircher Muesli", "es": "Muesli Bircher" },
     "description": {
       "en": "Overnight oats soaked in water kefir — creamy, filling, and ready to grab from the fridge in the morning.",
