@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="VinWin Kitchen — a personal recipe collection by Erwin & Vincent. Mostly vegan and vegetarian, always delicious." />
   <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
   <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
@@ -19,7 +20,7 @@
       --terracotta-light: #F0E890;
       --sage: #2A6B3A;
       --sage-light: #C8E0CC;
-      --gold: #2A6B3A;
+      --gold: #8B6914;
       --border: #D8D890;
     }
 
@@ -587,7 +588,7 @@
     .ing-optional .ing-name { color: var(--ink-light); font-style: italic; }
     .ing-optional-header { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); opacity: 0.6; padding: 0.8rem 0 0.2rem; }
     .steps-list { list-style: none; }
-    .step-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; cursor: pointer; }
+    .step-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; }
     .step-item.optional .step-num { border-style: dashed; opacity: 0.6; }
     .step-item.optional .step-content h3 { color: var(--ink-light); font-weight: 500; }
     .step-item.optional .step-content p { opacity: 0.7; }
@@ -605,13 +606,9 @@
       color: var(--ink-light);
       flex-shrink: 0;
       margin-top: 0.1rem;
-      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
-    .step-item.done .step-num { background: var(--sage-light); border-color: var(--sage); color: var(--sage); }
     .step-content h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.3rem; }
     .step-content p { font-size: 0.9rem; color: var(--ink-light); line-height: 1.6; }
-    .step-item.done .step-content h3,
-    .step-item.done .step-content p { opacity: 0.4; text-decoration: line-through; text-decoration-color: var(--sage); }
     .ing-inline { color: var(--terracotta); font-weight: 500; }
     .notes-box { margin-top: 2.5rem; padding: 1.4rem; background: var(--warm-white); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 4px; }
     .notes-box h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
@@ -630,6 +627,76 @@
       .header-brand { font-size: 1.2rem; }
       .grocery-drawer { width: 100vw; }
     }
+
+    /* MOBILE FILTER BUTTON */
+    .mobile-filter-btn {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .mobile-filter-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.4rem 0.85rem;
+        border: 1.5px solid var(--border);
+        border-radius: 20px;
+        background: none;
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.82rem;
+        color: var(--ink-light);
+        cursor: pointer;
+        margin-bottom: 1rem;
+        transition: border-color 0.15s, color 0.15s, background 0.15s;
+      }
+      .mobile-filter-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
+      .mobile-filter-btn.active { background: var(--terracotta-light); border-color: var(--terracotta); color: var(--ink); font-weight: 500; }
+    }
+
+    /* MOBILE FILTER SHEET */
+    .filter-sheet-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(16,16,48,0.3);
+      z-index: 400;
+      backdrop-filter: blur(2px);
+    }
+    .filter-sheet-backdrop.open { display: block; }
+    .filter-sheet {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--warm-white);
+      border-radius: 16px 16px 0 0;
+      border-top: 1px solid var(--border);
+      z-index: 401;
+      padding: 1.4rem 1.4rem 2rem;
+      transform: translateY(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      max-height: 70vh;
+      overflow-y: auto;
+    }
+    .filter-sheet.open { transform: translateY(0); }
+    .filter-sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+    .filter-sheet-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .filter-sheet-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink-light);
+      font-size: 1.2rem;
+      padding: 4px;
+      line-height: 1;
+    }
     @media (max-width: 480px) { .recipe-grid { grid-template-columns: 1fr; } }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -639,6 +706,13 @@
     .recipe-card:nth-child(4) { animation-delay: 0.12s; }
     .recipe-card:nth-child(5) { animation-delay: 0.16s; }
     .recipe-card:nth-child(6) { animation-delay: 0.20s; }
+    .recipe-card:nth-child(7) { animation-delay: 0.24s; }
+    .recipe-card:nth-child(8) { animation-delay: 0.28s; }
+    .recipe-card:nth-child(9) { animation-delay: 0.32s; }
+    .recipe-card:nth-child(10) { animation-delay: 0.36s; }
+    .recipe-card:nth-child(11) { animation-delay: 0.40s; }
+    .recipe-card:nth-child(12) { animation-delay: 0.44s; }
+    .recipe-card:nth-child(n+13) { animation-delay: 0.48s; }
   </style>
 </head>
 <body>
@@ -714,6 +788,19 @@
     </div>
   </div>
 
+  <!-- MOBILE FILTER SHEET -->
+  <div class="filter-sheet-backdrop" id="filter-sheet-backdrop" onclick="closeFilterSheet()"></div>
+  <div class="filter-sheet" id="filter-sheet">
+    <div class="filter-sheet-header">
+      <span class="filter-sheet-title" id="filter-sheet-title">Filter</span>
+      <button class="filter-sheet-close" onclick="closeFilterSheet()">✕</button>
+    </div>
+    <div class="filter-label" id="filter-sheet-label-category">Category</div>
+    <div id="filter-sheet-category-filters"></div>
+    <div class="filter-label" id="filter-sheet-label-tags">Tags</div>
+    <div id="filter-sheet-tag-filters"></div>
+  </div>
+
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
 
@@ -728,6 +815,10 @@
     <main>
       <div id="list-view">
         <p class="results-info" id="results-info"></p>
+        <button class="mobile-filter-btn" id="mobile-filter-btn" onclick="openFilterSheet()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+          <span id="mobile-filter-label">Filter</span>
+        </button>
         <div class="recipe-grid" id="recipe-grid"></div>
         <div class="empty-state" id="empty-state" style="display:none">
           <h3 id="empty-title">Nothing found</h3>
@@ -898,6 +989,7 @@
 
   function setLang(newLang) {
     lang = newLang;
+    document.documentElement.lang = lang;
     const btn = document.getElementById('lang-current-btn');
     if (btn) btn.textContent = LANG_FLAGS[lang] || '🇬🇧';
     updateUIText();
@@ -926,6 +1018,14 @@
     document.getElementById('btn-clear-checked').textContent = t('clearChecked');
     document.getElementById('btn-clear-all').textContent = t('clearAll');
     document.getElementById('btn-undo').textContent = t('undo');
+    const mobileLabel = document.getElementById('mobile-filter-label');
+    if (mobileLabel) mobileLabel.textContent = t('category');
+    const sheetTitle = document.getElementById('filter-sheet-title');
+    if (sheetTitle) sheetTitle.textContent = t('category');
+    const sheetCatLabel = document.getElementById('filter-sheet-label-category');
+    if (sheetCatLabel) sheetCatLabel.textContent = t('category');
+    const sheetTagLabel = document.getElementById('filter-sheet-label-tags');
+    if (sheetTagLabel) sheetTagLabel.textContent = t('tags');
   }
 
   function loc(field) {
@@ -1077,8 +1177,11 @@
   function addRecipeToList(recipeId) {
     const r = recipes.find(x => x.id === recipeId);
     if (!r || !window._pushItem) return;
-    const srv = currentServings[recipeId] || r.servings;
-    const ratio = srv / r.servings;
+    const isAeropress = recipeId === 'aeropress-hoffmann' || recipeId === 'aeropress-bypass';
+    const baseGrams = recipeId === 'aeropress-bypass' ? 20 : 11;
+    const ratio = isAeropress
+      ? (coffeeGrams[recipeId] !== undefined ? coffeeGrams[recipeId] / baseGrams : 1)
+      : (currentServings[recipeId] || r.servings) / r.servings;
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
 
     r.ingredients.forEach(ing => {
@@ -1118,16 +1221,38 @@
     const allLabel = t('all');
     const categories = [allLabel, ...new Set(recipes.map(r => loc(r.category)))];
     const tags = [...new Set(recipes.flatMap(r => r.tags))];
+    const hasActiveFilter = activeCategory !== 'All' || activeTags.size > 0;
 
-    document.getElementById('category-filters').innerHTML = categories.map(c => {
+    const categoryHTML = categories.map(c => {
       const isAll = c === allLabel;
       const active = isAll ? (activeCategory === 'All') : (loc(recipes.find(r => loc(r.category) === c)?.category) === activeCategory || c === activeCategory);
       return `<button class="filter-btn ${active ? 'active' : ''}" onclick="setCategory('${c}')">${c}</button>`;
     }).join('');
 
-    document.getElementById('tag-filters').innerHTML = tags.map(tg =>
+    const tagHTML = tags.map(tg =>
       `<span class="tag-pill ${activeTags.has(tg) ? 'active' : ''}" onclick="toggleTag('${tg}')">${tg}</span>`
     ).join('');
+
+    document.getElementById('category-filters').innerHTML = categoryHTML;
+    document.getElementById('tag-filters').innerHTML = tagHTML;
+
+    // Also populate mobile sheet
+    const sheetCatHTML = categories.map(c => {
+      const isAll = c === allLabel;
+      const active = isAll ? (activeCategory === 'All') : (loc(recipes.find(r => loc(r.category) === c)?.category) === activeCategory || c === activeCategory);
+      return `<button class="filter-btn ${active ? 'active' : ''}" onclick="setCategory('${c}');closeFilterSheet()">${c}</button>`;
+    }).join('');
+    const sheetTagHTML = tags.map(tg =>
+      `<span class="tag-pill ${activeTags.has(tg) ? 'active' : ''}" onclick="toggleTag('${tg}')">${tg}</span>`
+    ).join('');
+    const sheetCat = document.getElementById('filter-sheet-category-filters');
+    const sheetTag = document.getElementById('filter-sheet-tag-filters');
+    if (sheetCat) sheetCat.innerHTML = sheetCatHTML;
+    if (sheetTag) sheetTag.innerHTML = sheetTagHTML;
+
+    // Update mobile filter button active state
+    const mobileBtn = document.getElementById('mobile-filter-btn');
+    if (mobileBtn) mobileBtn.classList.toggle('active', hasActiveFilter);
   }
 
   function setCategory(cat) {
@@ -1153,15 +1278,16 @@
         const desc = loc(r.description).toLowerCase();
         const cat = loc(r.category).toLowerCase();
         const tags = r.tags.join(' ').toLowerCase();
-        if (!title.includes(q) && !desc.includes(q) && !cat.includes(q) && !tags.includes(q)) return false;
+        const ingredients = r.ingredients.map(i => loc(i.name)).join(' ').toLowerCase();
+        const steps = r.steps.map(s => loc(s.content) + ' ' + loc(s.title)).join(' ').toLowerCase();
+        const notes = loc(r.notes || '').toLowerCase();
+        if (!title.includes(q) && !desc.includes(q) && !cat.includes(q) && !tags.includes(q) && !ingredients.includes(q) && !steps.includes(q) && !notes.includes(q)) return false;
       }
       return true;
     });
   }
 
   function renderList() {
-    document.getElementById('detail-view').style.display = 'none';
-    document.getElementById('list-view').style.display = 'block';
     const filtered = getFiltered();
     const grid = document.getElementById('recipe-grid');
     const empty = document.getElementById('empty-state');
@@ -1254,7 +1380,7 @@
 
     const optionalStepLabel = { en: 'optional', nl: 'optioneel', es: 'opcional' };
     const stepList = r.steps.map((s, i) => `
-      <li class="step-item${s.optional ? ' optional' : ''}" onclick="toggleStep(this)">
+      <li class="step-item${s.optional ? ' optional' : ''}">
         <div class="step-num">${i + 1}</div>
         <div class="step-content">
           <h3>${loc(s.title)}${s.optional ? ` <em class="step-optional-label">— ${optionalStepLabel[lang] || 'optional'}</em>` : ''}</h3>
@@ -1334,8 +1460,8 @@
     const r = recipes.find(x => x.id === id);
     if (!r) return;
     const currentYield = Math.round((coffeeGrams[id] / 20) * 400);
-    const newYield = Math.max(50, currentYield + delta);
-    coffeeGrams[id] = Math.round((newYield / 400) * 20);
+    const newYield = Math.max(200, currentYield + delta);
+    coffeeGrams[id] = Math.max(10, Math.round((newYield / 400) * 20));
     renderDetail(r);
   }
 
@@ -1345,8 +1471,6 @@
     coffeeGrams[id] = 20;
     renderDetail(r);
   }
-
-  function toggleStep(el) { el.classList.toggle('done'); }
 
   function showList() {
     document.getElementById('detail-view').style.display = 'none';
@@ -1373,6 +1497,35 @@
     document.getElementById('search-input').value = document.getElementById('search-overlay-input').value;
     renderList();
   }
+
+  function openFilterSheet() {
+    document.getElementById('filter-sheet').classList.add('open');
+    document.getElementById('filter-sheet-backdrop').classList.add('open');
+  }
+
+  function closeFilterSheet() {
+    document.getElementById('filter-sheet').classList.remove('open');
+    document.getElementById('filter-sheet-backdrop').classList.remove('open');
+  }
+
+  // ── SWIPE BACK GESTURE ─────────────────────────────────────────
+  (function() {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+      const detailVisible = document.getElementById('detail-view').style.display !== 'none';
+      // Swipe right (back): started within 40px of left edge, moved 80px+ right, not a vertical scroll
+      if (detailVisible && touchStartX < 40 && dx > 80 && dy < 60) {
+        showList();
+      }
+    }, { passive: true });
+  })();
 
   loadRecipes();
 </script>
