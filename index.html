@@ -1277,9 +1277,9 @@
         ${r.id === 'aeropress-bypass' ? `
         <div class="meta-item"><strong>Yield</strong></div>
         <div class="servings-ctrl">
-          <button onclick="changeBypassYield('${r.id}', -50)">−</button>
+          <button onclick='changeBypassYield("${r.id}", -50)'>−</button>
           <span>${Math.round((coffeeGrams[r.id] / 20) * 400)} ml</span>
-          <button onclick="changeBypassYield('${r.id}', 50)">+</button>
+          <button onclick='changeBypassYield("${r.id}", 50)'>+</button>
         </div>` : ''}
         ` : `
         <div class="meta-item"><strong>${t('servings')}</strong></div>
