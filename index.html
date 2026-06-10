@@ -7,6 +7,12 @@
   <link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
   <title>VinWin Kitchen</title>
+  <meta name="description" content="Our personal recipe collection — plant-forward cooking from Erwin & Vincent, with trilingual recipes you can scale and add to a shared grocery list." />
+  <meta property="og:title" content="VinWin Kitchen" />
+  <meta property="og:description" content="Our personal recipe collection — plant-forward cooking from Erwin & Vincent." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.halderman.eu/" />
+  <meta property="og:image" content="https://www.halderman.eu/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -19,7 +25,6 @@
       --terracotta-light: #F0E890;
       --sage: #2A6B3A;
       --sage-light: #C8E0CC;
-      --gold: #2A6B3A;
       --border: #D8D890;
     }
 
@@ -579,8 +584,8 @@
     .step-item.done .step-content h3,
     .step-item.done .step-content p { opacity: 0.4; text-decoration: line-through; text-decoration-color: var(--sage); }
     .ing-inline { color: var(--terracotta); font-weight: 500; }
-    .notes-box { margin-top: 2.5rem; padding: 1.4rem; background: var(--warm-white); border: 1px solid var(--border); border-left: 3px solid var(--gold); border-radius: 4px; }
-    .notes-box h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+    .notes-box { margin-top: 2.5rem; padding: 1.4rem; background: var(--warm-white); border: 1px solid var(--border); border-left: 3px solid var(--sage); border-radius: 4px; }
+    .notes-box h3 { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.7rem; }
     .notes-box p { font-size: 0.88rem; color: var(--ink-light); line-height: 1.65; }
     .notes-box p br { display: block; margin-bottom: 0.4rem; }
     .empty-state { text-align: center; padding: 4rem 2rem; color: var(--ink-light); }
@@ -595,6 +600,54 @@
       header { padding: 0 1rem; }
       .header-brand { font-size: 1.2rem; }
       .grocery-drawer { width: 100vw; }
+
+      /* Mobile filter strip */
+      .mobile-filter-strip {
+        display: flex;
+        overflow-x: auto;
+        gap: 0.45rem;
+        padding: 0.65rem 1rem;
+        background: var(--warm-white);
+        border-bottom: 1px solid var(--border);
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .mobile-filter-strip::-webkit-scrollbar { display: none; }
+      .mobile-filter-chip {
+        flex-shrink: 0;
+        padding: 0.3rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-family: 'DM Sans', sans-serif;
+        border: 1.5px solid var(--border);
+        background: var(--cream);
+        color: var(--ink-light);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.15s, border-color 0.15s, color 0.15s;
+      }
+      .mobile-filter-chip.active-cat {
+        background: var(--terracotta-light);
+        border-color: var(--terracotta);
+        color: var(--terracotta);
+        font-weight: 500;
+      }
+      .mobile-filter-chip.active-tag {
+        background: var(--sage-light);
+        border-color: var(--sage);
+        color: var(--sage);
+        font-weight: 500;
+      }
+      .mobile-filter-divider {
+        flex-shrink: 0;
+        width: 1px;
+        background: var(--border);
+        margin: 0.15rem 0.1rem;
+        align-self: stretch;
+      }
+    }
+    @media (min-width: 769px) {
+      .mobile-filter-strip { display: none; }
     }
     @media (max-width: 480px) { .recipe-grid { grid-template-columns: 1fr; } }
 
@@ -647,6 +700,9 @@
       <button class="search-cancel" onclick="closeSearch()" id="cancel-btn">Cancel</button>
     </div>
   </div>
+
+  <!-- MOBILE FILTER STRIP (hidden on desktop via CSS) -->
+  <div class="mobile-filter-strip" id="mobile-filter-strip"></div>
 
   <!-- GROCERY DRAWER -->
   <div class="drawer-backdrop" id="drawer-backdrop" onclick="closeDrawer()"></div>
@@ -742,6 +798,7 @@
 
 <script>
   const RECIPE_FILE = 'recipes.json';
+  const RECIPE_VERSION = '2026-06-10'; // update this string on each deploy
 
   let recipes = [];
   let activeCategory = 'All';
@@ -1039,7 +1096,7 @@
 
   async function loadRecipes() {
     try {
-      const res = await fetch(RECIPE_FILE + '?v=' + Date.now());
+      const res = await fetch(RECIPE_FILE + '?v=' + RECIPE_VERSION);
       recipes = await res.json();
       buildFilters();
       renderList();
@@ -1060,6 +1117,22 @@
     document.getElementById('tag-filters').innerHTML = tags.map(tg =>
       `<span class="tag-pill ${activeTags.has(tg) ? 'active' : ''}" onclick="toggleTag('${tg}')">${tg}</span>`
     ).join('');
+
+    buildMobileFilters(categories, tags, allLabel);
+  }
+
+  function buildMobileFilters(categories, tags, allLabel) {
+    const strip = document.getElementById('mobile-filter-strip');
+    if (!strip) return;
+    const catChips = categories.map(c => {
+      const isAll = c === allLabel;
+      const active = isAll ? (activeCategory === 'All') : (loc(recipes.find(r => loc(r.category) === c)?.category) === activeCategory || c === activeCategory);
+      return `<button class="mobile-filter-chip ${active ? 'active-cat' : ''}" onclick="setCategory('${c}')">${c}</button>`;
+    }).join('');
+    const tagChips = tags.map(tg =>
+      `<button class="mobile-filter-chip ${activeTags.has(tg) ? 'active-tag' : ''}" onclick="toggleTag('${tg}')">${tg}</button>`
+    ).join('');
+    strip.innerHTML = catChips + `<div class="mobile-filter-divider"></div>` + tagChips;
   }
 
   function setCategory(cat) {
@@ -1118,7 +1191,7 @@
       </div>`).join('');
   }
 
-  function showDetail(id) {
+  function showDetail(id, { pushState = true } = {}) {
     const r = recipes.find(x => x.id === id);
     if (!r) return;
     window._currentRecipeId = id;
@@ -1127,6 +1200,7 @@
     document.getElementById('detail-view').style.display = 'block';
     renderDetail(r);
     window.scrollTo(0, 0);
+    if (pushState) history.pushState({ recipeId: id }, '', '#recipe/' + id);
   }
 
   function fmtAmt(amount, ratio) {
@@ -1255,10 +1329,11 @@
 
   function toggleStep(el) { el.classList.toggle('done'); }
 
-  function showList() {
+  function showList({ pushState = true } = {}) {
     document.getElementById('detail-view').style.display = 'none';
     document.getElementById('list-view').style.display = 'block';
     window._currentRecipeId = null;
+    if (pushState) history.pushState({ recipeId: null }, '', window.location.pathname);
   }
 
   function openSearch() {
@@ -1281,7 +1356,30 @@
     renderList();
   }
 
-  loadRecipes();
+  // Handle browser back/forward
+  window.addEventListener('popstate', (e) => {
+    const id = e.state?.recipeId;
+    if (id) showDetail(id, { pushState: false });
+    else showList({ pushState: false });
+  });
+
+  async function init() {
+    await loadRecipes();
+    // Handle direct link to a recipe via hash (e.g. #recipe/tikka-masala)
+    const match = window.location.hash.match(/^#recipe\/(.+)$/);
+    if (match) {
+      const id = match[1];
+      if (recipes.find(r => r.id === id)) {
+        // Replace state so the initial entry is clean
+        history.replaceState({ recipeId: id }, '', window.location.hash);
+        showDetail(id, { pushState: false });
+      }
+    } else {
+      history.replaceState({ recipeId: null }, '', window.location.pathname);
+    }
+  }
+
+  init();
 </script>
 </body>
 </html>
