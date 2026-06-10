@@ -1228,8 +1228,8 @@
   function renderDetail(r) {
     const srv = currentServings[r.id];
     // For Aeropress: ratio is driven by coffeeGrams, not servings
-    const isAeropress = r.id === 'aeropress-hoffmann';
-    const baseGrams = 11; // base coffee amount in recipe
+    const isAeropress = r.id === 'aeropress-hoffmann' || r.id === 'aeropress-bypass';
+    const baseGrams = r.id === 'aeropress-bypass' ? 20 : 11;
     if (isAeropress && coffeeGrams[r.id] === undefined) coffeeGrams[r.id] = baseGrams;
     const ratio = isAeropress ? (coffeeGrams[r.id] / baseGrams) : (srv / r.servings);
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
