@@ -747,6 +747,7 @@
   let activeCategory = 'All';
   let activeTags = new Set();
   let currentServings = {};
+  let coffeeGrams = {};
   let lang = 'en';
 
   // Grocery state (populated by Firebase listener)
@@ -1161,7 +1162,11 @@
 
   function renderDetail(r) {
     const srv = currentServings[r.id];
-    const ratio = srv / r.servings;
+    // For Aeropress: ratio is driven by coffeeGrams, not servings
+    const isAeropress = r.id === 'aeropress-hoffmann';
+    const baseGrams = 11; // base coffee amount in recipe
+    if (isAeropress && coffeeGrams[r.id] === undefined) coffeeGrams[r.id] = baseGrams;
+    const ratio = isAeropress ? (coffeeGrams[r.id] / baseGrams) : (srv / r.servings);
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
     const ingMap = buildIngMap(r.ingredients, ratio);
 
@@ -1202,6 +1207,13 @@
           <span id="srv-display">${srv}</span>
           <button onclick="changeServings('${r.id}', 1)">+</button>
         </div>
+        ${isAeropress ? `
+        <div class="meta-item"><strong>Coffee</strong></div>
+        <div class="servings-ctrl">
+          <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
+          <span id="grams-display">${coffeeGrams[r.id]}g</span>
+          <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
+        </div>` : ''}
         <div class="meta-item"><strong>${r.ingredients.length}</strong> ${t('ingredients')}</div>
         <div class="meta-item"><strong>${r.steps.length}</strong> ${t('steps')}</div>
         <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')">
@@ -1230,6 +1242,14 @@
     const r = recipes.find(x => x.id === id);
     if (!r) return;
     currentServings[id] = Math.max(1, (currentServings[id] || r.servings) + delta);
+    renderDetail(r);
+  }
+
+  function changeCoffeeGrams(id, delta) {
+    const r = recipes.find(x => x.id === id);
+    if (!r) return;
+    if (coffeeGrams[id] === undefined) coffeeGrams[id] = 11;
+    coffeeGrams[id] = Math.max(1, coffeeGrams[id] + delta);
     renderDetail(r);
   }
 
