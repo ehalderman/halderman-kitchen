@@ -63,10 +63,20 @@
       z-index: 100;
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-between;
       gap: 1rem;
       height: 64px;
     }
+    .header-brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--ink);
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .header-brand span { color: var(--terracotta); font-style: italic; }
 
     /* HEADER RIGHT */
     .header-right {
@@ -230,9 +240,22 @@
 
     @media (min-width: 769px) { .search-overlay { display: none !important; } }
     @media (max-width: 768px) {
+      .search-wrap { flex: 0 0 auto; max-width: none; }
       .search-wrap input { display: none; }
-      .search-icon { pointer-events: all; cursor: pointer; }
+      .search-wrap .search-icon { display: none; }
+      .search-mobile-btn {
+        width: 36px; height: 36px;
+        display: flex; align-items: center; justify-content: center;
+        border: 1.5px solid var(--border);
+        border-radius: 8px;
+        background: none;
+        color: var(--ink-light);
+        cursor: pointer;
+        transition: border-color 0.15s, color 0.15s;
+      }
+      .search-mobile-btn:hover { border-color: var(--terracotta-text); color: var(--terracotta-text); }
     }
+    @media (min-width: 769px) { .search-mobile-btn { display: none; } }
 
     /* GROCERY DRAWER */
     .drawer-backdrop {
@@ -485,16 +508,6 @@
       margin-bottom: 1.5rem;
       flex-wrap: wrap;
     }
-    .toolbar-brand {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: var(--ink);
-      white-space: nowrap;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .toolbar-brand span { color: var(--terracotta); font-style: italic; }
     .results-info {
       font-size: 0.82rem;
       color: var(--ink-light);
@@ -515,6 +528,7 @@
     .filter-dropdown-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: space-between;
       gap: 0.35rem;
       padding: 0.38rem 0.75rem;
       border: 1.5px solid var(--border);
@@ -525,6 +539,7 @@
       color: var(--ink-light);
       cursor: pointer;
       white-space: nowrap;
+      min-width: 108px;
       transition: border-color 0.15s, color 0.15s, background 0.15s;
     }
     .filter-dropdown-btn:hover { border-color: var(--ink-light); color: var(--ink); }
@@ -594,6 +609,7 @@
     .clear-filters-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       padding: 0.38rem 0.75rem;
       border: 1.5px solid var(--border);
       border-radius: 20px;
@@ -603,6 +619,7 @@
       color: var(--ink-light);
       cursor: pointer;
       white-space: nowrap;
+      min-width: 80px;
       transition: border-color 0.15s, color 0.15s;
     }
     .clear-filters-btn:hover { border-color: var(--ink-light); color: var(--ink); }
@@ -724,12 +741,12 @@
     /* RESPONSIVE */
     @media (max-width: 768px) {
       main { padding: 1rem; }
-      .list-toolbar { gap: 0.6rem; }
-      .toolbar-brand { font-size: 1.15rem; }
+      .list-toolbar { gap: 0.5rem; }
       .toolbar-filters { margin-left: 0; }
       .detail-body { grid-template-columns: 1fr; gap: 2rem; }
       .detail-title { font-size: 2rem; }
       header { padding: 0 1rem; }
+      .header-brand { font-size: 1.2rem; }
       .grocery-drawer { width: 100vw; }
     }
 
@@ -774,6 +791,8 @@
     }
     .cook-mode-btn:hover { opacity: 0.82; }
     .cook-mode-btn.active { background: var(--sage); }
+    /* Hide header entirely in focus mode */
+    body.cook-focus-active header { display: none; }
     #detail-view.cook-focus .back-btn { display: none; }
     #detail-view.cook-focus .detail-category { display: none; }
     #detail-view.cook-focus .detail-title { display: none; }
@@ -782,21 +801,25 @@
     #detail-view.cook-focus .ingredients-box { display: none; }
     #detail-view.cook-focus .detail-body { grid-template-columns: 1fr; gap: 0; }
     #detail-view.cook-focus .steps-box h2 { display: none; }
-    #detail-view.cook-focus .step-content p { font-size: 1.05rem; line-height: 1.75; }
-    #detail-view.cook-focus .step-content h3 { font-size: 1.2rem; }
-    #detail-view.cook-focus .step-item { margin-bottom: 2.2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--border); }
+    #detail-view.cook-focus .step-content p { font-size: 0.92rem; line-height: 1.65; }
+    #detail-view.cook-focus .step-content h3 { font-size: 1rem; }
+    #detail-view.cook-focus .step-item { margin-bottom: 1.2rem; padding-bottom: 1.2rem; border-bottom: 1px solid var(--border); }
     #detail-view.cook-focus .step-item:last-child { border-bottom: none; }
-    #detail-view.cook-focus .notes-box { margin-top: 1rem; }
+    #detail-view.cook-focus .notes-box { margin-top: 0.8rem; }
+    /* On larger screens, constrain text width so eyes don't travel wall-to-wall */
+    @media (min-width: 769px) {
+      #detail-view.cook-focus .steps-box { max-width: 620px; }
+    }
     .cook-focus-bar { display: none; }
     #detail-view.cook-focus .cook-focus-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.7rem 0;
-      margin-bottom: 1.8rem;
+      margin-bottom: 1.2rem;
       border-bottom: 1px solid var(--border);
       position: sticky;
-      top: 64px;
+      top: 0;
       background: var(--cream);
       z-index: 10;
     }
@@ -860,11 +883,17 @@
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <div id="app">
   <header>
-    <div class="search-wrap" onclick="openSearch()">
+    <div class="header-brand" onclick="showList()">VinWin <span>Kitchen</span></div>
+    <div class="search-wrap">
       <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
       <input type="search" id="search-input" placeholder="Search recipes…" oninput="onSearchInput()" />
+      <button class="search-mobile-btn" onclick="openSearch()" aria-label="Search recipes">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+      </button>
     </div>
 
     <div class="header-right">
@@ -938,9 +967,9 @@
     <main id="main-content">
       <div id="list-view">
         <div class="list-toolbar" id="list-toolbar">
-          <div class="toolbar-brand" onclick="showList()">VinWin <span>Kitchen</span></div>
           <span class="results-info" id="results-info"></span>
           <div class="toolbar-filters" id="toolbar-filters">
+            <button class="clear-filters-btn" id="clear-filters-btn" onclick="clearAllFilters()" style="display:none">✕ Clear</button>
             <!-- Category dropdown -->
             <div class="filter-dropdown" id="cat-dropdown-wrap">
               <button class="filter-dropdown-btn" id="cat-dropdown-btn" onclick="toggleDropdown('cat')" aria-haspopup="listbox" aria-expanded="false">
@@ -961,7 +990,6 @@
                 <div id="tag-options"></div>
               </div>
             </div>
-            <button class="clear-filters-btn" id="clear-filters-btn" onclick="clearAllFilters()" style="display:none">✕ Clear</button>
           </div>
         </div>
 
@@ -1922,6 +1950,11 @@
     window._currentRecipeId = null;
     history.replaceState({}, '', '/');
     resetOGMeta();
+    // Always exit focus mode when leaving recipe
+    document.getElementById('detail-view').classList.remove('cook-focus');
+    document.body.classList.remove('cook-focus-active');
+    const cookBtn = document.getElementById('cook-mode-btn');
+    if (cookBtn) cookBtn.classList.remove('active');
   }
 
   function shareRecipe(id, title) {
@@ -2029,6 +2062,7 @@
     const detail = document.getElementById('detail-view');
     const btn = document.getElementById('cook-mode-btn');
     const active = detail.classList.toggle('cook-focus');
+    document.body.classList.toggle('cook-focus-active', active);
     if (btn) btn.classList.toggle('active', active);
     if (active) {
       window.scrollTo(0, 0);
