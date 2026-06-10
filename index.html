@@ -1272,8 +1272,7 @@
           <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
           <span id="grams-display">${coffeeGrams[r.id]}g</span>
           <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
-          <button onclick="resetBypass('${r.id}')" title="Reset" style="background:none;border:none;cursor:pointer;padding:0 0.2rem;color:var(--ink-light);line-height:1;font-size:1rem;" onmouseover="this.style.color='var(--terracotta)'" onmouseout="this.style.color='var(--ink-light)'">↺</button>
-        </div>
+          </div>
         ${r.id === 'aeropress-bypass' ? `
         <div class="meta-item"><strong>Yield</strong></div>
         <div class="servings-ctrl">
