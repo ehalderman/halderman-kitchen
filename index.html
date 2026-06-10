@@ -1272,7 +1272,16 @@
           <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
           <span id="grams-display">${coffeeGrams[r.id]}g</span>
           <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
-        </div>` : `
+          <button onclick="resetBypass('${r.id}')" title="Reset" style="background:none;border:none;cursor:pointer;padding:0 0.2rem;color:var(--ink-light);line-height:1;font-size:1rem;" onmouseover="this.style.color='var(--terracotta)'" onmouseout="this.style.color='var(--ink-light)'">↺</button>
+        </div>
+        ${r.id === 'aeropress-bypass' ? `
+        <div class="meta-item"><strong>Yield</strong></div>
+        <div class="servings-ctrl">
+          <button onclick="changeBypassYield('${r.id}', -50)">−</button>
+          <span>${Math.round((coffeeGrams[r.id] / 20) * 400)} ml</span>
+          <button onclick="changeBypassYield('${r.id}', 50)">+</button>
+        </div>` : ''}
+        ` : `
         <div class="meta-item"><strong>${t('servings')}</strong></div>
         <div class="servings-ctrl">
           <button onclick="changeServings('${r.id}', -1)">−</button>
@@ -1311,8 +1320,25 @@
   function changeCoffeeGrams(id, delta) {
     const r = recipes.find(x => x.id === id);
     if (!r) return;
-    if (coffeeGrams[id] === undefined) coffeeGrams[id] = 11;
+    const baseGrams = id === 'aeropress-bypass' ? 20 : 11;
+    if (coffeeGrams[id] === undefined) coffeeGrams[id] = baseGrams;
     coffeeGrams[id] = Math.max(1, coffeeGrams[id] + delta);
+    renderDetail(r);
+  }
+
+  function changeBypassYield(id, delta) {
+    const r = recipes.find(x => x.id === id);
+    if (!r) return;
+    const currentYield = Math.round((coffeeGrams[id] / 20) * 400);
+    const newYield = Math.max(50, currentYield + delta);
+    coffeeGrams[id] = Math.round((newYield / 400) * 20);
+    renderDetail(r);
+  }
+
+  function resetBypass(id) {
+    const r = recipes.find(x => x.id === id);
+    if (!r) return;
+    coffeeGrams[id] = 20;
     renderDetail(r);
   }
 
