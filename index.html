@@ -771,183 +771,7 @@
     .skip-link:focus { top: 0; }
 
 
-    /* COOKING MODE */
-    .cooking-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--warm-white);
-      z-index: 600;
-      flex-direction: column;
-    }
-    .cooking-overlay.open { display: flex; }
-    .cooking-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 1.5rem;
-      border-bottom: 1px solid var(--border);
-      background: var(--warm-white);
-      flex-shrink: 0;
-    }
-    .cooking-title-wrap { min-width: 0; }
-    .cooking-recipe-name {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--ink);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .cooking-step-counter {
-      font-size: 0.78rem;
-      color: var(--ink-light);
-      margin-top: 2px;
-    }
-    .cooking-close {
-      background: none;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      padding: 0.4rem 0.9rem;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--ink-light);
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-      flex-shrink: 0;
-      margin-left: 1rem;
-    }
-    .cooking-close:hover { border-color: var(--terracotta-text); color: var(--terracotta-text); }
-    .cooking-progress-bar {
-      height: 3px;
-      background: var(--border);
-      flex-shrink: 0;
-      position: relative;
-    }
-    .cooking-progress-fill {
-      height: 100%;
-      background: var(--terracotta);
-      transition: width 0.3s ease;
-    }
-    .cooking-body {
-      flex: 1;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 2rem 1rem;
-      -webkit-overflow-scrolling: touch;
-    }
-    .cooking-step-num-badge {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      border: 2px solid var(--border);
-      background: var(--cream);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--ink-light);
-      margin-bottom: 1.5rem;
-      flex-shrink: 0;
-    }
-    .cooking-step-num-badge.active {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: white;
-    }
-    .cooking-step-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(1.5rem, 4vw, 2.2rem);
-      font-weight: 600;
-      color: var(--ink);
-      text-align: center;
-      line-height: 1.25;
-      margin-bottom: 1.2rem;
-      max-width: 720px;
-    }
-    .cooking-step-content {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--ink-light);
-      line-height: 1.7;
-      text-align: center;
-      max-width: 640px;
-    }
-    .cooking-step-content .ing-inline {
-      color: var(--terracotta-text);
-      font-weight: 600;
-    }
-    .cooking-optional-badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-style: italic;
-      color: var(--ink-light);
-      border: 1px dashed var(--border);
-      border-radius: 20px;
-      padding: 0.15rem 0.6rem;
-      margin-bottom: 0.8rem;
-    }
-    .cooking-nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1.5rem 1.5rem 2rem;
-      flex-shrink: 0;
-    }
-    .cooking-nav-btn {
-      min-width: 120px;
-      height: 56px;
-      border-radius: 12px;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      border: 2px solid var(--border);
-      background: none;
-      color: var(--ink-light);
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .cooking-nav-btn:active { transform: scale(0.96); }
-    .cooking-nav-btn.primary {
-      background: var(--ink);
-      border-color: var(--ink);
-      color: white;
-      min-width: 160px;
-    }
-    .cooking-nav-btn.done {
-      background: var(--sage);
-      border-color: var(--sage);
-      color: white;
-    }
-    .cooking-nav-btn:disabled { opacity: 0.3; cursor: default; }
-    .cooking-nav-btn:not(:disabled):hover.primary { opacity: 0.85; }
-    .cooking-nav-btn:not(:disabled):hover:not(.primary) { border-color: var(--ink); color: var(--ink); }
-    .cooking-wake-indicator {
-      font-size: 0.72rem;
-      color: var(--ink-light);
-      opacity: 0.5;
-      text-align: center;
-      padding-bottom: 0.5rem;
-    }
-    @media (max-width: 768px) {
-      .cooking-body { padding: 1.5rem 1.2rem 0.5rem; }
-      .cooking-nav { padding: 1rem 1rem 1.5rem; gap: 0.75rem; }
-      .cooking-nav-btn { min-width: 100px; height: 52px; font-size: 0.9rem; }
-      .cooking-nav-btn.primary { min-width: 140px; }
-    }
-    /* Cook mode button on detail */
+    /* Cook mode button + focus mode */
     .cook-mode-btn {
       display: inline-flex;
       align-items: center;
@@ -961,9 +785,77 @@
       font-size: 0.85rem;
       font-weight: 500;
       cursor: pointer;
-      transition: opacity 0.15s;
+      transition: opacity 0.15s, background 0.15s;
     }
     .cook-mode-btn:hover { opacity: 0.82; }
+    .cook-mode-btn.active {
+      background: var(--sage);
+    }
+    /* Focus mode: hide everything except steps */
+    #detail-view.cook-focus .back-btn { display: none; }
+    #detail-view.cook-focus .detail-category { display: none; }
+    #detail-view.cook-focus .detail-title { display: none; }
+    #detail-view.cook-focus .detail-desc { display: none; }
+    #detail-view.cook-focus .detail-meta { display: none; }
+    #detail-view.cook-focus .ingredients-box { display: none; }
+    #detail-view.cook-focus .detail-body {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    #detail-view.cook-focus .steps-box h2 { display: none; }
+    #detail-view.cook-focus .step-content p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+    #detail-view.cook-focus .step-content h3 {
+      font-size: 1.2rem;
+    }
+    #detail-view.cook-focus .step-item {
+      margin-bottom: 2.2rem;
+      padding-bottom: 2.2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    #detail-view.cook-focus .step-item:last-child {
+      border-bottom: none;
+    }
+    #detail-view.cook-focus .notes-box {
+      margin-top: 1rem;
+    }
+    /* Sticky exit bar at top when in focus mode */
+    .cook-focus-bar {
+      display: none;
+    }
+    #detail-view.cook-focus .cook-focus-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.7rem 0;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 64px;
+      background: var(--cream);
+      z-index: 10;
+    }
+    .cook-focus-recipe-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .cook-focus-exit {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.8rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .cook-focus-exit:hover { border-color: var(--ink); color: var(--ink); }
 
     /* SKELETON LOADING */
     @keyframes shimmer {
@@ -1087,36 +979,6 @@
     <div id="filter-sheet-tag-filters"></div>
   </div>
 
-
-  <!-- COOKING MODE OVERLAY -->
-  <div class="cooking-overlay" id="cooking-overlay" role="dialog" aria-modal="true" aria-labelledby="cooking-recipe-name">
-    <div class="cooking-header">
-      <div class="cooking-title-wrap">
-        <div class="cooking-recipe-name" id="cooking-recipe-name"></div>
-        <div class="cooking-step-counter" id="cooking-step-counter"></div>
-      </div>
-      <button class="cooking-close" onclick="closeCookingMode()" aria-label="Exit cooking mode" id="cooking-exit-btn">Exit</button>
-    </div>
-    <div class="cooking-progress-bar">
-      <div class="cooking-progress-fill" id="cooking-progress-fill"></div>
-    </div>
-    <div class="cooking-body" id="cooking-body">
-      <div class="cooking-step-num-badge active" id="cooking-step-badge">1</div>
-      <div class="cooking-step-title" id="cooking-step-title"></div>
-      <div class="cooking-step-content" id="cooking-step-content"></div>
-    </div>
-    <div class="cooking-nav">
-      <button class="cooking-nav-btn" id="cooking-prev-btn" onclick="cookingStep(-1)" aria-label="Previous step">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
-        Prev
-      </button>
-      <button class="cooking-nav-btn primary" id="cooking-next-btn" onclick="cookingStep(1)" aria-label="Next step">
-        Next
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
-    </div>
-    <div class="cooking-wake-indicator" id="cooking-wake-indicator"></div>
-  </div>
 
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
@@ -1911,6 +1773,10 @@
     const notes = loc(r.notes);
 
     document.getElementById('detail-content').innerHTML = `
+      <div class="cook-focus-bar">
+        <span class="cook-focus-recipe-name">${loc(r.title)}</span>
+        <button class="cook-focus-exit" onclick="toggleCookFocus()">✕ Exit focus</button>
+      </div>
       <div class="detail-category">${loc(r.category)}</div>
       <h1 class="detail-title">${loc(r.title)}</h1>
       <p class="detail-desc">${loc(r.description)}</p>
@@ -1944,8 +1810,8 @@
             <button onclick="changeServings('${r.id}', 1)">+</button>
           </div>
         </div>`}
-        <button class="cook-mode-btn" onclick="openCookingMode('${r.id}')" aria-label="Enter cooking mode">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.5 2h-8L3 7v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-5.5-5z"/><polyline points="3 7 12 7 21 7"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+        <button class="cook-mode-btn" id="cook-mode-btn" onclick="toggleCookFocus()" aria-label="Toggle focus mode">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
             Cook
           </button>
         <button class="share-btn" data-recipe-id="${r.id}" data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
@@ -2146,12 +2012,9 @@
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    // Cooking mode: arrow keys
-    if (document.getElementById('cooking-overlay').classList.contains('open')) {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { cookingStep(1); return; }
-      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { cookingStep(-1); return; }
-      if (e.key === 'Escape') { closeCookingMode(); return; }
-      return;
+    // Focus mode: Escape exits
+    if (document.getElementById('detail-view').classList.contains('cook-focus')) {
+      if (e.key === 'Escape') { toggleCookFocus(); return; }
     }
     if (e.key !== 'Escape') return;
     if (document.getElementById('search-overlay').classList.contains('active')) { closeSearch(); return; }
@@ -2163,103 +2026,33 @@
 
 
 
-  // ── COOKING MODE ───────────────────────────────────────────────
-  let _cookingRecipe = null;
-  let _cookingStep = 0;
-  let _cookingIngMap = {};
+  // ── COOK FOCUS MODE ────────────────────────────────────────────
   let _wakeLock = null;
 
-  async function openCookingMode(recipeId) {
-    const r = recipes.find(x => x.id === recipeId);
-    if (!r) return;
-    _cookingRecipe = r;
-    _cookingStep = 0;
-    const isAeropress = r.id === 'aeropress-hoffmann' || r.id === 'aeropress-bypass';
-    const baseGrams = r.id === 'aeropress-bypass' ? 20 : 11;
-    const ratio = isAeropress
-      ? ((coffeeGrams[r.id] || baseGrams) / baseGrams)
-      : ((currentServings[r.id] || r.servings) / r.servings);
-    _cookingIngMap = buildIngMap(r.ingredients, ratio);
+  async function toggleCookFocus() {
+    const detail = document.getElementById('detail-view');
+    const btn = document.getElementById('cook-mode-btn');
+    const active = detail.classList.toggle('cook-focus');
+    if (btn) btn.classList.toggle('active', active);
 
-    document.getElementById('cooking-recipe-name').textContent = loc(r.title);
-    document.getElementById('cooking-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-    renderCookingStep();
-
-    // Request wake lock to keep screen on
-    if ('wakeLock' in navigator) {
-      try {
-        _wakeLock = await navigator.wakeLock.request('screen');
-        document.getElementById('cooking-wake-indicator').textContent = '☀ Screen will stay on';
-        _wakeLock.addEventListener('release', () => {
-          document.getElementById('cooking-wake-indicator').textContent = '';
-        });
-      } catch(e) {
-        document.getElementById('cooking-wake-indicator').textContent = '';
+    if (active) {
+      window.scrollTo(0, 0);
+      // Wake lock: keep screen on while cooking
+      if ('wakeLock' in navigator) {
+        try { _wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
       }
-    }
-  }
-
-  function closeCookingMode() {
-    document.getElementById('cooking-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-    if (_wakeLock) { _wakeLock.release(); _wakeLock = null; }
-    _cookingRecipe = null;
-  }
-
-  function cookingStep(delta) {
-    if (!_cookingRecipe) return;
-    const steps = _cookingRecipe.steps;
-    _cookingStep = Math.max(0, Math.min(steps.length - 1, _cookingStep + delta));
-    renderCookingStep();
-  }
-
-  function renderCookingStep() {
-    if (!_cookingRecipe) return;
-    const steps = _cookingRecipe.steps;
-    const s = steps[_cookingStep];
-    const total = steps.length;
-    const optionalLabel = { en: 'optional', nl: 'optioneel', es: 'opcional' };
-
-    document.getElementById('cooking-step-badge').textContent = _cookingStep + 1;
-    const stepOf = { en: 'Step', nl: 'Stap', es: 'Paso' };
-    const ofWord = { en: 'of', nl: 'van', es: 'de' };
-    document.getElementById('cooking-step-counter').textContent =
-      (stepOf[lang] || 'Step') + ' ' + (_cookingStep + 1) + ' ' + (ofWord[lang] || 'of') + ' ' + total;
-    document.getElementById('cooking-progress-fill').style.width =
-      ((_cookingStep + 1) / total * 100) + '%';
-
-    document.getElementById('cooking-step-title').textContent = loc(s.title) +
-      (s.optional ? ' (optional)' : '');
-    document.getElementById('cooking-step-content').innerHTML =
-      resolveStepContent(loc(s.content), _cookingIngMap);
-
-    const prevBtn = document.getElementById('cooking-prev-btn');
-    const nextBtn = document.getElementById('cooking-next-btn');
-    prevBtn.disabled = _cookingStep === 0;
-
-    if (_cookingStep === total - 1) {
-      nextBtn.className = 'cooking-nav-btn done';
-      const doneLabel = { en: 'Done ✓', nl: 'Klaar ✓', es: 'Listo ✓' };
-      nextBtn.innerHTML = doneLabel[lang] || 'Done ✓';
-      nextBtn.onclick = closeCookingMode;
     } else {
-      nextBtn.className = 'cooking-nav-btn primary';
-      nextBtn.innerHTML = 'Next <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>';
-      nextBtn.onclick = () => cookingStep(1);
+      if (_wakeLock) { _wakeLock.release(); _wakeLock = null; }
     }
-
-    // Scroll body to top on step change
-    const body = document.getElementById('cooking-body');
-    if (body) body.scrollTop = 0;
   }
 
-  // Re-acquire wake lock if page becomes visible again (e.g. tab switch)
+  // Re-acquire wake lock on tab return while in focus mode
   document.addEventListener('visibilitychange', async () => {
-    if (document.visibilityState === 'visible' && _wakeLock === null && _cookingRecipe) {
-      try {
-        _wakeLock = await navigator.wakeLock.request('screen');
-      } catch(e) {}
+    if (document.visibilityState === 'visible' && _wakeLock === null) {
+      const detail = document.getElementById('detail-view');
+      if (detail && detail.classList.contains('cook-focus') && 'wakeLock' in navigator) {
+        try { _wakeLock = await navigator.wakeLock.request('screen'); } catch(e) {}
+      }
     }
   });
 
