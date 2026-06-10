@@ -603,6 +603,15 @@
     .ing-optional-header { font-size: 0.62rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); opacity: 0.6; padding: 0.8rem 0 0.2rem; }
     .ing-group-header { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage); padding: 1rem 0 0.3rem; border-bottom: none; margin-top: 0.2rem; }
     .ing-group-header:first-child { padding-top: 0; }
+    .share-btn {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      color: var(--ink-light); font-size: 0.82rem; font-family: 'DM Sans', sans-serif;
+      background: none; border: 1.5px solid var(--border); border-radius: 20px;
+      padding: 0.3rem 0.85rem; cursor: pointer; transition: border-color 0.15s, color 0.15s;
+      margin-left: auto;
+    }
+    .share-btn:hover { border-color: var(--terracotta); color: var(--terracotta); }
+    .share-btn svg { flex-shrink: 0; }
     .steps-list { list-style: none; }
     .step-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; }
     .step-item.optional .step-num { border-style: dashed; opacity: 0.6; }
@@ -950,6 +959,8 @@
       addToList: 'Add to grocery list',
       undo: 'Undo',
       filter: 'Filter',
+      shareLabel: 'Share',
+      shareCopied: 'Link copied!',
       addedToast: (n) => `${n} ingredient${n === 1 ? '' : 's'} added to list`,
     },
     nl: {
@@ -978,6 +989,8 @@
       addToList: 'Toevoegen aan boodschappenlijst',
       undo: 'Ongedaan',
       filter: 'Filter',
+      shareLabel: 'Delen',
+      shareCopied: 'Link gekopieerd!',
       addedToast: (n) => `${n} ingrediënt${n === 1 ? '' : 'en'} toegevoegd`,
     },
     es: {
@@ -1006,6 +1019,8 @@
       addToList: 'Añadir a la lista',
       undo: 'Deshacer',
       filter: 'Filtrar',
+      shareLabel: 'Compartir',
+      shareCopied: '¡Enlace copiado!',
       addedToast: (n) => `${n} ingrediente${n === 1 ? '' : 's'} añadido${n === 1 ? '' : 's'}`,
     }
   };
@@ -1346,6 +1361,11 @@
       recipes = await res.json();
       buildFilters();
       renderList();
+      // Deep-link: if URL has a #recipe-id hash, open that recipe directly
+      const hash = location.hash.replace('#', '');
+      if (hash && recipes.find(x => x.id === hash)) {
+        showDetail(hash);
+      }
     } catch(e) {
       console.error('Could not load recipes.json', e);
       grid.innerHTML = '<p style="color:var(--ink-light);padding:2rem">Could not load recipes.</p>';
@@ -1566,6 +1586,14 @@
           <span id="srv-display">${srv}</span>
           <button onclick="changeServings('${r.id}', 1)">+</button>
         </div>`}
+        <button class="share-btn" onclick="shareRecipe('${r.id}', ${JSON.stringify(loc(r.title)).replace(/'/g, "\\'")})">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+            <polyline points="16 6 12 2 8 6"/>
+            <line x1="12" y1="2" x2="12" y2="15"/>
+          </svg>
+          ${t('shareLabel')}
+        </button>
       </div>
       <div class="detail-body">
         <div class="ingredients-box">
@@ -1643,18 +1671,38 @@
     if (!r) return;
     window._currentRecipeId = id;
     if (!currentServings[id]) currentServings[id] = r.servings;
+    // Clear search and close mobile overlay when navigating to a recipe
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-overlay-input').value = '';
+    document.getElementById('search-overlay').classList.remove('active');
     document.getElementById('list-view').style.display = 'none';
     document.getElementById('detail-view').style.display = 'block';
     renderDetail(r);
     window.scrollTo(0, 0);
-    // Push a state so browser back returns to list
-    history.pushState({ recipeId: id }, '', '');
+    // Push a state so browser back returns to list; include hash for shareability
+    history.pushState({ recipeId: id }, '', '#' + id);
   }
 
   function showList() {
     document.getElementById('detail-view').style.display = 'none';
     document.getElementById('list-view').style.display = 'block';
     window._currentRecipeId = null;
+    history.replaceState({}, '', location.pathname);
+  }
+
+  function shareRecipe(id, title) {
+    const url = `${location.origin}${location.pathname}#${id}`;
+    if (navigator.share) {
+      navigator.share({ title: title + ' — VinWin Kitchen', url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(url).then(() => showToast(t('shareCopied'))).catch(() => {
+        // Fallback: select a temp input
+        const el = document.createElement('input');
+        el.value = url; document.body.appendChild(el); el.select();
+        document.execCommand('copy'); document.body.removeChild(el);
+        showToast(t('shareCopied'));
+      });
+    }
   }
 
   // Handle browser back (includes swipe-back on Mac Safari, iOS home screen, keyboard)

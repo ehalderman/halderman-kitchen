@@ -148,6 +148,10 @@
     "nl": "Een rijke, romige curry met Patak's Tikka Masala pasta — in minder dan een uur klaar.",
     "es": "Un curry rico y cremoso con pasta Tikka Masala de Patak's — listo en menos de una hora."
   },
+  "groups": [
+    { "label": { "en": "Curry", "nl": "Curry", "es": "Curry" }, "ids": ["i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12","i13","i14"] },
+    { "label": { "en": "Rice", "nl": "Rijst", "es": "Arroz" }, "ids": ["i15"] }
+  ],
   "ingredients": [
     { "id": "i1", "amount": 30, "unit": "g", "name": { "en": "olive oil", "nl": "olijfolie", "es": "aceite de oliva" } },
     { "id": "i2", "amount": 1, "unit": "large", "name": { "en": "onion, diced", "nl": "ui, in blokjes", "es": "cebolla grande, en dados" } },
@@ -375,40 +379,40 @@
     "category": { "en": "Baking", "nl": "Bakken", "es": "Repostería" },
     "tags": ["vegetarian"],
     "servings": 12,
-    "title": { "en": "Green Yoghurt Blueberry Lemon Muffins", "nl": "Groene Yoghurt Bosbes Citroen Muffins", "es": "Muffins Verdes de Yogur, Arándanos y Limón" },
+    "title": { "en": "Yoghurt Blueberry Lemon Muffins", "nl": "Yoghurt Bosbes Citroen Muffins", "es": "Muffins de Yogur, Arándanos y Limón" },
     "description": {
-      "en": "Fluffy, tangy muffins packed with blueberries and bright lemon — with a spinach boost that keeps them moist and gives a subtle green hue.",
-      "nl": "Luchtige, frisse muffins vol bosbessen en heldere citroen — met een spinazieboost die ze vochtig houdt en een subtiele groene kleur geeft.",
-      "es": "Muffins esponjosos y ácidos llenos de arándanos y limón vibrante — con un toque de espinacas que los mantiene húmedos y les da un tono verde sutil."
+      "en": "Fluffy, tangy muffins packed with blueberries and bright lemon — protein-boosted with Greek yoghurt and an extra egg.",
+      "nl": "Luchtige, frisse muffins vol bosbessen en heldere citroen — extra eiwitrijk met Griekse yoghurt en een extra ei.",
+      "es": "Muffins esponjosos y ácidos llenos de arándanos y limón vibrante — con más proteína gracias al yogur griego y un huevo extra."
     },
     "ingredients": [
-      { "id": "i1", "amount": 60, "unit": "g", "name": { "en": "fresh baby spinach", "nl": "verse babyspinazie", "es": "espinacas baby frescas" } },
-      { "id": "i2", "amount": 200, "unit": "g", "name": { "en": "plain full-fat yoghurt", "nl": "volle naturel yoghurt", "es": "yogur natural entero" } },
-      { "id": "i3", "amount": 2, "unit": "large", "name": { "en": "lemons, zested and juiced", "nl": "citroenen, geraspt en uitgeperst", "es": "limones, rallados y exprimidos" } },
-      { "id": "i4", "amount": 80, "unit": "g", "name": { "en": "neutral oil (sunflower or light olive)", "nl": "neutrale olie (zonnebloem of lichte olijfolie)", "es": "aceite neutro (girasol u oliva suave)" } },
-      { "id": "i5", "amount": 150, "unit": "g", "name": { "en": "caster sugar", "nl": "fijne kristalsuiker", "es": "azúcar fino" } },
-      { "id": "i6", "amount": 2, "unit": "large", "name": { "en": "eggs", "nl": "eieren", "es": "huevos" } },
-      { "id": "i7", "amount": 5, "unit": "g", "name": { "en": "vanilla extract", "nl": "vanille-extract", "es": "extracto de vainilla" } },
-      { "id": "i8", "amount": 250, "unit": "g", "name": { "en": "plain flour", "nl": "bloem", "es": "harina de trigo" } },
-      { "id": "i9", "amount": 8, "unit": "g", "name": { "en": "baking powder", "nl": "bakpoeder", "es": "levadura química" } },
-      { "id": "i10", "amount": 3, "unit": "g", "name": { "en": "baking soda", "nl": "baksoda", "es": "bicarbonato de sodio" } },
-      { "id": "i11", "amount": 3, "unit": "g", "name": { "en": "fine salt", "nl": "fijn zout", "es": "sal fina" } },
-      { "id": "i12", "amount": 200, "unit": "g", "name": { "en": "fresh or frozen blueberries", "nl": "verse of diepvries bosbessen", "es": "arándanos frescos o congelados" } },
-      { "id": "i13", "amount": 10, "unit": "g", "name": { "en": "flour (for tossing blueberries)", "nl": "bloem (voor het bestuiven van de bosbessen)", "es": "harina (para rebozar los arándanos)" } }
+      { "id": "i1", "amount": 220, "unit": "g", "name": { "en": "plain full-fat Greek yoghurt", "nl": "volle Griekse yoghurt", "es": "yogur griego natural entero" } },
+      { "id": "i2", "amount": 2, "unit": "large", "name": { "en": "lemons, zested and juiced", "nl": "citroenen, geraspt en uitgeperst", "es": "limones, rallados y exprimidos" } },
+      { "id": "i3", "amount": 80, "unit": "g", "name": { "en": "neutral oil (sunflower or light olive)", "nl": "neutrale olie (zonnebloem of lichte olijfolie)", "es": "aceite neutro (girasol u oliva suave)" } },
+      { "id": "i4", "amount": 150, "unit": "g", "name": { "en": "caster sugar", "nl": "fijne kristalsuiker", "es": "azúcar fino" } },
+      { "id": "i5", "amount": 3, "unit": "large", "name": { "en": "eggs", "nl": "eieren", "es": "huevos" } },
+      { "id": "i6", "amount": 5, "unit": "g", "name": { "en": "vanilla extract", "nl": "vanille-extract", "es": "extracto de vainilla" } },
+      { "id": "i7", "amount": 30, "unit": "g", "name": { "en": "vanilla protein powder (optional)", "nl": "vanille proteïnepoeder (optioneel)", "es": "proteína en polvo de vainilla (opcional)", "optional": true } },
+      { "id": "i8", "amount": 60, "unit": "g", "name": { "en": "plant-based milk (if using protein powder)", "nl": "plantaardige melk (bij gebruik van proteïnepoeder)", "es": "leche vegetal (si se usa proteína en polvo)", "optional": true } },
+      { "id": "i9", "amount": 220, "unit": "g", "name": { "en": "plain flour", "nl": "bloem", "es": "harina de trigo" } },
+      { "id": "i10", "amount": 8, "unit": "g", "name": { "en": "baking powder", "nl": "bakpoeder", "es": "levadura química" } },
+      { "id": "i11", "amount": 3, "unit": "g", "name": { "en": "baking soda", "nl": "baksoda", "es": "bicarbonato de sodio" } },
+      { "id": "i12", "amount": 3, "unit": "g", "name": { "en": "fine salt", "nl": "fijn zout", "es": "sal fina" } },
+      { "id": "i13", "amount": 200, "unit": "g", "name": { "en": "fresh or frozen blueberries", "nl": "verse of diepvries bosbessen", "es": "arándanos frescos o congelados" } },
+      { "id": "i14", "amount": 10, "unit": "g", "name": { "en": "flour (for tossing blueberries)", "nl": "bloem (voor het bestuiven van de bosbessen)", "es": "harina (para rebozar los arándanos)" } }
     ],
     "steps": [
       { "title": { "en": "Preheat oven", "nl": "Oven voorverwarmen", "es": "Precalentar el horno" }, "content": { "en": "Heat oven to 200°C (180°C fan). Line a 12-hole muffin tin with paper cases or grease well.", "nl": "Verwarm de oven voor op 200°C (180°C hetelucht). Bekleed een muffinvorm met 12 holtes met papieren cups of vet goed in.", "es": "Precalentar el horno a 200°C (180°C con ventilador). Forrar un molde de 12 muffins con cápsulas de papel o engrasar bien." } },
-      { "title": { "en": "Blend the green base", "nl": "Groene basis mixen", "es": "Mezclar la base verde" }, "content": { "en": "Blend {i1} with {i2} and the juice of {i3} until completely smooth and vivid green. Blending well is key.", "nl": "Mix {i1} met {i2} en het sap van {i3} tot volledig glad en levendig groen. Goed mixen is essentieel.", "es": "Triturar {i1} con {i2} y el zumo de {i3} hasta obtener una mezcla completamente suave y de color verde intenso. Triturar bien es clave." } },
-      { "title": { "en": "Mix wet ingredients", "nl": "Natte ingrediënten mengen", "es": "Mezclar ingredientes húmedos" }, "content": { "en": "Whisk {i4}, {i5}, {i6}, {i7}, and the zest of {i3} into the green yoghurt mixture until smooth.", "nl": "Klop {i4}, {i5}, {i6}, {i7} en de rasp van {i3} door het groene yoghurtmengsel tot glad.", "es": "Batir {i4}, {i5}, {i6}, {i7} y la ralladura de {i3} en la mezcla verde de yogur hasta que esté suave." } },
-      { "title": { "en": "Combine dry ingredients", "nl": "Droge ingrediënten combineren", "es": "Combinar ingredientes secos" }, "content": { "en": "In a large bowl, whisk together {i8}, {i9}, {i10}, and {i11}.", "nl": "Klop in een grote kom {i8}, {i9}, {i10} en {i11} door elkaar.", "es": "En un cuenco grande, batir juntos {i8}, {i9}, {i10} y {i11}." } },
-      { "title": { "en": "Coat the blueberries", "nl": "Bosbessen bestuiven", "es": "Rebozar los arándanos" }, "content": { "en": "Toss {i12} with {i13} in a small bowl. This helps prevent them from sinking.", "nl": "Schud {i12} met {i13} in een klein kommetje. Dit voorkomt dat ze naar de bodem zakken.", "es": "Rebozar {i12} con {i13} en un cuenco pequeño. Esto evita que se hundan." } },
+      { "title": { "en": "Mix wet ingredients", "nl": "Natte ingrediënten mengen", "es": "Mezclar ingredientes húmedos" }, "content": { "en": "Whisk together {i1}, {i3}, {i4}, {i5}, {i6}, and the zest and juice of {i2} until smooth. If using {i7}, whisk it in now along with {i8}.", "nl": "Klop {i1}, {i3}, {i4}, {i5}, {i6} en de rasp en het sap van {i2} glad. Als je {i7} gebruikt, klop dit er nu ook doorheen samen met {i8}.", "es": "Batir {i1}, {i3}, {i4}, {i5}, {i6} y la ralladura y zumo de {i2} hasta obtener una mezcla suave. Si se usa {i7}, incorporarlo ahora junto con {i8}." } },
+      { "title": { "en": "Combine dry ingredients", "nl": "Droge ingrediënten combineren", "es": "Combinar ingredientes secos" }, "content": { "en": "In a large bowl, whisk together {i9}, {i10}, {i11}, and {i12}.", "nl": "Klop in een grote kom {i9}, {i10}, {i11} en {i12} door elkaar.", "es": "En un cuenco grande, batir juntos {i9}, {i10}, {i11} y {i12}." } },
+      { "title": { "en": "Coat the blueberries", "nl": "Bosbessen bestuiven", "es": "Rebozar los arándanos" }, "content": { "en": "Toss {i13} with {i14} in a small bowl. This helps prevent them from sinking.", "nl": "Schud {i13} met {i14} in een klein kommetje. Dit voorkomt dat ze naar de bodem zakken.", "es": "Rebozar {i13} con {i14} en un cuenco pequeño. Esto evita que se hundan." } },
       { "title": { "en": "Fold together", "nl": "Voorzichtig mengen", "es": "Mezclar con movimientos envolventes" }, "content": { "en": "Pour the wet mixture into the dry ingredients and fold with a spatula until just combined. Do not overmix. Gently fold in the floured blueberries.", "nl": "Giet het natte mengsel bij de droge ingrediënten en vouw met een spatel tot net gemengd. Niet te lang mengen. Vouw de met bloem bestrooide bosbessen er voorzichtig doorheen.", "es": "Verter la mezcla húmeda en los ingredientes secos y mezclar con una espátula con movimientos envolventes hasta que estén integrados. No mezclar en exceso. Incorporar suavemente los arándanos enharinados." } },
       { "title": { "en": "Bake", "nl": "Bakken", "es": "Hornear" }, "content": { "en": "Divide batter evenly between the 12 cases. Bake for 18–22 minutes until risen, golden, and a skewer comes out clean. Cool in the tin for 5 minutes, then transfer to a rack.", "nl": "Verdeel het beslag gelijkmatig over de 12 cups. Bak 18–22 minuten tot gerezen, goudbruin en een prikker er schoon uitkomt. Laat 5 minuten afkoelen in de vorm, dan op een rooster.", "es": "Dividir la masa equitativamente entre los 12 moldes. Hornear 18–22 minutos hasta que hayan subido, estén dorados y un palillo salga limpio. Enfriar en el molde 5 minutos, luego transferir a una rejilla." } }
     ],
     "notes": {
-      "en": "The spinach flavour is completely undetectable — it only adds moisture and colour. Frozen blueberries work just as well as fresh; no need to thaw. Best eaten the day of baking.",
-      "nl": "De smaak van spinazie is volledig onmerkbaar — het voegt alleen vocht en kleur toe. Diepvries bosbessen werken net zo goed als vers; niet nodig om te ontdooien. Lekkerst op de dag van bakken.",
-      "es": "El sabor de las espinacas es completamente indetectable — solo añade humedad y color. Los arándanos congelados funcionan igual de bien que los frescos; no hace falta descongelarlos. Mejor consumir el día de horneado."
+      "en": "Protein powder: if adding, don't exceed 30g for this batch and always add the plant milk too — protein powder absorbs a lot of liquid and will dry out the muffins without it. Frozen blueberries work just as well as fresh; no need to thaw. Best eaten the day of baking.<br>• Cake tin (loaf or rectangular): same temperature, but bake for 35–45 minutes. Start checking at 35 min with a skewer. Cool in the tin for 10 minutes before turning out.",
+      "nl": "Proteïnepoeder: voeg niet meer dan 30g toe voor dit recept en voeg altijd ook de plantaardige melk toe — proteïnepoeder absorbeert veel vocht en zal de muffins uitdrogen zonder extra vloeistof. Diepvries bosbessen werken net zo goed als vers; niet nodig om te ontdooien. Lekkerst op de dag van bakken.<br>• Cakevorm (brood- of rechthoekig): zelfde temperatuur, maar bak 35–45 minuten. Begin vanaf 35 min te controleren met een prikker. Laat 10 minuten afkoelen in de vorm voor het storten.",
+      "es": "Proteína en polvo: no añadir más de 30g para esta cantidad y añadir siempre también la leche vegetal — la proteína absorbe mucho líquido y resecaría los muffins sin ella. Los arándanos congelados funcionan igual de bien que los frescos; no hace falta descongelarlos. Mejor consumir el día de horneado.<br>• Molde de cake (rectangular o tipo bizcocho): misma temperatura, pero hornear 35–45 minutos. Empezar a comprobar desde los 35 min con un palillo. Dejar enfriar 10 minutos en el molde antes de desmoldar."
     }
   },
   {
@@ -422,6 +426,10 @@
       "nl": "De klassieke Argentijnse pepa — mals, boterachtig deeg dat smelt op je tong met een zoet-zure kweepeervulling.",
       "es": "La clásica pepa argentina — una masa tierna, mantecosa que se deshace en la boca con un relleno dulce y ácido de membrillo."
     },
+    "groups": [
+      { "label": { "en": "Cookie dough", "nl": "Koekjesdeeg", "es": "Masa de galleta" }, "ids": ["i1","i2","i3","i4","i5","i6","i7","i8","i9"] },
+      { "label": { "en": "Quince filling", "nl": "Kweepeervulling", "es": "Relleno de membrillo" }, "ids": ["i10","i11"] }
+    ],
     "ingredients": [
       { "id": "i1", "amount": 130, "unit": "g", "name": { "en": "all-purpose flour", "nl": "bloem", "es": "harina de trigo" } },
       { "id": "i2", "amount": 2, "unit": "g", "name": { "en": "baking powder", "nl": "bakpoeder", "es": "levadura química" } },
@@ -668,6 +676,10 @@
       "nl": "Zachte, luchtige biscuits vol sappige bosbessen en extra proteïne — ideaal voor ontbijt of als tussendoortje de hele week.",
       "es": "Galletas suaves y esponjosas repletas de arándanos jugosos y un extra de proteína — perfectas para preparar el desayuno o snack de toda la semana."
     },
+    "groups": [
+      { "label": { "en": "Biscuits", "nl": "Biscuits", "es": "Galletas" }, "ids": ["i1","i2","i3","i4","i5","i6","i7","i8","i9","i10","i11","i12"] },
+      { "label": { "en": "Lemon glaze", "nl": "Citroenglaçuur", "es": "Glaseado de limón" }, "ids": ["i13","i14"] }
+    ],
     "ingredients": [
       { "id": "i1", "amount": 200, "unit": "g", "name": { "en": "all-purpose flour", "nl": "bloem", "es": "harina de trigo" } },
       { "id": "i2", "amount": 60, "unit": "g", "name": { "en": "vanilla protein powder", "nl": "vanille proteïnepoeder", "es": "proteína en polvo de vainilla" } },
