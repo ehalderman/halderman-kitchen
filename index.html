@@ -1944,6 +1944,10 @@
             <button onclick="changeServings('${r.id}', 1)">+</button>
           </div>
         </div>`}
+        <button class="cook-mode-btn" onclick="openCookingMode('${r.id}')" aria-label="Enter cooking mode">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15.5 2h-8L3 7v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7l-5.5-5z"/><polyline points="3 7 12 7 21 7"/><line x1="12" y1="12" x2="12" y2="18"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+            Cook
+          </button>
         <button class="share-btn" data-recipe-id="${r.id}" data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
