@@ -841,7 +841,7 @@
     "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
     "tags": ["vegan", "quick"],
     "servings": 1,
-    "title": { "en": "Flash Cold Brew (Clever Dripper)", "nl": "Flash Cold Brew (Clever Dripper)", "es": "Flash Cold Brew (Clever Dripper)" },
+    "title": { "en": "Flash Cold Brew (<em>Clever Dripper</em>)", "nl": "Flash Cold Brew (<em>Clever Dripper</em>)", "es": "Flash Cold Brew (<em>Clever Dripper</em>)" },
     "description": {
       "en": "Hot-brewed coffee poured straight over ice — full-flavoured, crystal clear, and ready in under 5 minutes.",
       "nl": "Heet gebrouwen koffie direct over ijs gegoten — vol van smaak, helder en in minder dan 5 minuten klaar.",
@@ -870,7 +870,7 @@
     "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
     "tags": ["vegan", "quick"],
     "servings": 1,
-    "title": { "en": "Aeropress (James Hoffmann Method)", "nl": "Aeropress (James Hoffmann methode)", "es": "Aeropress (Método James Hoffmann)" },
+    "title": { "en": "Aeropress (<em>James Hoffmann</em> Method)", "nl": "Aeropress (<em>James Hoffmann</em> methode)", "es": "Aeropress (Método <em>James Hoffmann</em>)" },
     "description": {
       "en": "A clean, fuss-free Aeropress technique that skips the myths — no inversion, no rinsing, no bloom. Just great coffee in under 3 minutes.",
       "nl": "Een heldere, eenvoudige Aeropress-techniek zonder fratsen — geen inversie, niet spoelen, geen bloom. Gewoon geweldige koffie in minder dan 3 minuten.",
@@ -898,7 +898,7 @@
     "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
     "tags": ["vegan"],
     "servings": 2,
-    "title": { "en": "French Press (James Hoffmann Method)", "nl": "French Press (James Hoffmann methode)", "es": "French Press (Método James Hoffmann)" },
+    "title": { "en": "French Press (<em>James Hoffmann</em> Method)", "nl": "French Press (<em>James Hoffmann</em> methode)", "es": "French Press (Método <em>James Hoffmann</em>)" },
     "description": {
       "en": "The classic French press, done properly — rich and full-bodied, but without the sludge. Takes 10 minutes but almost all of it is hands-off.",
       "nl": "De klassieke French press, op de juiste manier — rijke body, maar zonder het bezinksel. Duurt 10 minuten maar je doet er bijna niets voor.",
@@ -927,9 +927,9 @@
   "tags": ["vegan", "quick"],
   "servings": 1,
   "title": {
-    "en": "Aeropress (<strong>Bypass</strong> Method)",
-    "nl": "Aeropress (<strong>Bypass</strong> methode)",
-    "es": "Aeropress (Método <strong>Bypass</strong>)"
+    "en": "Aeropress (<strong><em>Bypass</em></strong> Method)",
+    "nl": "Aeropress (<strong><em>Bypass</em></strong> methode)",
+    "es": "Aeropress (Método <strong><em>Bypass</em></strong>)"
   },
   "description": {
     "en": "Brew a concentrate in the Aeropress, then dilute with hot water — the only way to get a full tumbler from a single Aeropress brew. Cleaner and brighter than brewing at full volume.",
@@ -960,7 +960,7 @@
     },
     {
       "title": { "en": "Press", "nl": "Drukken", "es": "Presionar" },
-      "content": { "en": "Press the plunger down gently and evenly. Stop the moment you hear a hiss. You'll get about 130–140g of concentrate.", "nl": "Druk de zuiger gelijkmatig en zachtjes naar beneden. Stop zodra je een sis hoort. Je krijgt ca. 130–140g concentrate.", "es": "Presionar el émbolo hacia abajo de forma suave y uniforme. Parar al oír un siseo. Obtendrás unos 130–140g de concentrado." }
+      "content": { "en": "Press the plunger down gently and evenly. Stop the moment you hear a hiss. You'll get roughly 90% of the brew water as concentrate.", "nl": "Druk de zuiger gelijkmatig en zachtjes naar beneden. Stop zodra je een sis hoort. Je krijgt ongeveer 90% van het brouwwater als concentrate.", "es": "Presionar el émbolo hacia abajo de forma suave y uniforme. Parar al oír un siseo. Obtendrás aproximadamente el 90% del agua de preparación como concentrado." }
     },
     {
       "title": { "en": "Dilute and serve", "nl": "Verdunnen en serveren", "es": "Diluir y servir" },

@@ -758,7 +758,7 @@
       <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="openSearch()">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="search" id="search-input" placeholder="Search recipes…" oninput="renderList()" />
+      <input type="search" id="search-input" placeholder="Search recipes…" oninput="onSearchInput()" />
     </div>
 
     <div class="header-right">
@@ -1416,7 +1416,9 @@
     // For Aeropress: ratio is driven by coffeeGrams, not servings
     const isAeropress = r.id === 'aeropress-hoffmann' || r.id === 'aeropress-bypass';
     const baseGrams = r.id === 'aeropress-bypass' ? 20 : 11;
-    if (isAeropress && coffeeGrams[r.id] === undefined) coffeeGrams[r.id] = baseGrams;
+    if (isAeropress && coffeeGrams[r.id] === undefined) {
+      coffeeGrams[r.id] = r.id === 'aeropress-bypass' ? getBypassGrams() : baseGrams;
+    }
     const ratio = isAeropress ? (coffeeGrams[r.id] / baseGrams) : (srv / r.servings);
     const countableUnits = new Set(['cloves','clove','large','medium','orange','lemon','sprig','sprigs','stalk','stalks','pinch']);
     const ingMap = buildIngMap(r.ingredients, ratio);
@@ -1463,7 +1465,7 @@
         <div class="meta-item"><strong>Yield</strong></div>
         <div class="servings-ctrl">
           <button onclick="changeBypassYield('aeropress-bypass', -50)">−</button>
-          <span>${Math.round((coffeeGrams[r.id] / 20) * 400)} ml</span>
+          <span>${bypassYield} ml</span>
           <button onclick="changeBypassYield('aeropress-bypass', 50)">+</button>
         </div>
         <button onclick="resetBypass('aeropress-bypass')" style="font-size:0.75rem;padding:0.25rem 0.7rem;border-radius:20px;border:1.5px solid var(--sage);color:var(--sage);background:none;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='var(--sage)';this.style.color='var(--warm-white)'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">↺ Reset</button>
@@ -1511,16 +1513,26 @@
     const baseGrams = id === 'aeropress-bypass' ? 20 : 11;
     if (coffeeGrams[id] === undefined) coffeeGrams[id] = baseGrams;
     coffeeGrams[id] = Math.max(id === 'aeropress-bypass' ? 10 : 5, coffeeGrams[id] + delta);
+    if (id === 'aeropress-bypass') {
+      bypassYield = Math.round((coffeeGrams[id] / 20) * 400);
+      sessionStorage.setItem('vw-bypass-yield', bypassYield);
+    }
     sessionStorage.setItem('vw-coffee', JSON.stringify(coffeeGrams));
     renderDetail(r);
   }
 
+  // bypassYield stores the canonical yield in ml; coffeeGrams is derived from it for bypass
+  let bypassYield = parseInt(sessionStorage.getItem('vw-bypass-yield') || '400');
+
+  function getBypassYield() { return bypassYield; }
+  function getBypassGrams() { return Math.max(10, Math.round((bypassYield / 400) * 20)); }
+
   function changeBypassYield(id, delta) {
     const r = recipes.find(x => x.id === id);
     if (!r) return;
-    const currentYield = Math.round((coffeeGrams[id] / 20) * 400);
-    const newYield = Math.max(200, currentYield + delta);
-    coffeeGrams[id] = Math.max(10, Math.round((newYield / 400) * 20));
+    bypassYield = Math.max(200, bypassYield + delta);
+    coffeeGrams[id] = getBypassGrams();
+    sessionStorage.setItem('vw-bypass-yield', bypassYield);
     sessionStorage.setItem('vw-coffee', JSON.stringify(coffeeGrams));
     renderDetail(r);
   }
@@ -1528,7 +1540,9 @@
   function resetBypass(id) {
     const r = recipes.find(x => x.id === id);
     if (!r) return;
+    bypassYield = 400;
     coffeeGrams[id] = 20;
+    sessionStorage.setItem('vw-bypass-yield', bypassYield);
     sessionStorage.setItem('vw-coffee', JSON.stringify(coffeeGrams));
     renderDetail(r);
   }
@@ -1579,6 +1593,16 @@
       }
     }, { passive: true });
   })();
+
+  function onSearchInput() {
+    const detailVisible = document.getElementById('detail-view').style.display !== 'none';
+    if (detailVisible) {
+      document.getElementById('detail-view').style.display = 'none';
+      document.getElementById('list-view').style.display = 'block';
+      window._currentRecipeId = null;
+    }
+    renderList();
+  }
 
   function openSearch() {
     if (window.innerWidth <= 768) {
