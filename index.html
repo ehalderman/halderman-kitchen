@@ -581,13 +581,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 1rem;
+      font-weight: 400;
       color: var(--ink-light);
       transition: border-color 0.15s, color 0.15s;
       line-height: 1;
       padding: 0;
-      padding-bottom: 1px;
     }
     .servings-ctrl button:hover { border-color: var(--terracotta); color: var(--terracotta); }
     .servings-ctrl span { font-size: 0.9rem; font-weight: 500; min-width: 1.5rem; text-align: center; }
@@ -765,8 +764,8 @@
   <header>
     <div class="header-brand" onclick="showList()">VinWin <span>Kitchen</span></div>
 
-    <div class="search-wrap">
-      <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" onclick="openSearch()">
+    <div class="search-wrap" onclick="openSearch()">
+      <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
       <input type="search" id="search-input" placeholder="Search recipes…" oninput="onSearchInput()" />
@@ -798,7 +797,7 @@
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.4;flex-shrink:0">
         <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
       </svg>
-      <input type="search" id="search-overlay-input" placeholder="Search recipes…" oninput="overlaySearch()" />
+      <input type="search" id="search-overlay-input" inputmode="search" placeholder="Search recipes…" oninput="overlaySearch()" />
       <button class="search-cancel" onclick="closeSearch()" id="cancel-btn">Cancel</button>
     </div>
   </div>
@@ -1564,29 +1563,35 @@
       <p class="detail-desc">${loc(r.description)}</p>
       <div class="detail-meta">
         ${isAeropress ? `
-        <div class="meta-item"><strong>Coffee</strong></div>
-        <div class="servings-ctrl">
-          <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
-          <span id="grams-display">${coffeeGrams[r.id]}g</span>
-          <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:nowrap">
+          <div class="meta-item"><strong>Coffee</strong></div>
+          <div class="servings-ctrl">
+            <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
+            <span id="grams-display">${coffeeGrams[r.id]}g</span>
+            <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
+          </div>
         </div>
         ` + (r.id === 'aeropress-bypass' ? `
-        <div class="meta-item"><strong>Yield</strong></div>
-        <div class="servings-ctrl">
-          <button onclick="changeBypassYield('aeropress-bypass', -50)">−</button>
-          <span>${bypassYield} ml</span>
-          <button onclick="changeBypassYield('aeropress-bypass', 50)">+</button>
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:nowrap">
+          <div class="meta-item"><strong>Yield</strong></div>
+          <div class="servings-ctrl">
+            <button onclick="changeBypassYield('aeropress-bypass', -50)">−</button>
+            <span>${bypassYield} ml</span>
+            <button onclick="changeBypassYield('aeropress-bypass', 50)">+</button>
+          </div>
         </div>
         <button onclick="resetBypass('aeropress-bypass')" style="font-size:0.75rem;padding:0.25rem 0.7rem;border-radius:20px;border:1.5px solid var(--sage);color:var(--sage);background:none;cursor:pointer;font-family:inherit;transition:background 0.15s,color 0.15s;" onmouseover="this.style.background='var(--sage)';this.style.color='var(--warm-white)'" onmouseout="this.style.background='none';this.style.color='var(--sage)'">↺ Reset</button>
         ` : '') + `
         ` : `
-        <div class="meta-item"><strong>${t('servings')}</strong></div>
-        <div class="servings-ctrl">
-          <button onclick="changeServings('${r.id}', -1)">−</button>
-          <span id="srv-display">${srv}</span>
-          <button onclick="changeServings('${r.id}', 1)">+</button>
+        <div style="display:flex;align-items:center;gap:0.5rem;flex-wrap:nowrap">
+          <div class="meta-item"><strong>${t('servings')}</strong></div>
+          <div class="servings-ctrl">
+            <button onclick="changeServings('${r.id}', -1)">−</button>
+            <span id="srv-display">${srv}</span>
+            <button onclick="changeServings('${r.id}', 1)">+</button>
+          </div>
         </div>`}
-        <button class="share-btn" onclick="shareRecipe('${r.id}', ${JSON.stringify(loc(r.title)).replace(/'/g, "\\'")})">
+        <button class="share-btn" data-recipe-id="${r.id}" data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
             <polyline points="16 6 12 2 8 6"/>
@@ -1744,7 +1749,7 @@
   function openSearch() {
     if (window.innerWidth <= 768) {
       document.getElementById('search-overlay').classList.add('active');
-      setTimeout(() => document.getElementById('search-overlay-input').focus(), 50);
+      document.getElementById('search-overlay-input').focus();
     }
   }
   function closeSearch() {
