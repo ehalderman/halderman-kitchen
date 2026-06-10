@@ -920,5 +920,57 @@
       "nl": "Het belangrijkste inzicht: druk de zuiger niet helemaal door. Stoppen aan het oppervlak houdt de koffieprut op de bodem en geeft een veel helderdere kop. Goed afschuimen na het breken van de korst — daar komt het korrelige gevoel vandaan. Verhouding: 1:16,7 (30g koffie : 500g water). Schaal evenredig op voor een grotere batch.",
       "es": "El insight clave: no presionar el émbolo hasta el fondo. Detenerse en la superficie mantiene los posos abajo y da una taza mucho más limpia. Espumar bien después de romper la costra — ahí es donde viene la sensación arenosa. Ratio: 1:16,7 (30g café : 500g agua). Escalar proporcionalmente para un lote más grande."
     }
+  },
+  {
+  "id": "aeropress-bypass",
+  "category": { "en": "Coffee", "nl": "Koffie", "es": "Café" },
+  "tags": ["vegan", "quick"],
+  "servings": 1,
+  "title": {
+    "en": "Aeropress (<strong>Bypass</strong> Method)",
+    "nl": "Aeropress (<strong>Bypass</strong> methode)",
+    "es": "Aeropress (Método <strong>Bypass</strong>)"
+  },
+  "description": {
+    "en": "Brew a concentrate in the Aeropress, then dilute with hot water — the only way to get a full tumbler from a single Aeropress brew. Cleaner and brighter than brewing at full volume.",
+    "nl": "Brouw een concentrate in de Aeropress en verdun daarna met heet water — de enige manier om een volle tumbler uit één Aeropress-brouwsel te halen. Helderder en frisser dan volledig volume brouwen.",
+    "es": "Prepara un concentrado en el Aeropress y dilúyelo con agua caliente — la única forma de llenar un termo completo con un solo brew. Más limpio y brillante que preparar al volumen completo."
+  },
+  "ingredients": [
+    { "id": "i1", "amount": 20, "unit": "g", "name": { "en": "ground coffee, medium-coarse (slightly coarser than the standard Aeropress recipe)", "nl": "gemalen koffie, medium-grof (iets grover dan het standaard Aeropress-recept)", "es": "café molido, medio-grueso (ligeramente más grueso que la receta estándar de Aeropress)" } },
+    { "id": "i2", "amount": 150, "unit": "g", "name": { "en": "boiling water for brewing (100°C for light roast; 85–90°C for dark roast)", "nl": "kokend water voor het brouwen (100°C voor lichte roosting; 85–90°C voor donkere roosting)", "es": "agua hirviendo para preparar (100°C para tueste claro; 85–90°C para tueste oscuro)" } },
+    { "id": "i3", "amount": 250, "unit": "g", "name": { "en": "hot water to dilute (same temperature)", "nl": "heet water om te verdunnen (zelfde temperatuur)", "es": "agua caliente para diluir (misma temperatura)" } }
+  ],
+  "steps": [
+    {
+      "title": { "en": "Set up", "nl": "Instellen", "es": "Preparar" },
+      "content": { "en": "Place a paper filter in the cap. Set the Aeropress in standard upright position on your cup or server. Pour {i3} into your tumbler or server now so it's ready.", "nl": "Doe een papieren filter in de dop. Zet de Aeropress rechtop op je kopje of server. Giet {i3} alvast in je tumbler of server zodat het klaar staat.", "es": "Colocar un filtro de papel en la tapa. Poner el Aeropress en posición estándar sobre la taza o servidor. Verter {i3} en el termo o servidor ahora para tenerlo listo." }
+    },
+    {
+      "title": { "en": "Add coffee and water", "nl": "Koffie en water toevoegen", "es": "Añadir café y agua" },
+      "content": { "en": "Add {i1} to the Aeropress. Pour {i2} all at once, aiming to wet all the grounds. Start your timer immediately.", "nl": "Doe {i1} in de Aeropress. Giet {i2} in één keer, probeer alle gronden nat te maken. Start de timer direct.", "es": "Añadir {i1} al Aeropress. Verter {i2} de una vez, procurando mojar todo el café. Iniciar el temporizador inmediatamente." }
+    },
+    {
+      "title": { "en": "Seal and steep", "nl": "Afdekken en trekken", "es": "Sellar y reposar" },
+      "content": { "en": "Insert the plunger about 1 cm into the top to create a gentle vacuum — this stops coffee dripping through. Do not push down. Steep for 2 minutes.", "nl": "Duw de zuiger ca. 1 cm in de bovenkant om een licht vacuüm te creëren — dit voorkomt dat koffie doordruppelt. Niet naar beneden drukken. Laat 2 minuten trekken.", "es": "Insertar el émbolo unos 2 cm en la parte superior para crear un vacío suave — esto evita que el café gotee. No presionar hacia abajo. Reposar 2 minutos." }
+    },
+    {
+      "title": { "en": "Swirl and settle", "nl": "Zwenken en bezinken", "es": "Girar y reposar" },
+      "content": { "en": "Holding the Aeropress and cup together firmly, give it a gentle swirl. Wait 30 seconds for the grounds to settle to the bottom.", "nl": "Houd de Aeropress en het kopje stevig samen en zwenk zachtjes. Wacht 30 seconden zodat de gronden zakken.", "es": "Sujetando el Aeropress y la taza juntos con firmeza, dar un suave giro. Esperar 30 segundos para que los posos se asienten." }
+    },
+    {
+      "title": { "en": "Press", "nl": "Drukken", "es": "Presionar" },
+      "content": { "en": "Press the plunger down gently and evenly. Stop the moment you hear a hiss. You'll get about 130–140g of concentrate.", "nl": "Druk de zuiger gelijkmatig en zachtjes naar beneden. Stop zodra je een sis hoort. Je krijgt ca. 130–140g concentrate.", "es": "Presionar el émbolo hacia abajo de forma suave y uniforme. Parar al oír un siseo. Obtendrás unos 130–140g de concentrado." }
+    },
+    {
+      "title": { "en": "Dilute and serve", "nl": "Verdunnen en serveren", "es": "Diluir y servir" },
+      "content": { "en": "Press the concentrate into your tumbler or server containing {i3}. Stir briefly and you're done — about 400ml total.", "nl": "Druk het concentraat in je tumbler of server met {i3}. Kort roeren en klaar — ca. 400ml totaal.", "es": "Presionar el concentrado en el termo o servidor con {i3}. Remover brevemente y listo — unos 400ml en total." }
+    }
+  ],
+  "notes": {
+    "en": "Grind slightly coarser than the standard Aeropress recipe — the stronger brew ratio means more resistance, and coarser grounds help maintain even extraction. The bypass water goes in the cup first so the concentrate drops straight into it. Ratio: 1:7.5 concentrate (20g : 150g), diluted to ~1:20 final. Scale by adjusting coffee grams — all other amounts scale proportionally.",
+    "nl": "Maal iets grover dan het standaard Aeropress-recept — de sterkere brouwverhouding geeft meer weerstand, en grovere maling helpt een gelijkmatige extractie te behouden. Het bypass-water gaat eerst in het kopje zodat het concentraat er direct in valt. Verhouding: 1:7,5 concentraat (20g : 150g), verdund naar ca. 1:20 totaal. Schaal aan door de koffie-grammen aan te passen — alle andere hoeveelheden schalen mee.",
+    "es": "Moler ligeramente más grueso que la receta estándar de Aeropress — la mayor proporción de brew crea más resistencia, y una molienda más gruesa ayuda a mantener una extracción uniforme. El agua de bypass va primero en la taza para que el concentrado caiga directamente en ella. Ratio: 1:7,5 concentrado (20g : 150g), diluido a ~1:20 final. Escalar ajustando los gramos de café — todas las demás cantidades escalan proporcionalmente."
   }
+}
 ]
