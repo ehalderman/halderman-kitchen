@@ -1266,19 +1266,19 @@
       <h1 class="detail-title">${loc(r.title)}</h1>
       <p class="detail-desc">${loc(r.description)}</p>
       <div class="detail-meta">
-        <div class="meta-item"><strong>${t('servings')}</strong></div>
-        <div class="servings-ctrl">
-          <button onclick="changeServings('${r.id}', -1)">−</button>
-          <span id="srv-display">${srv}</span>
-          <button onclick="changeServings('${r.id}', 1)">+</button>
-        </div>
         ${isAeropress ? `
         <div class="meta-item"><strong>Coffee</strong></div>
         <div class="servings-ctrl">
           <button onclick="changeCoffeeGrams('${r.id}', -1)">−</button>
           <span id="grams-display">${coffeeGrams[r.id]}g</span>
           <button onclick="changeCoffeeGrams('${r.id}', 1)">+</button>
-        </div>` : ''}
+        </div>` : `
+        <div class="meta-item"><strong>${t('servings')}</strong></div>
+        <div class="servings-ctrl">
+          <button onclick="changeServings('${r.id}', -1)">−</button>
+          <span id="srv-display">${srv}</span>
+          <button onclick="changeServings('${r.id}', 1)">+</button>
+        </div>`}
         <div class="meta-item"><strong>${r.ingredients.length}</strong> ${t('ingredients')}</div>
         <div class="meta-item"><strong>${r.steps.length}</strong> ${t('steps')}</div>
         <button class="add-to-list-btn" onclick="addRecipeToList('${r.id}')">
