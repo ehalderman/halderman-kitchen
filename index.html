@@ -915,6 +915,169 @@
     }
     .share-list-btn:hover { border-color: var(--terracotta-text); color: var(--terracotta-text); }
 
+    /* ── HEART / FAVOURITE ───────────────────────────────────── */
+    .heart-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .heart-btn:hover { border-color: #e05a7a; color: #e05a7a; }
+    .heart-btn.hearted {
+      border-color: #e05a7a;
+      color: #e05a7a;
+      background: #fdf0f3;
+    }
+    .heart-btn svg { flex-shrink: 0; transition: transform 0.15s; }
+    .heart-btn.hearted svg { fill: #e05a7a; }
+    .heart-btn:active svg { transform: scale(1.3); }
+
+    /* Heart on recipe card */
+    .card-heart {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      color: var(--border);
+      line-height: 1;
+      transition: color 0.15s, transform 0.15s;
+    }
+    .card-heart:hover { color: #e05a7a; transform: scale(1.15); }
+    .card-heart.hearted { color: #e05a7a; }
+    .card-heart.hearted svg { fill: #e05a7a; }
+    .recipe-card { position: relative; }
+
+    /* ── STATS MODAL ─────────────────────────────────────────── */
+    .stats-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(16,16,48,0.35);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+    .stats-backdrop.open { display: flex; }
+    .stats-modal {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      max-width: 520px;
+      width: calc(100vw - 2rem);
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 8px 32px rgba(16,16,48,0.12);
+    }
+    .stats-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      flex-shrink: 0;
+    }
+    .stats-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .stats-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      padding: 2px 6px;
+      line-height: 1;
+    }
+    .stats-sort-row {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+      flex-shrink: 0;
+    }
+    .stats-sort-btn {
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .stats-sort-btn.active {
+      background: var(--ink);
+      border-color: var(--ink);
+      color: white;
+    }
+    .stats-table-wrap { overflow-y: auto; flex: 1; }
+    .stats-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .stats-table th {
+      text-align: left;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--warm-white);
+    }
+    .stats-table th.num, .stats-table td.num { text-align: right; }
+    .stats-table td {
+      padding: 0.55rem 0.5rem;
+      border-bottom: 0.5px solid var(--border);
+      color: var(--ink-light);
+      vertical-align: middle;
+    }
+    .stats-table tr:last-child td { border-bottom: none; }
+    .stats-table td.recipe-name {
+      color: var(--ink);
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .stats-table td.recipe-name:hover { color: var(--terracotta-text); }
+
+    /* Stats button in header */
+    .stats-btn {
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      color: var(--ink-light);
+      flex-shrink: 0;
+    }
+    .stats-btn:hover { border-color: var(--terracotta-text); color: var(--terracotta-text); }
+
     /* ── KEYBOARD SHORTCUTS MODAL ────────────────────────────── */
     .shortcuts-backdrop {
       display: none;
@@ -1062,6 +1225,11 @@
     </div>
 
     <div class="header-right">
+      <button class="stats-btn" onclick="openStats()" title="Stats" aria-label="Show stats">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+        </svg>
+      </button>
       <button class="cart-btn" id="cart-btn-el" onclick="openDrawer()" title="Grocery list" aria-label="Open grocery list" aria-haspopup="dialog" aria-expanded="false">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
@@ -1128,6 +1296,34 @@
 
 
 
+
+  <!-- STATS MODAL -->
+  <div class="stats-backdrop" id="stats-backdrop" onclick="closeStats(event)" role="dialog" aria-modal="true" aria-labelledby="stats-title">
+    <div class="stats-modal">
+      <div class="stats-header">
+        <span class="stats-title" id="stats-title">Stats</span>
+        <button class="stats-close" onclick="closeStats()" aria-label="Close">✕</button>
+      </div>
+      <div class="stats-sort-row">
+        <button class="stats-sort-btn active" id="sort-hearts" onclick="renderStats('hearts')">❤️ Favourites</button>
+        <button class="stats-sort-btn" id="sort-views" onclick="renderStats('views')">👁 Views</button>
+        <button class="stats-sort-btn" id="sort-made" onclick="renderStats('made')">✓ Made it</button>
+      </div>
+      <div class="stats-table-wrap">
+        <table class="stats-table">
+          <thead>
+            <tr>
+              <th>Recipe</th>
+              <th class="num">❤️</th>
+              <th class="num">👁</th>
+              <th class="num">✓</th>
+            </tr>
+          </thead>
+          <tbody id="stats-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
   <!-- KEYBOARD SHORTCUTS MODAL -->
   <div class="shortcuts-backdrop" id="shortcuts-backdrop" onclick="closeShortcuts(event)" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title">
@@ -1230,6 +1426,15 @@
   const _madeItRef = _db.ref('madeIt');
   window._madeItCounts = {};
   _madeItRef.on('value', snap => { window._madeItCounts = snap.val() || {}; });
+
+  // Favourites — shared count per recipe
+  const _favsRef = _db.ref('favorites');
+  window._favCounts = {};
+  _favsRef.on('value', snap => {
+    window._favCounts = snap.val() || {};
+    // Re-render heart states wherever visible
+    if (window._syncHeartUI) window._syncHeartUI();
+  });
 
   // Listen for real-time changes
   _listRef.on('value', (snapshot) => {
@@ -1925,8 +2130,12 @@
     empty.style.display = 'none';
     grid.innerHTML = filtered.map(r => {
       const rc = RECIPE_COLORS[r.id] || { color: '#2A6B3A' };
+      const hearted = (window._favCounts || {})[r.id] > 0;
       return `
       <div class="recipe-card" onclick="showDetail('${r.id}')" style="border-top:3px solid ${rc.color}">
+        <button class="card-heart ${hearted ? 'hearted' : ''}" onclick="event.stopPropagation();toggleFavourite('${r.id}')" aria-label="Favourite">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#e05a7a" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
         <div class="card-category">${loc(r.category)}</div>
         <div class="card-title">${loc(r.title)}</div>
         <div class="card-desc">${loc(r.description)}</div>
@@ -2085,6 +2294,10 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             <span id="made-it-label">${t('madeIt')}</span>
           </button>
+        <button class="heart-btn ${(window._favCounts || {})[r.id] > 0 ? 'hearted' : ''}" id="detail-heart-btn" onclick="toggleFavourite('${r.id}')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span id="detail-heart-count">${(window._favCounts || {})[r.id] || 0}</span>
+        </button>
         <button class="share-btn" data-recipe-id="${r.id}"  data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
@@ -2534,6 +2747,96 @@
     document.querySelector('meta[name="twitter:title"]').setAttribute('content', 'VinWin Kitchen');
     document.querySelector('meta[name="twitter:description"]').setAttribute('content', 'A personal recipe collection by Erwin & Vincent. Mostly vegan and vegetarian, always delicious.');
     document.querySelector('meta[name="twitter:image"]').setAttribute('content', 'https://www.halderman.eu/apple-touch-icon.png');
+  }
+
+  // ── FAVOURITES ─────────────────────────────────────────────────
+  // Stored in localStorage so toggling is per-device (prevents double-counting)
+  function _getFavLocal() {
+    try { return JSON.parse(localStorage.getItem('vw-favs') || '{}'); } catch(e) { return {}; }
+  }
+  function _setFavLocal(obj) {
+    localStorage.setItem('vw-favs', JSON.stringify(obj));
+  }
+
+  function toggleFavourite(id) {
+    const local = _getFavLocal();
+    const wasHearted = !!local[id];
+    if (wasHearted) {
+      delete local[id];
+    } else {
+      local[id] = true;
+    }
+    _setFavLocal(local);
+    // Update Firebase count
+    const ref = _db.ref('favorites/' + id);
+    ref.transaction(cur => Math.max(0, (cur || 0) + (wasHearted ? -1 : 1)));
+    // Optimistically update UI immediately
+    window._favCounts = window._favCounts || {};
+    window._favCounts[id] = Math.max(0, (window._favCounts[id] || 0) + (wasHearted ? -1 : 1));
+    window._syncHeartUI();
+  }
+
+  // Sync heart UI state across cards and detail view
+  window._syncHeartUI = function() {
+    const local = _getFavLocal();
+    const counts = window._favCounts || {};
+    // Update card hearts
+    document.querySelectorAll('.card-heart').forEach(btn => {
+      const id = btn.closest('.recipe-card')?.getAttribute('onclick')?.match(/showDetail\('([^']+)'\)/)?.[1];
+      if (!id) return;
+      btn.classList.toggle('hearted', !!local[id]);
+    });
+    // Update detail heart button if visible
+    const detailHeart = document.getElementById('detail-heart-btn');
+    if (detailHeart && window._currentRecipeId) {
+      const id = window._currentRecipeId;
+      detailHeart.classList.toggle('hearted', !!local[id]);
+      const countEl = document.getElementById('detail-heart-count');
+      if (countEl) countEl.textContent = counts[id] || 0;
+    }
+  };
+
+  // ── STATS ──────────────────────────────────────────────────────
+  let _statsSort = 'hearts';
+
+  function openStats() {
+    document.getElementById('stats-backdrop').classList.add('open');
+    renderStats(_statsSort);
+  }
+
+  function closeStats(e) {
+    if (e && e.target !== document.getElementById('stats-backdrop')) return;
+    document.getElementById('stats-backdrop').classList.remove('open');
+  }
+
+  function renderStats(sortBy) {
+    _statsSort = sortBy;
+    // Update sort buttons
+    ['hearts','views','made'].forEach(k => {
+      document.getElementById('sort-' + k).classList.toggle('active', k === sortBy);
+    });
+    const views = window._viewCounts || {};
+    const made = window._madeItCounts || {};
+    const favs = window._favCounts || {};
+
+    const rows = recipes.map(r => ({
+      id: r.id,
+      name: loc(r.title),
+      hearts: favs[r.id] || 0,
+      views: views[r.id] || 0,
+      made: (made[r.id] && made[r.id].count) || 0,
+    }));
+
+    rows.sort((a, b) => b[sortBy] - a[sortBy] || a.name.localeCompare(b.name));
+
+    const tbody = document.getElementById('stats-tbody');
+    tbody.innerHTML = rows.map(r => `
+      <tr>
+        <td class="recipe-name" onclick="closeStats();showDetail('${r.id}')">${r.name}</td>
+        <td class="num">${r.hearts || '—'}</td>
+        <td class="num">${r.views || '—'}</td>
+        <td class="num">${r.made || '—'}</td>
+      </tr>`).join('');
   }
 
   // ── SERVICE WORKER ─────────────────────────────────────────────
