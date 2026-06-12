@@ -843,6 +843,167 @@
     }
     .cook-focus-exit:hover { border-color: var(--ink); color: var(--ink); }
 
+
+    /* ── STEP TIMER ─────────────────────────────────────────── */
+    .step-timer-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.5rem;
+      padding: 0.25rem 0.65rem;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s;
+    }
+    .step-timer-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .step-timer-btn.running {
+      border-color: var(--sage);
+      color: var(--sage);
+      background: var(--sage-light);
+    }
+    .step-timer-btn.done {
+      border-color: var(--terracotta-text);
+      color: var(--terracotta-text);
+      background: var(--terracotta-light);
+    }
+
+    /* ── MADE IT BUTTON ──────────────────────────────────────── */
+    .made-it-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      background: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s, background 0.15s, opacity 0.3s;
+    }
+    .made-it-btn:hover { border-color: var(--sage); color: var(--sage); }
+    .made-it-btn.done {
+      border-color: var(--sage);
+      background: var(--sage);
+      color: white;
+      cursor: default;
+    }
+    .made-it-btn { display: none; }
+    .made-it-btn.visible { display: inline-flex; }
+
+    /* ── SHARE LIST BUTTON ───────────────────────────────────── */
+    .share-list-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      background: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.82rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .share-list-btn:hover { border-color: var(--terracotta-text); color: var(--terracotta-text); }
+
+    /* ── KEYBOARD SHORTCUTS MODAL ────────────────────────────── */
+    .shortcuts-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(16,16,48,0.35);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+    .shortcuts-backdrop.open { display: flex; }
+    .shortcuts-modal {
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      max-width: 360px;
+      width: calc(100vw - 2rem);
+      box-shadow: 0 8px 32px rgba(16,16,48,0.12);
+    }
+    .shortcuts-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+    .shortcuts-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .shortcuts-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: var(--ink-light);
+      cursor: pointer;
+      padding: 2px 6px;
+      line-height: 1;
+    }
+    .shortcuts-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.45rem 0;
+      border-bottom: 0.5px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--ink-light);
+    }
+    .shortcuts-row:last-child { border-bottom: none; }
+    .shortcuts-keys { display: flex; gap: 4px; }
+    kbd {
+      display: inline-block;
+      padding: 2px 7px;
+      border: 1px solid var(--border);
+      border-bottom: 2px solid var(--border);
+      border-radius: 4px;
+      background: var(--cream);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .shortcuts-trigger {
+      position: fixed;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--warm-white);
+      color: var(--ink-light);
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 90;
+      transition: border-color 0.15s, color 0.15s;
+      box-shadow: 0 2px 8px rgba(16,16,48,0.08);
+    }
+    .shortcuts-trigger:hover { border-color: var(--ink); color: var(--ink); }
+    @media (max-width: 768px) { .shortcuts-trigger { display: none; } }
+
     /* SKELETON LOADING */
     @keyframes shimmer {
       0% { background-position: -600px 0; }
@@ -953,12 +1114,32 @@
       <button class="btn-undo" onclick="undoLast()" id="btn-undo" style="display:none">Undo</button>
       <button class="btn-clear-checked" onclick="clearChecked()" id="btn-clear-checked">Clear checked</button>
       <button class="btn-clear-all" onclick="clearAll()" id="btn-clear-all">Clear all</button>
+      <button class="share-list-btn" onclick="shareGroceryList()" id="share-list-btn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+        Share
+      </button>
     </div>
   </div>
 
 
 
 
+
+  <!-- KEYBOARD SHORTCUTS MODAL -->
+  <div class="shortcuts-backdrop" id="shortcuts-backdrop" onclick="closeShortcuts(event)" role="dialog" aria-modal="true" aria-labelledby="shortcuts-title">
+    <div class="shortcuts-modal">
+      <div class="shortcuts-header">
+        <span class="shortcuts-title" id="shortcuts-title">Keyboard shortcuts</span>
+        <button class="shortcuts-close" onclick="closeShortcuts()" aria-label="Close">✕</button>
+      </div>
+      <div class="shortcuts-row"><span>Go back to list</span><span class="shortcuts-keys"><kbd>Esc</kbd></span></div>
+      <div class="shortcuts-row"><span>Open search</span><span class="shortcuts-keys"><kbd>/</kbd></span></div>
+      <div class="shortcuts-row"><span>Toggle focus mode</span><span class="shortcuts-keys"><kbd>F</kbd></span></div>
+      <div class="shortcuts-row"><span>Close any overlay</span><span class="shortcuts-keys"><kbd>Esc</kbd></span></div>
+      <div class="shortcuts-row"><span>Show shortcuts</span><span class="shortcuts-keys"><kbd>?</kbd></span></div>
+    </div>
+  </div>
+  <button class="shortcuts-trigger" onclick="openShortcuts()" aria-label="Show keyboard shortcuts">?</button>
 
   <!-- TOAST -->
   <div class="toast" id="toast"></div>
@@ -1040,6 +1221,11 @@
     const ref = _db.ref('recipeViews/' + id);
     ref.transaction(cur => (cur || 0) + 1);
   };
+
+  // madeIt counts — available globally for stats
+  const _madeItRef = _db.ref('madeIt');
+  window._madeItCounts = {};
+  _madeItRef.on('value', snap => { window._madeItCounts = snap.val() || {}; });
 
   // Listen for real-time changes
   _listRef.on('value', (snapshot) => {
@@ -1131,6 +1317,13 @@
       shareLabel: 'Share',
       shareCopied: 'Link copied!',
       addedToast: (n) => `${n} ingredient${n === 1 ? '' : 's'} added to list`,
+      shareList: 'Share list',
+      listCopied: 'List copied!',
+      madeIt: 'Made it!',
+      madeItDone: '✓ Made it',
+      shortcuts: 'Keyboard shortcuts',
+      timerStart: 'Start timer',
+      timerDone: 'Time's up!',
     },
     nl: {
       searchPlaceholder: 'Recepten zoeken…',
@@ -1161,6 +1354,13 @@
       shareLabel: 'Delen',
       shareCopied: 'Link gekopieerd!',
       addedToast: (n) => `${n} ingrediënt${n === 1 ? '' : 'en'} toegevoegd`,
+      shareList: 'Lijst delen',
+      listCopied: 'Lijst gekopieerd!',
+      madeIt: 'Gemaakt!',
+      madeItDone: '✓ Gemaakt',
+      shortcuts: 'Sneltoetsen',
+      timerStart: 'Start timer',
+      timerDone: 'Klaar!',
     },
     es: {
       searchPlaceholder: 'Buscar recetas…',
@@ -1191,11 +1391,19 @@
       shareLabel: 'Compartir',
       shareCopied: '¡Enlace copiado!',
       addedToast: (n) => `${n} ingrediente${n === 1 ? '' : 's'} añadido${n === 1 ? '' : 's'}`,
+      shareList: 'Compartir lista',
+      listCopied: '¡Lista copiada!',
+      madeIt: '¡Lo hice!',
+      madeItDone: '✓ Hecho',
+      shortcuts: 'Atajos de teclado',
+      timerStart: 'Iniciar temporizador',
+      timerDone: '¡Tiempo!',
     }
   };
 
   function t(key) { return UI[lang][key]; }
 
+  // ── LANGUAGE ───────────────────────────────────────────────────
   const LANG_FLAGS = { en: '🇬🇧', nl: '🇳🇱', es: '🇪🇸' };
 
   function toggleLangDropdown() {
@@ -1237,11 +1445,16 @@
     renderGroceryDrawer();
   }
 
+  // ── UI TEXT ────────────────────────────────────────────────────
   function updateUIText() {
     document.getElementById('search-input').placeholder = t('searchPlaceholder');
     document.getElementById('search-overlay-input').placeholder = t('searchPlaceholder');
     document.getElementById('cancel-btn').textContent = t('cancel');
     document.getElementById('back-label').textContent = t('backLabel');
+    const shareListBtn = document.getElementById('share-list-btn');
+    if (shareListBtn) shareListBtn.querySelector('span') && (shareListBtn.lastChild.textContent = ' ' + t('shareList'));
+    const shortcutsTitle = document.getElementById('shortcuts-title');
+    if (shortcutsTitle) shortcutsTitle.textContent = t('shortcuts');
     document.getElementById('empty-title').textContent = t('emptyTitle');
     document.getElementById('empty-sub').textContent = t('emptySub');
     document.getElementById('drawer-title').textContent = t('drawerTitle');
@@ -1253,6 +1466,7 @@
     // Dropdown labels re-rendered by buildFilters
   }
 
+  // ── LOCALISATION ───────────────────────────────────────────────
   function loc(field) {
     if (typeof field === 'string') return field;
     return field[lang] || field['en'] || '';
@@ -1325,6 +1539,7 @@
     }).join('');
   };
 
+  // ── UTILITIES ──────────────────────────────────────────────────
   function escHtml(str) {
     return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
@@ -1495,6 +1710,7 @@
   }
 
   let _toastTimer = null;
+  // ── TOAST ──────────────────────────────────────────────────────
   function showToast(msg) {
     const el = document.getElementById('toast');
     el.textContent = msg;
@@ -1710,6 +1926,7 @@
     }).join('');
   }
 
+  // ── SCALING HELPERS ────────────────────────────────────────────
   function fmtAmt(amount, ratio) {
     const val = amount * ratio;
     if (val === 0) return '';
@@ -1741,6 +1958,7 @@
     return content.replace(/\{(i\d+)\}/g, (match, id) => ingMap[id] || match);
   }
 
+  // ── DETAIL VIEW ────────────────────────────────────────────────
   function renderDetail(r) {
     const srv = currentServings[r.id];
     // For Aeropress: ratio is driven by coffeeGrams, not servings
@@ -1790,14 +2008,25 @@
     }
 
     const optionalStepLabel = { en: 'optional', nl: 'optioneel', es: 'opcional' };
-    const stepList = r.steps.map((s, i) => `
+    const stepList = r.steps.map((s, i) => {
+      const stepText = resolveStepContent(loc(s.content), ingMap);
+      const timerId = r.id + '-step-' + i;
+      const mins = extractMinutes(loc(s.content));
+      const timerBtn = mins ? `
+        <button class="step-timer-btn" id="tbtn-${timerId}" onclick="startTimer('${timerId}', ${mins * 60})">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+          <span id="tlbl-${timerId}">${mins} min</span>
+        </button>` : '';
+      return `
       <li class="step-item${s.optional ? ' optional' : ''}">
         <div class="step-num">${i + 1}</div>
         <div class="step-content">
           <h3>${loc(s.title)}${s.optional ? ` <em class="step-optional-label">— ${optionalStepLabel[lang] || 'optional'}</em>` : ''}</h3>
-          <p>${resolveStepContent(loc(s.content), ingMap)}</p>
+          <p>${stepText}</p>
+          ${timerBtn}
         </div>
-      </li>`).join('');
+      </li>`;
+    }).join('');
 
     const notes = loc(r.notes);
 
@@ -1843,6 +2072,10 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
             Cook
           </button>
+        <button class="made-it-btn" id="made-it-btn" onclick="markMadeIt('${r.id}')" aria-label="Mark as made">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+            <span id="made-it-label">${t('madeIt')}</span>
+          </button>
         <button class="share-btn" data-recipe-id="${r.id}"  data-recipe-title="${loc(r.title).replace(/"/g, '&quot;')}" onclick="shareRecipe(this.dataset.recipeId, this.dataset.recipeTitle)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
@@ -1873,6 +2106,7 @@
       </div>`;
   }
 
+  // ── SERVINGS / COFFEE CONTROLS ─────────────────────────────────
   function changeServings(id, delta) {
     const r = recipes.find(x => x.id === id);
     if (!r) return;
@@ -1937,6 +2171,7 @@
     renderDetail(r);
     updateOGMeta(r);
     recordView(r.id);
+    initMadeItBtn(r.id);
     window.scrollTo(0, 0);
     // Push a state so browser back returns to list; use clean URL path
     history.pushState({ recipeId: id }, '', '/recipe/' + id);
@@ -1955,6 +2190,7 @@
     if (cookBtn) cookBtn.classList.remove('active');
   }
 
+  // ── SHARE ──────────────────────────────────────────────────────
   function shareRecipe(id, title) {
     const url = `${location.origin}/recipe/${id}`;
     if (navigator.share) {
@@ -1996,6 +2232,7 @@
     }, { passive: true });
   })();
 
+  // ── SEARCH ─────────────────────────────────────────────────────
   function onSearchInput() {
     const detailVisible = document.getElementById('detail-view').style.display !== 'none';
     if (detailVisible) {
@@ -2025,7 +2262,7 @@
     const val = document.getElementById('search-overlay-input').value;
     document.getElementById('search-input').value = val;
     // If on detail view, navigate back to list first
-    const detailVisible = document.getElementById('detail-view').style.display !== 'none';
+    const detailVisible = getComputedStyle(document.getElementById('detail-view')).display !== 'none';
     if (detailVisible) {
       document.getElementById('detail-view').style.display = 'none';
       document.getElementById('list-view').style.display = 'block';
@@ -2036,17 +2273,42 @@
 
 
 
-  // Keyboard navigation
+  // ── KEYBOARD NAVIGATION ───────────────────────────────────────
   document.addEventListener('keydown', (e) => {
-    // Focus mode: Escape exits
+    // Ignore if typing in an input
+    if (['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+
+    // Focus mode: Escape exits, F toggles
     if (document.getElementById('detail-view').classList.contains('cook-focus')) {
       if (e.key === 'Escape') { toggleCookFocus(); return; }
     }
-    if (e.key !== 'Escape') return;
-    if (document.getElementById('search-overlay').classList.contains('active')) { closeSearch(); return; }
-    if (document.querySelector('.filter-dropdown-panel.open')) { closeAllDropdowns(); return; }
-    if (document.getElementById('grocery-drawer').classList.contains('open')) { closeDrawer(); return; }
-    if (document.getElementById('detail-view').style.display !== 'none') { history.back(); return; }
+
+    // ? — open shortcuts modal
+    if (e.key === '?') { openShortcuts(); return; }
+
+    // Escape — close overlays in priority order
+    if (e.key === 'Escape') {
+      if (document.getElementById('shortcuts-backdrop').classList.contains('open')) { document.getElementById('shortcuts-backdrop').classList.remove('open'); return; }
+      if (document.getElementById('search-overlay').classList.contains('active')) { closeSearch(); return; }
+      if (document.querySelector('.filter-dropdown-panel.open')) { closeAllDropdowns(); return; }
+      if (document.getElementById('grocery-drawer').classList.contains('open')) { closeDrawer(); return; }
+      if (getComputedStyle(document.getElementById('detail-view')).display !== 'none') { history.back(); return; }
+      return;
+    }
+
+    // / — open search (when on list view)
+    if (e.key === '/' && getComputedStyle(document.getElementById('list-view')).display !== 'none') {
+      e.preventDefault();
+      openSearch();
+      return;
+    }
+
+    // F — toggle focus mode (when on detail view)
+    if (e.key === 'f' || e.key === 'F') {
+      if (getComputedStyle(document.getElementById('detail-view')).display !== 'none') {
+        toggleCookFocus(); return;
+      }
+    }
   });
 
 
@@ -2082,10 +2344,167 @@
   });
 
 
+
+  // ── STEP TIMERS ────────────────────────────────────────────────
+  const _timers = {};
+
+  function extractMinutes(text) {
+    // Match patterns like "20 minutes", "1 hour", "1.5 hours", "30 min"
+    const m = text.match(/(\d+(?:\.\d+)?)\s*(hour|hr|uur|hora|minute|min|minut)/i);
+    if (!m) return null;
+    const val = parseFloat(m[1]);
+    const unit = m[2].toLowerCase();
+    if (unit.startsWith('hour') || unit === 'hr' || unit === 'uur' || unit === 'hora') return Math.round(val * 60);
+    return Math.round(val);
+  }
+
+  function playDing() {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const t = ctx.currentTime;
+      // Warm bowl-strike: fundamental + harmonic, quick attack, slow decay
+      [220, 440, 660].forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, t);
+        osc.frequency.exponentialRampToValueAtTime(freq * 0.99, t + 1.5);
+        gain.gain.setValueAtTime(0, t);
+        gain.gain.linearRampToValueAtTime(0.35 / (i + 1), t + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.001, t + 2.5);
+        osc.start(t);
+        osc.stop(t + 2.5);
+      });
+    } catch(e) {}
+  }
+
+  function startTimer(id, seconds) {
+    // If already running, cancel
+    if (_timers[id]) {
+      clearInterval(_timers[id].interval);
+      delete _timers[id];
+      const btn = document.getElementById('tbtn-' + id);
+      const lbl = document.getElementById('tlbl-' + id);
+      if (btn) { btn.className = 'step-timer-btn'; }
+      const mins = Math.round(seconds / 60);
+      if (lbl) lbl.textContent = mins + ' min';
+      return;
+    }
+    const btn = document.getElementById('tbtn-' + id);
+    const lbl = document.getElementById('tlbl-' + id);
+    if (!btn || !lbl) return;
+    btn.className = 'step-timer-btn running';
+
+    let remaining = seconds;
+    function tick() {
+      remaining--;
+      if (remaining <= 0) {
+        clearInterval(_timers[id].interval);
+        delete _timers[id];
+        if (btn) btn.className = 'step-timer-btn done';
+        if (lbl) lbl.textContent = t('timerDone');
+        playDing();
+        if ('vibrate' in navigator) navigator.vibrate([200, 100, 200]);
+        return;
+      }
+      const m = Math.floor(remaining / 60);
+      const s = remaining % 60;
+      if (lbl) lbl.textContent = m + ':' + String(s).padStart(2, '0');
+    }
+    _timers[id] = { interval: setInterval(tick, 1000) };
+    tick();
+  }
+
+  // ── MADE IT ────────────────────────────────────────────────────
+  let _madeItTimer = null;
+
+  function initMadeItBtn(recipeId) {
+    const btn = document.getElementById('made-it-btn');
+    const lbl = document.getElementById('made-it-label');
+    if (!btn) return;
+
+    // Check if already marked
+    const madeRef = _db.ref('madeIt/' + recipeId);
+    madeRef.once('value', snap => {
+      const data = snap.val();
+      if (data && data.count > 0) {
+        btn.classList.add('done');
+        if (lbl) lbl.textContent = t('madeItDone');
+      }
+    });
+
+    // Show button after 60 seconds of active time
+    if (_madeItTimer) clearTimeout(_madeItTimer);
+    btn.classList.remove('visible', 'done');
+    _madeItTimer = setTimeout(() => {
+      // Only show if still on same recipe
+      if (window._currentRecipeId === recipeId) {
+        btn.classList.add('visible');
+      }
+    }, 60000);
+  }
+
+  function markMadeIt(recipeId) {
+    const btn = document.getElementById('made-it-btn');
+    const lbl = document.getElementById('made-it-label');
+    if (!btn || btn.classList.contains('done')) return;
+    const madeRef = _db.ref('madeIt/' + recipeId);
+    madeRef.transaction(cur => {
+      const now = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+      if (!cur) return { count: 1, lastMade: now };
+      return { count: (cur.count || 0) + 1, lastMade: now };
+    });
+    btn.classList.add('done');
+    if (lbl) lbl.textContent = t('madeItDone');
+    showToast('🎉 Logged!');
+  }
+
+  // ── SHARE GROCERY LIST ─────────────────────────────────────────
+  function shareGroceryList() {
+    const items = window._groceryItems || {};
+    const keys = Object.keys(items).sort((a, b) => {
+      if (items[a].checked === items[b].checked) return 0;
+      return items[a].checked ? 1 : -1;
+    });
+    if (keys.length === 0) return;
+
+    // Apple Notes / Reminders compatible: "- [ ] item" becomes a checklist
+    // Most markdown-aware note apps render this as checkboxes
+    const lines = keys.map(k => {
+      const item = items[k];
+      return (item.checked ? '- [x] ' : '- [ ] ') + item.text;
+    });
+    const text = '🛒 Grocery List\n' + lines.join('\n');
+
+    if (navigator.share) {
+      navigator.share({ text }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(t('listCopied'));
+      }).catch(() => {
+        showToast(t('listCopied'));
+      });
+    }
+  }
+
+  // ── KEYBOARD SHORTCUTS MODAL ───────────────────────────────────
+  function openShortcuts() {
+    document.getElementById('shortcuts-backdrop').classList.add('open');
+  }
+
+  function closeShortcuts(e) {
+    if (e && e.target !== document.getElementById('shortcuts-backdrop')) return;
+    document.getElementById('shortcuts-backdrop').classList.remove('open');
+  }
+
+  // ── ANALYTICS ──────────────────────────────────────────────────
   function recordView(id) {
     if (window._recordView) window._recordView(id);
   }
 
+  // ── OG META ────────────────────────────────────────────────────
   function updateOGMeta(r) {
     const rc = RECIPE_COLORS[r.id] || { color: '#2A6B3A', name: '' };
     const title = loc(r.title) + ' — VinWin Kitchen';
@@ -2106,6 +2525,13 @@
     document.querySelector('meta[name="twitter:title"]').setAttribute('content', 'VinWin Kitchen');
     document.querySelector('meta[name="twitter:description"]').setAttribute('content', 'A personal recipe collection by Erwin & Vincent. Mostly vegan and vegetarian, always delicious.');
     document.querySelector('meta[name="twitter:image"]').setAttribute('content', 'https://www.halderman.eu/apple-touch-icon.png');
+  }
+
+  // ── SERVICE WORKER ─────────────────────────────────────────────
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
   }
 
   loadRecipes();
