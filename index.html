@@ -1958,6 +1958,10 @@
       } catch(_) {}
       const res = await fetch(url);
       recipes = await res.json();
+      for (let i = recipes.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [recipes[i], recipes[j]] = [recipes[j], recipes[i]];
+      }
       buildFilters();
       renderList();
       // Deep-link: if URL is /recipe/:id, open that recipe directly
