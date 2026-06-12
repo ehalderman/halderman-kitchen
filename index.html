@@ -1279,7 +1279,7 @@
   let activeTags = new Set();
   let currentServings = JSON.parse(sessionStorage.getItem('vw-servings') || '{}');
   let coffeeGrams = JSON.parse(sessionStorage.getItem('vw-coffee') || '{}');
-  let lang = localStorage.getItem('vw-lang') || 'en';
+  let lang = (new URLSearchParams(location.search).get('lang') || localStorage.getItem('vw-lang') || 'en');
   document.documentElement.lang = lang;
   // Apply persisted language to flag button immediately
   document.addEventListener('DOMContentLoaded', () => {
@@ -1435,6 +1435,11 @@
     lang = newLang;
     localStorage.setItem('vw-lang', lang);
     document.documentElement.lang = lang;
+    // Reflect language in URL so copying the address bar gives a shareable link
+    const _lsp = new URLSearchParams(location.search);
+    if (lang !== 'en') { _lsp.set('lang', lang); } else { _lsp.delete('lang'); }
+    const _lsq = _lsp.toString();
+    history.replaceState(null, null, location.pathname + (_lsq ? '?' + _lsq : ''));
     const btn = document.getElementById('lang-current-btn');
     if (btn) btn.textContent = LANG_FLAGS[lang] || '🇬🇧';
     updateUIText();
@@ -2178,14 +2183,14 @@
     initMadeItBtn(r.id);
     window.scrollTo(0, 0);
     // Push a state so browser back returns to list; use clean URL path
-    history.pushState({ recipeId: id }, '', '/recipe/' + id);
+    history.pushState({ recipeId: id }, '', '/recipe/' + id + (lang !== 'en' ? '?lang=' + lang : ''));
   }
 
   function showList() {
     document.getElementById('detail-view').style.display = 'none';
     document.getElementById('list-view').style.display = 'block';
     window._currentRecipeId = null;
-    history.replaceState({}, '', '/');
+    history.replaceState({}, '', lang !== 'en' ? '/?lang=' + lang : '/');
     resetOGMeta();
     // Always exit focus mode when leaving recipe
     document.getElementById('detail-view').classList.remove('cook-focus');
@@ -2196,7 +2201,7 @@
 
   // ── SHARE ──────────────────────────────────────────────────────
   function shareRecipe(id, title) {
-    const url = `${location.origin}/recipe/${id}`;
+    const url = `${location.origin}/recipe/${id}` + (lang !== 'en' ? `?lang=${lang}` : '');
     if (navigator.share) {
       navigator.share({ title: title + ' — VinWin Kitchen', url }).catch(() => {});
     } else {
