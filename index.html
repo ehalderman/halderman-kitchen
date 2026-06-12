@@ -1054,7 +1054,7 @@
 </script>
 
 <script>
-  const RECIPE_FILE = 'recipes.json';
+  const RECIPE_FILE = '/recipes.json';
 
   const RECIPE_COLORS = {
     "hummus":                              { color: "#A85F10", name: "Amber" },
@@ -1228,11 +1228,9 @@
     updateUIText();
     buildFilters();
     const currentDetail = document.getElementById('detail-view');
-    if (currentDetail.style.display !== 'none') {
-      if (window._currentRecipeId) {
-        const r = recipes.find(x => x.id === window._currentRecipeId);
-        if (r) renderDetail(r);
-      }
+    if (window._currentRecipeId && getComputedStyle(currentDetail).display !== 'none') {
+      const r = recipes.find(x => x.id === window._currentRecipeId);
+      if (r) renderDetail(r);
     } else {
       renderList();
     }
