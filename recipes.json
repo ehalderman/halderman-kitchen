@@ -2093,9 +2093,9 @@
       "es": "Muffins de Yogur, Arándanos y Limón"
     },
     "description": {
-      "en": "Fluffy, tangy muffins packed with blueberries and bright lemon — protein-boosted with Greek yoghurt and an extra egg.",
-      "nl": "Luchtige, frisse muffins vol bosbessen en heldere citroen — extra eiwitrijk met Griekse yoghurt en een extra ei.",
-      "es": "Muffins esponjosos y ácidos llenos de arándanos y limón vibrante — con más proteína gracias al yogur griego y un huevo extra."
+      "en": "Fluffy, tangy muffins packed with blueberries and bright lemon — protein-boosted with Greek yoghurt and extra eggs.",
+      "nl": "Luchtige, frisse muffins vol bosbessen en heldere citroen — extra eiwitrijk met Griekse yoghurt en extra eieren.",
+      "es": "Muffins esponjosos y ácidos llenos de arándanos y limón vibrante — con más proteína gracias al yogur griego y huevos extra."
     },
     "ingredients": [
       {
@@ -2140,7 +2140,7 @@
       },
       {
         "id": "i5",
-        "amount": 3,
+        "amount": 4,
         "unit": "large",
         "name": {
           "en": "eggs",
@@ -2165,9 +2165,9 @@
         "name": {
           "en": "vanilla protein powder (optional)",
           "nl": "vanille proteïnepoeder (optioneel)",
-          "es": "proteína en polvo de vainilla (opcional)",
-          "optional": true
-        }
+          "es": "proteína en polvo de vainilla (opcional)"
+        },
+        "optional": true
       },
       {
         "id": "i8",
@@ -2176,9 +2176,9 @@
         "name": {
           "en": "plant-based milk (if using protein powder)",
           "nl": "plantaardige melk (bij gebruik van proteïnepoeder)",
-          "es": "leche vegetal (si se usa proteína en polvo)",
-          "optional": true
-        }
+          "es": "leche vegetal (si se usa proteína en polvo)"
+        },
+        "optional": true
       },
       {
         "id": "i9",
@@ -2256,14 +2256,26 @@
       },
       {
         "title": {
+          "en": "Rub zest into sugar",
+          "nl": "Citroenrasp in suiker wrijven",
+          "es": "Frotar la ralladura con el azúcar"
+        },
+        "content": {
+          "en": "Zest {i2} directly into {i4}. Rub together with your fingertips for 1–2 minutes until the sugar smells intensely of lemon. This releases the essential oils for a much stronger lemon flavour.",
+          "nl": "Rasp {i2} direct boven op {i4}. Wrijf met je vingertoppen 1–2 minuten tot de suiker intens naar citroen ruikt. Dit maakt de essentiële oliën vrij voor een veel sterkere citroensmaak.",
+          "es": "Rallar {i2} directamente sobre {i4}. Frotar con los dedos durante 1–2 minutos hasta que el azúcar huela intensamente a limón. Esto libera los aceites esenciales para un sabor a limón mucho más intenso."
+        }
+      },
+      {
+        "title": {
           "en": "Mix wet ingredients",
           "nl": "Natte ingrediënten mengen",
           "es": "Mezclar ingredientes húmedos"
         },
         "content": {
-          "en": "Whisk together {i1}, {i3}, {i4}, {i5}, {i6}, and the zest and juice of {i2} until smooth. If using {i7}, whisk it in now along with {i8}.",
-          "nl": "Klop {i1}, {i3}, {i4}, {i5}, {i6} en de rasp en het sap van {i2} glad. Als je {i7} gebruikt, klop dit er nu ook doorheen samen met {i8}.",
-          "es": "Batir {i1}, {i3}, {i4}, {i5}, {i6} y la ralladura y zumo de {i2} hasta obtener una mezcla suave. Si se usa {i7}, incorporarlo ahora junto con {i8}."
+          "en": "Whisk together {i1}, {i3}, the lemon-rubbed {i4}, {i5}, {i6}, and the juice of {i2} until smooth. If using {i7}, whisk it in now along with {i8}.",
+          "nl": "Klop {i1}, {i3}, de citroensuiker {i4}, {i5}, {i6} en het sap van {i2} glad. Als je {i7} gebruikt, klop dit er nu ook doorheen samen met {i8}.",
+          "es": "Batir {i1}, {i3}, {i4} (con la ralladura), {i5}, {i6} y el zumo de {i2} hasta obtener una mezcla suave. Si se usa {i7}, incorporarlo ahora junto con {i8}."
         }
       },
       {
@@ -2316,9 +2328,9 @@
       }
     ],
     "notes": {
-      "en": "Protein powder: if adding, don't exceed 30g for this batch and always add the plant milk too — protein powder absorbs a lot of liquid and will dry out the muffins without it. Frozen blueberries work just as well as fresh; no need to thaw. Best eaten the day of baking.<br>• Cake tin (loaf or rectangular): same temperature, but bake for 35–45 minutes. Start checking at 35 min with a skewer. Cool in the tin for 10 minutes before turning out.",
-      "nl": "Proteïnepoeder: voeg niet meer dan 30g toe voor dit recept en voeg altijd ook de plantaardige melk toe — proteïnepoeder absorbeert veel vocht en zal de muffins uitdrogen zonder extra vloeistof. Diepvries bosbessen werken net zo goed als vers; niet nodig om te ontdooien. Lekkerst op de dag van bakken.<br>• Cakevorm (brood- of rechthoekig): zelfde temperatuur, maar bak 35–45 minuten. Begin vanaf 35 min te controleren met een prikker. Laat 10 minuten afkoelen in de vorm voor het storten.",
-      "es": "Proteína en polvo: no añadir más de 30g para esta cantidad y añadir siempre también la leche vegetal — la proteína absorbe mucho líquido y resecaría los muffins sin ella. Los arándanos congelados funcionan igual de bien que los frescos; no hace falta descongelarlos. Mejor consumir el día de horneado.<br>• Molde de cake (rectangular o tipo bizcocho): misma temperatura, pero hornear 35–45 minutos. Empezar a comprobar desde los 35 min con un palillo. Dejar enfriar 10 minutos en el molde antes de desmoldar."
+      "en": "Protein powder: if adding, don't exceed 30g for this batch and always add the plant milk too — protein powder absorbs a lot of liquid and will dry out the muffins without it. Frozen blueberries work just as well as fresh; no need to thaw. Best eaten the day of baking.<br>• Cake tin (loaf or rectangular): same temperature, but bake for 35–45 minutes. Start checking at 35 min with a skewer. Cool in the tin for 10 minutes before turning out. Scale to 10 servings using the servings adjuster (~90%) to avoid overflow.",
+      "nl": "Proteïnepoeder: voeg niet meer dan 30g toe voor dit recept en voeg altijd ook de plantaardige melk toe — proteïnepoeder absorbeert veel vocht en zal de muffins uitdrogen zonder extra vloeistof. Diepvries bosbessen werken net zo goed als vers; niet nodig om te ontdooien. Lekkerst op de dag van bakken.<br>• Cakevorm (brood- of rechthoekig): zelfde temperatuur, maar bak 35–45 minuten. Begin vanaf 35 min te controleren met een prikker. Laat 10 minuten afkoelen in de vorm voor het storten. Schaal terug naar 10 porties via de porties-aanpasser (~90%) om overlopen te voorkomen.",
+      "es": "Proteína en polvo: no añadir más de 30g para esta cantidad y añadir siempre también la leche vegetal — la proteína absorbe mucho líquido y resecaría los muffins sin ella. Los arándanos congelados funcionan igual de bien que los frescos; no hace falta descongelarlos. Mejor consumir el día de horneado.<br>• Molde de cake (rectangular o tipo bizcocho): misma temperatura, pero hornear 35–45 minutos. Empezar a comprobar desde los 35 min con un palillo. Dejar enfriar 10 minutos en el molde antes de desmoldar. Escalar a 10 porciones con el ajustador (~90%) para evitar que desborde."
     }
   },
   {
