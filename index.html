@@ -23,6 +23,8 @@
   <title>VinWin Kitchen</title>
   <!-- SPA routing: GitHub Pages redirects /recipe/:id via 404.html into sessionStorage,
        then this script restores the intended URL on load -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js">
+  </script>
   <script>
     (function() {
       var redirect = sessionStorage.getItem('vw-redirect');
@@ -1409,7 +1411,7 @@
     messagingSenderId: "489470168636",
     appId: "1:489470168636:web:17a7c8a6ca3471e2c3fd39"
   });
-
+  firebase.auth().signInAnonymously().catch(console.error);
   const _db = firebase.database();
   const _listRef = _db.ref('groceryList');
 
