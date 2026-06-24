@@ -23,8 +23,6 @@
   <title>VinWin Kitchen</title>
   <!-- SPA routing: GitHub Pages redirects /recipe/:id via 404.html into sessionStorage,
        then this script restores the intended URL on load -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js">
-  </script>
   <script>
     (function() {
       var redirect = sessionStorage.getItem('vw-redirect');
@@ -1405,6 +1403,7 @@
 
 <!-- FIREBASE (compat SDK — no module/global bridging needed) -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script>
   firebase.initializeApp({
