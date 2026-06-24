@@ -277,6 +277,7 @@
       width: 380px;
       max-width: 100vw;
       height: 100vh;
+      height: 100dvh; /* respect virtual keyboard on mobile */
       background: var(--warm-white);
       border-left: 1px solid var(--border);
       z-index: 301;
@@ -322,6 +323,7 @@
       display: flex;
       gap: 0.5rem;
       padding: 0.9rem 1.4rem;
+      padding-bottom: calc(0.9rem + env(safe-area-inset-bottom, 0px));
       box-shadow: 0 -1px 0 var(--border);
       background: var(--warm-white);
       flex-shrink: 0;
@@ -426,6 +428,7 @@
     /* DRAWER FOOTER */
     .drawer-footer {
       padding: 1rem 1.4rem;
+      padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
       border-top: 1px solid var(--border);
       display: flex;
       gap: 0.6rem;
@@ -752,6 +755,8 @@
       header { padding: 0 1rem; }
       .header-brand { font-size: 1.2rem; }
       .grocery-drawer { width: 100vw; }
+      /* On mobile, let the drawer body shrink freely so add-row is always visible */
+      .grocery-drawer .drawer-body { min-height: 0; }
     }
 
 
@@ -1411,45 +1416,64 @@
     messagingSenderId: "489470168636",
     appId: "1:489470168636:web:17a7c8a6ca3471e2c3fd39"
   });
-  firebase.auth().signInAnonymously().catch(console.error);
+
   const _db = firebase.database();
   const _listRef = _db.ref('groceryList');
-
 
   // View count tracking
   const _viewsRef = _db.ref('recipeViews');
   window._viewCounts = {};
-  _viewsRef.on('value', (snap) => { window._viewCounts = snap.val() || {}; });
+  window._madeItCounts = {};
+  window._favCounts = {};
+  window._groceryItems = {};
+
+  // Grocery DB helpers
+  window._pushItem = (item) => _listRef.push(item);
+  window._updateItem = (key, data) => _db.ref('groceryList/' + key).update(data);
+  window._removeItem = (key) => _db.ref('groceryList/' + key).remove();
+
+  // Sign in anonymously first, then attach all Firebase listeners.
+  // This ensures reads/writes succeed even when security rules require auth != null.
+  firebase.auth().signInAnonymously()
+    .then(() => {
+      // Grocery list — real-time sync
+      _listRef.on('value', (snapshot) => {
+        window._groceryItems = snapshot.val() || {};
+        if (window.renderGroceryDrawer) window.renderGroceryDrawer();
+      });
+
+      // View counts
+      _viewsRef.on('value', (snap) => {
+        window._viewCounts = snap.val() || {};
+        if (window._statsOpen) renderStats(window._statsSort || 'hearts');
+      });
+
+      // Made-it counts
+      _db.ref('madeIt').on('value', snap => {
+        window._madeItCounts = snap.val() || {};
+        if (window._statsOpen) renderStats(window._statsSort || 'hearts');
+      });
+
+      // Favourites
+      _db.ref('favorites').on('value', snap => {
+        window._favCounts = snap.val() || {};
+        if (window._syncHeartUI) window._syncHeartUI();
+        if (window._statsOpen) renderStats(window._statsSort || 'hearts');
+      });
+    })
+    .catch((err) => {
+      console.error('Firebase auth failed:', err);
+      // Even without auth, set up grocery listener — may fail silently if rules require auth
+      _listRef.on('value', (snapshot) => {
+        window._groceryItems = snapshot.val() || {};
+        if (window.renderGroceryDrawer) window.renderGroceryDrawer();
+      });
+    });
 
   window._recordView = (id) => {
     const ref = _db.ref('recipeViews/' + id);
     ref.transaction(cur => (cur || 0) + 1);
   };
-
-  // madeIt counts — available globally for stats
-  const _madeItRef = _db.ref('madeIt');
-  window._madeItCounts = {};
-  _madeItRef.on('value', snap => { window._madeItCounts = snap.val() || {}; });
-
-  // Favourites — shared count per recipe
-  const _favsRef = _db.ref('favorites');
-  window._favCounts = {};
-  _favsRef.on('value', snap => {
-    window._favCounts = snap.val() || {};
-    // Re-render heart states wherever visible
-    if (window._syncHeartUI) window._syncHeartUI();
-  });
-
-  // Listen for real-time changes
-  _listRef.on('value', (snapshot) => {
-    window._groceryItems = snapshot.val() || {};
-    if (window.renderGroceryDrawer) window.renderGroceryDrawer();
-  });
-
-  // Grocery DB helpers — called directly, no bridging
-  window._pushItem = (item) => _listRef.push(item);
-  window._updateItem = (key, data) => _db.ref('groceryList/' + key).update(data);
-  window._removeItem = (key) => _db.ref('groceryList/' + key).remove();
 </script>
 
 <script>
@@ -2808,12 +2832,14 @@
   let _statsSort = 'hearts';
 
   function openStats() {
+    window._statsOpen = true;
     document.getElementById('stats-backdrop').classList.add('open');
     renderStats(_statsSort);
   }
 
   function closeStats(e) {
     if (e && e.target !== document.getElementById('stats-backdrop')) return;
+    window._statsOpen = false;
     document.getElementById('stats-backdrop').classList.remove('open');
   }
 

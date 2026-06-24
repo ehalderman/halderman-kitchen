@@ -84,10 +84,11 @@
 
 <!-- Firebase compat SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script>
   firebase.initializeApp({
-    apiKey: "AIzaSyBvJCiWzYgxLGiRPOQjnBgQFm6hZqhf_TA",
+    apiKey: "AIzaSyDzbv9kTFxxuvD5y5JZ-uLff13jTMW4KNY",
     authDomain: "vinwinkitchen.firebaseapp.com",
     databaseURL: "https://vinwinkitchen-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "vinwinkitchen",
@@ -117,6 +118,9 @@
   };
 
   async function init() {
+    // Sign in anonymously so Firebase security rules (auth != null) are satisfied
+    try { await firebase.auth().signInAnonymously(); } catch(e) { console.warn('Auth:', e); }
+
     // Load recipes
     const res = await fetch('/recipes.json');
     recipes = await res.json();
