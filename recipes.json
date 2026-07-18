@@ -4496,5 +4496,189 @@
       "nl": "Maal iets grover dan het standaard Aeropress-recept — de sterkere brouwverhouding geeft meer weerstand, en grovere maling helpt een gelijkmatige extractie te behouden. Het bypass-water gaat eerst in het kopje zodat het concentraat er direct in valt. Verhouding: 1:7,5 concentraat (20g : 150g), verdund naar ca. 1:20 totaal. Schaal aan door de koffie-grammen aan te passen — alle andere hoeveelheden schalen mee.",
       "es": "Moler ligeramente más grueso que la receta estándar de Aeropress — la mayor proporción de brew crea más resistencia, y una molienda más gruesa ayuda a mantener una extracción uniforme. El agua de bypass va primero en la taza para que el concentrado caiga directamente en ella. Ratio: 1:7,5 concentrado (20g : 150g), diluido a ~1:20 final. Escalar ajustando los gramos de café — todas las demás cantidades escalan proporcionalmente."
     }
+  },
+  {
+    "id": "protein-cookie-dough-dates",
+    "category": {
+      "en": "Snacks",
+      "nl": "Snacks",
+      "es": "Aperitivos"
+    },
+    "tags": [
+      "vegetarian",
+      "no-cook",
+      "high-protein",
+      "quick",
+      "make-ahead"
+    ],
+    "servings": 4,
+    "title": {
+      "en": "Protein Cookie Dough with Dates",
+      "nl": "Proteïne Cookie Dough met Dadels",
+      "es": "Masa de Galletas Proteica con Dátiles"
+    },
+    "description": {
+      "en": "A protein-packed, high-fiber cookie dough that's completely safe to eat raw — no eggs, no raw flour. Everything blends together into one smooth, fudgy dough, boosted with vanilla protein powder and dates for natural sweetness.",
+      "nl": "Een eiwitrijk, vezelrijk cookie dough dat volledig veilig rauw te eten is — geen eieren, geen rauwe bloem. Alles wordt samen gemixt tot één gladde, fudgy deeg, met een boost van vanille-eiwitpoeder en dadels voor natuurlijke zoetheid.",
+      "es": "Una masa de galletas rica en proteína y fibra que es completamente segura para comer cruda — sin huevos, sin harina cruda. Todo se mezcla junto en una masa suave y fudgy, potenciada con proteína en polvo sabor vainilla y dátiles para un dulzor natural."
+    },
+    "ingredients": [
+      {
+        "id": "i1",
+        "amount": 240,
+        "unit": "g",
+        "name": {
+          "en": "canned chickpeas, drained and rinsed (reserve the liquid if using aquafaba)",
+          "nl": "kikkererwten uit blik, uitgelekt en gespoeld (bewaar het vocht als je aquafaba gebruikt)",
+          "es": "garbanzos en lata, escurridos y enjuagados (reserva el líquido si usas aquafaba)"
+        }
+      },
+      {
+        "id": "i2",
+        "amount": 150,
+        "unit": "g",
+        "name": {
+          "en": "full-fat cottage cheese",
+          "nl": "volle cottage cheese",
+          "es": "queso cottage entero"
+        }
+      },
+      {
+        "id": "i3",
+        "amount": 60,
+        "unit": "g",
+        "name": {
+          "en": "pitted Medjool dates, roughly chopped",
+          "nl": "ontpitte Medjool-dadels, grof gehakt",
+          "es": "dátiles Medjool sin hueso, picados en trozos grandes"
+        }
+      },
+      {
+        "id": "i4",
+        "amount": 30,
+        "unit": "g",
+        "name": {
+          "en": "vanilla protein powder",
+          "nl": "vanille-eiwitpoeder",
+          "es": "proteína en polvo sabor vainilla"
+        }
+      },
+      {
+        "id": "i5",
+        "amount": 40,
+        "unit": "ml",
+        "name": {
+          "en": "aquafaba, or plant-based milk",
+          "nl": "aquafaba, of plantaardige melk",
+          "es": "aquafaba, o leche vegetal"
+        }
+      },
+      {
+        "id": "i6",
+        "amount": 80,
+        "unit": "g",
+        "name": {
+          "en": "almond flour, or rolled oats",
+          "nl": "amandelmeel, of havermout",
+          "es": "harina de almendra, o copos de avena"
+        }
+      },
+      {
+        "id": "i7",
+        "amount": 30,
+        "unit": "g",
+        "name": {
+          "en": "maple syrup",
+          "nl": "ahornsiroop",
+          "es": "jarabe de arce"
+        }
+      },
+      {
+        "id": "i8",
+        "amount": 30,
+        "unit": "g",
+        "name": {
+          "en": "almond butter or peanut butter",
+          "nl": "amandelpasta of pindakaas",
+          "es": "mantequilla de almendra o de cacahuete"
+        }
+      },
+      {
+        "id": "i9",
+        "amount": 1,
+        "unit": "pinch",
+        "name": {
+          "en": "fine sea salt",
+          "nl": "fijn zeezout",
+          "es": "sal marina fina"
+        }
+      },
+      {
+        "id": "i10",
+        "amount": 80,
+        "unit": "g",
+        "name": {
+          "en": "mini dark chocolate chips",
+          "nl": "mini pure chocoladedruppels",
+          "es": "mini chispas de chocolate negro"
+        }
+      }
+    ],
+    "steps": [
+      {
+        "title": {
+          "en": "Blend everything together",
+          "nl": "Alles samen mixen",
+          "es": "Mezclar todo junto"
+        },
+        "content": {
+          "en": "In a food processor or high-powered blender, combine {i1}, {i2}, {i3}, {i7}, {i8}, {i4}, {i5}, {i6}, and {i9}. Blend until completely smooth — no chickpea, date, or oat bits should remain. Scrape down the sides once or twice.",
+          "nl": "Doe {i1}, {i2}, {i3}, {i7}, {i8}, {i4}, {i5}, {i6} en {i9} in een keukenmachine of krachtige blender. Mix tot volledig glad — er mogen geen stukjes kikkererwt, dadel of haver meer zichtbaar zijn. Schraap de randen een of twee keer schoon.",
+          "es": "En un procesador de alimentos o batidora potente, combinar {i1}, {i2}, {i3}, {i7}, {i8}, {i4}, {i5}, {i6} y {i9}. Triturar hasta que quede completamente suave — no deben quedar trozos de garbanzo, dátil o avena. Raspar los lados una o dos veces."
+        }
+      },
+      {
+        "title": {
+          "en": "Add chocolate chips",
+          "nl": "Chocoladedruppels toevoegen",
+          "es": "Añadir las chispas de chocolate"
+        },
+        "content": {
+          "en": "Fold in {i10} evenly throughout the dough.",
+          "nl": "Spatel {i10} er gelijkmatig doorheen.",
+          "es": "Incorporar {i10} de manera uniforme en la masa."
+        }
+      },
+      {
+        "title": {
+          "en": "Chill",
+          "nl": "Koelen",
+          "es": "Enfriar"
+        },
+        "content": {
+          "en": "Cover and refrigerate for at least 30 minutes. This firms up the texture and lets the flavors meld, making it taste more like classic cookie dough.",
+          "nl": "Dek af en zet minstens 30 minuten in de koelkast. Dit maakt de textuur steviger en laat de smaken samenkomen, waardoor het meer op klassiek koekjesdeeg gaat lijken.",
+          "es": "Tapar y refrigerar durante al menos 30 minutos. Esto firma la textura y deja que los sabores se integren, dándole un sabor más parecido a la masa de galletas clásica."
+        }
+      },
+      {
+        "title": {
+          "en": "Serve",
+          "nl": "Serveren",
+          "es": "Servir"
+        },
+        "content": {
+          "en": "Eat straight from the bowl with a spoon, roll into bite-sized balls, or scoop over yogurt or a smoothie bowl.",
+          "nl": "Eet direct uit de kom met een lepel, rol er hapklare balletjes van, of schep het over yoghurt of een smoothiebowl.",
+          "es": "Comer directamente del bol con una cuchara, formar bolitas del tamaño de un bocado, o servir sobre yogur o un smoothie bowl."
+        }
+      }
+    ],
+    "notes": {
+      "en": "Aquafaba (the reserved chickpea liquid) fits the flavor profile best since it's already part of the base, but plant milk works too. Same goes for the almond flour vs. oats choice — oats give a slightly heartier, more textured dough while almond flour keeps it smoother. Keeps in the fridge for up to 5 days.",
+      "nl": "Aquafaba (het bewaarde kikkererwtenvocht) past het beste bij het smaakprofiel omdat het al onderdeel is van de basis, maar plantaardige melk werkt ook. Hetzelfde geldt voor de keuze tussen amandelmeel en havermout — havermout geeft een iets stevigere, meer structuurrijke deeg, terwijl amandelmeel het gladder houdt. Houdbaar in de koelkast tot 5 dagen.",
+      "es": "El aquafaba (el líquido reservado de los garbanzos) encaja mejor con el perfil de sabor porque ya forma parte de la base, pero la leche vegetal también funciona. Lo mismo aplica para la elección entre harina de almendra y avena — la avena da una masa un poco más consistente y con más textura, mientras que la harina de almendra la mantiene más suave. Se conserva en la nevera hasta 5 días."
+    }
   }
+]
 ]
