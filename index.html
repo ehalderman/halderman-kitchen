@@ -286,6 +286,11 @@
       box-shadow: -8px 0 32px rgba(16,16,48,0.1);
     }
     .grocery-drawer.open { transform: translateX(0); }
+    #offline-pill {
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+      background: #c0392b; color: #fff; border-radius: 20px; padding: 0.15rem 0.55rem;
+      margin-left: 0.5rem; vertical-align: middle;
+    }
     .drawer-header {
       display: flex;
       align-items: center;
@@ -1272,6 +1277,7 @@
   <div class="grocery-drawer" id="grocery-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
     <div class="drawer-header">
       <span class="drawer-title" id="drawer-title">Grocery List</span>
+      <span id="offline-pill" style="display:none">offline</span>
       <button class="drawer-close" onclick="closeDrawer()" aria-label="Close grocery list">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M18 6 6 18M6 6l12 12"/>
@@ -1419,59 +1425,68 @@
   const _db = firebase.database();
   const _listRef = _db.ref('groceryList');
 
-  // View count tracking
   const _viewsRef = _db.ref('recipeViews');
   window._viewCounts = {};
   window._madeItCounts = {};
   window._favCounts = {};
   window._groceryItems = {};
+  window._fbConnected = true;
 
-  // Grocery DB helpers
-  window._pushItem = (item) => _listRef.push(item);
-  window._updateItem = (key, data) => _db.ref('groceryList/' + key).update(data);
-  window._removeItem = (key) => _db.ref('groceryList/' + key).remove();
+  // Sign in anonymously once; every write waits for this promise
+  const _authReady = firebase.auth().signInAnonymously()
+    .catch(err => console.error('Firebase auth failed:', err));
 
-  // Sign in anonymously first, then attach all Firebase listeners.
-  // This ensures reads/writes succeed even when security rules require auth != null.
-  firebase.auth().signInAnonymously()
-    .then(() => {
-      // Grocery list — real-time sync
-      _listRef.on('value', (snapshot) => {
-        window._groceryItems = snapshot.val() || {};
-        if (window.renderGroceryDrawer) window.renderGroceryDrawer();
-      });
+  function _writeFail(e) {
+    console.error('Firebase write failed:', e);
+    if (typeof showToast === 'function') showToast('⚠️ Not saved — check connection');
+  }
 
-      // View counts
-      _viewsRef.on('value', (snap) => {
-        window._viewCounts = snap.val() || {};
-        if (window._statsOpen) renderStats(window._statsSort || 'hearts');
-      });
+  // Grocery DB helpers — auth-gated, errors surfaced instead of silent
+  window._pushItem   = (item)      => _authReady.then(() => _listRef.push(item)).catch(_writeFail);
+  window._updateItem = (key, data) => _authReady.then(() => _db.ref('groceryList/' + key).update(data)).catch(_writeFail);
+  window._removeItem = (key)       => _authReady.then(() => _db.ref('groceryList/' + key).remove()).catch(_writeFail);
 
-      // Made-it counts
-      _db.ref('madeIt').on('value', snap => {
-        window._madeItCounts = snap.val() || {};
-        if (window._statsOpen) renderStats(window._statsSort || 'hearts');
-      });
+  // Toggle via transaction: aborts if the item was deleted in the meantime,
+  // so a stale toggle can never recreate a partial "ghost" item.
+  window._toggleItem = (key, checked) => _authReady.then(() =>
+    _db.ref('groceryList/' + key).transaction(cur =>
+      cur === null ? undefined : Object.assign({}, cur, { checked })
+    )
+  ).catch(_writeFail);
 
-      // Favourites
-      _db.ref('favorites').on('value', snap => {
-        window._favCounts = snap.val() || {};
-        if (window._syncHeartUI) window._syncHeartUI();
-        if (window._statsOpen) renderStats(window._statsSort || 'hearts');
-      });
-    })
-    .catch((err) => {
-      console.error('Firebase auth failed:', err);
-      // Even without auth, set up grocery listener — may fail silently if rules require auth
-      _listRef.on('value', (snapshot) => {
-        window._groceryItems = snapshot.val() || {};
-        if (window.renderGroceryDrawer) window.renderGroceryDrawer();
-      });
+  // Attach listeners once auth has settled (runs even if auth failed)
+  _authReady.then(() => {
+    _listRef.on('value', (snapshot) => {
+      window._groceryItems = snapshot.val() || {};
+      if (window.renderGroceryDrawer) window.renderGroceryDrawer();
     });
 
+    _viewsRef.on('value', (snap) => {
+      window._viewCounts = snap.val() || {};
+      if (window._statsOpen) renderStats(window._statsSort || 'hearts');
+    });
+
+    _db.ref('madeIt').on('value', snap => {
+      window._madeItCounts = snap.val() || {};
+      if (window._statsOpen) renderStats(window._statsSort || 'hearts');
+    });
+
+    _db.ref('favorites').on('value', snap => {
+      window._favCounts = snap.val() || {};
+      if (window._syncHeartUI) window._syncHeartUI();
+      if (window._statsOpen) renderStats(window._statsSort || 'hearts');
+    });
+
+    // Connection indicator → offline pill in the drawer header
+    _db.ref('.info/connected').on('value', snap => {
+      window._fbConnected = snap.val() === true;
+      const pill = document.getElementById('offline-pill');
+      if (pill) pill.style.display = window._fbConnected ? 'none' : 'inline-block';
+    });
+  });
+
   window._recordView = (id) => {
-    const ref = _db.ref('recipeViews/' + id);
-    ref.transaction(cur => (cur || 0) + 1);
+    _db.ref('recipeViews/' + id).transaction(cur => (cur || 0) + 1).catch(() => {});
   };
 </script>
 
@@ -1737,7 +1752,9 @@
 
   window.renderGroceryDrawer = function() {
     const items = window._groceryItems || {};
-    const keys = Object.keys(items);
+    // Skip malformed items (e.g. legacy ghost nodes without text) — one bad
+    // node must never take down the whole list
+    const keys = Object.keys(items).filter(k => items[k] && typeof items[k].text === 'string');
     const badge = document.getElementById('cart-badge');
     const uncheckedCount = keys.filter(k => !items[k].checked).length;
 
@@ -1782,7 +1799,7 @@
 
   // ── UTILITIES ──────────────────────────────────────────────────
   function escHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   function addManualItem() {
@@ -1794,22 +1811,18 @@
   }
 
   window.toggleGroceryItem = function(key, checked) {
-    if (!window._updateItem) return;
+    if (!window._toggleItem) return;
     const item = (window._groceryItems || {})[key];
-    if (item) window._undoStack.push({ type: 'toggle', key, checked: !checked, text: item.text });
+    if (!item) return;
+    window._undoStack.push({ type: 'toggle', key, checked: !checked, text: item.text });
 
-    // Animate the crossing before Firebase re-renders
+    // Cosmetic only: start the strike animation now; the write is immediate
+    // and the snapshot re-render completes the state change.
     if (checked) {
       const el = document.getElementById('gi-' + key);
-      if (el) {
-        el.classList.add('crossing');
-        setTimeout(() => window._updateItem(key, { checked }), 380);
-      } else {
-        window._updateItem(key, { checked });
-      }
-    } else {
-      window._updateItem(key, { checked });
+      if (el) el.classList.add('crossing');
     }
+    window._toggleItem(key, checked);
 
     const undoBtn = document.getElementById('btn-undo');
     if (undoBtn) undoBtn.style.display = 'block';
@@ -1832,7 +1845,7 @@
     const action = window._undoStack.pop();
     if (!action) return;
     if (action.type === 'toggle') {
-      window._updateItem(action.key, { checked: action.checked });
+      window._toggleItem(action.key, action.checked);
     } else if (action.type === 'delete') {
       window._pushItem({ text: action.text, checked: action.checked, ts: Date.now() });
     } else if (action.type === 'clearChecked') {
